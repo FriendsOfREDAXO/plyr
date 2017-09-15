@@ -77,7 +77,7 @@ $mform->addCustomLinkField("3", array('label'=>'Link', 'class'=>'test', 'data-te
 
 //Variablen
 $Media = "/media/";
-$url = 'REX_VALUE[3]';
+$url = 'REX_VALUE[1]';
 $afterglow = new rex_video();
 $link = $afterglow->getVideoType($url);
 $autoplay = rex_config::get('video', 'autoplay_afterglow');
