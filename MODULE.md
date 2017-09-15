@@ -40,7 +40,6 @@ if($plyr->checkYoutube($link) == true) {
 	echo '<div class="rex_video '.$autoplayStandard.' '.$hideControls.' '.$clickToPlay.'" data-type="youtube"  data-video-id="'.$plyr->getYoutubeId($link).'"></div></br>';
 }
 if($plyr->checkVimeo($link) == true) {
-	echo 'Vimeo';	
 	echo '<div class="rex_video '.$hideControls.' '.$autoplayStandard.' '.$clickToPlay.'" data-type="vimeo" data-video-id="'.$plyr->getVimeoId($link).'"></div></br>';
 }
 if(strpos($link, $Media) !== false) {
