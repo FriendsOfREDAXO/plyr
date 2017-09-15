@@ -71,19 +71,19 @@ JS für Afterglow
 `checkYoutube($url)` 
 Prüft ob es sich um eine Youtube-URL handelt
 
-`getYoutubeId($urL)` 
+`getYoutubeId($url)` 
 Ermittelt die Youtube-ID eines Videos
 
 `checkVimeo($url)` 
 Prüft ob es sich um eine Vimeo-URL handelt
 
-`getVimeoId($urL)` 
+`getVimeoId($url)` 
 Ermittelt die Vimeo-Id eines Videos
 
 
 ## Bugtracker
 
-Du hast einen Fehler gefunden oder ein nettes Feature parat? [Lege ein Issue an](https://github.com/FriendsOfREDAXO/quick_navigation/issues). Bevor du ein neues Issue erstellts, suche bitte ob bereits eines mit deinem Anliegen existiert und lese die [Issue Guidelines (englisch)](https://github.com/necolas/issue-guidelines) von [Nicolas Gallagher](https://github.com/necolas/).
+Du hast einen Fehler gefunden oder ein nettes Feature parat? [Lege ein Issue an](https://github.com/FriendsOfREDAXO/video/issues). Bevor du ein neues Issue erstellts, suche bitte ob bereits eines mit deinem Anliegen existiert und lese die [Issue Guidelines (englisch)](https://github.com/necolas/issue-guidelines) von [Nicolas Gallagher](https://github.com/necolas/).
 
 
 ## Changelog
@@ -92,7 +92,7 @@ siehe [CHANGELOG.md](https://github.com/FriendsOfREDAXO/video/blob/master/CHANGE
 
 ## Lizenz
 
-siehe [LICENSE.md](https://github.com/FriendsOfREDAXO/quick_navigation/blob/master/LICENSE.md)
+siehe [LICENSE.md](https://github.com/FriendsOfREDAXO/video/blob/master/LICENSE.md)
 
 Plyr und Afterglow stehen unter MIT-Lizenz. Die Player bedienen sich jedoch teils unterschiedlicher Quellen, deren Lizenzen sich unterscheiden können. 
 
