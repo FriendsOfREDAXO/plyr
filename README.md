@@ -16,6 +16,7 @@ Wir haben uns bewußt gegen eine automatische Einbindung im Frontend entschieden
 - Konfigurationsseiten für die jeweiligen Player
 - Test der Grundeinstellungen
 - Funktionen zur Ermittlung von VIMEO und Youtube-IDs
+- REX_FOR_VIDEO[] Variable
 
 
 ## Installation
