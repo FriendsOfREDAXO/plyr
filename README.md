@@ -27,6 +27,7 @@ Wir haben uns bewußt gegen eine automatische Einbindung im Frontend entschieden
 4. Standard Konfigurationen setzen
 5. Skripte und CSS für das Frontend bitte manuell einbinden. 
 
+
 ## Module
 Den Modulcode findet man oben in den Reitern. 
 
@@ -40,28 +41,28 @@ Eigene CSS und JS sollten nach Möglichkeit an anderer Stelle abgelegt werden um
 
 ### Plyr
 
-Plyr benötigigt 2 JS-Dateien und eine CSS.  In der plyr_video.js wird der Player initialisiert. 
+Plyr benötigigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Player initialisiert. 
 
 Afterglow benötigt nur das eigentliche Skript. 
 
 
 CSS für Plyr
 
-```
+```html
 <link rel="stylesheet" href="<?= rex_url::base('assets/addons/video/Plyr/css/plyr.css') ?>">
 ```
 
-
 JS für Plyr
 
-```
+```html
 <script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Plyr/js/plyr.js') ?>"></script>
 <script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Plyr/js/plyr_video.js') ?>"></script>
 
 ```
 
 JS für Afterglow
-```
+
+```html
 <script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Afterglow/dist/afterglow.min.js') ?>"></script> 
 ```
 
