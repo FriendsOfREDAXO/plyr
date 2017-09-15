@@ -1,0 +1,25 @@
+# Alle hier gesetzten Werte können über $addon->getProperty($key) abgefragt werden
+
+package: video # Pflichtfeld
+version: '1.0.0' # Pflichtfeld
+author: Friends Of REDAXO
+supportpage: https://github.com/FriendsOfREDAXO/demo_addon
+page:
+    title: 'Video' # Werte die mit "translate:" beginnen, werden anhand der Sprachdatei übersetzt. Der Addon-Präfix (hier "demo_addon_") kann weggelassen werden.
+    perm: video[]
+    pjax: false
+    icon: rex-icon fa-television
+    subpages:
+        main:  
+             title: 'translate:title'    
+        help:  
+             title: 'translate:help' 
+        module: 
+             title: 'translate:module' 
+        
+        
+requires:
+    redaxo: '^5.3' 
+    php:
+        version: '>=5.6' # benötigt mindestens PHP 5.6
+        extensions: [gd, xml] # benötigt die PHP-Extensions GDlib und XML

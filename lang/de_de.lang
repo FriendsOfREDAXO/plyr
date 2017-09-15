@@ -1,0 +1,18 @@
+//KONFIGURATION
+title = Video
+module = Module
+help = Hilfe
+player = Videoplayer
+config = Konfiguration
+config_save = Speichern
+config_saved = Konfiguration wurde gespeichert 
+Autoplay_plyr = Autoplay
+Autoplay_afterglow = Autoplay
+Controls_plyr = Verstecke Zeitanzeige
+Click_plyr = Klick auf Video = Abspielen
+plyr_title = Plyr
+afterglow_title = Afterglow
+plyr_test = Konfiguration Test
+Sounds_afterglow = Ton
+afterglow_test = Konfiguration Test
+Theme_afterglow = Theme
