@@ -1,20 +1,33 @@
-##PLYR
+#Module
+
+Die hier gezeigte Module nuzten das AddOn **mform**. Es kann aber auch ein normaler Input oder Medialink genuzt werden. 
+
+Die hier gezeigte Lösung hat den Vorteil, dass es eine Auswahl für einen externen und einen Medienlink in einem Value zur Verfügung stellt. 
+
+
+## PLYR
+
 **Eingabe**
 ```
 <?php
-	$mform = new MForm();
-	$mform->addFieldset("Video");
-    $mform->addCustomLinkField("3", array('label'=>'Video', 'class'=>'test', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
-    echo $mform->show();
- ?>
+$mform = new MForm();
+$mform->addFieldset("Video");
+$mform->addCustomLinkField("1", array('label'=>'Video', 'class'=>'test', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
+echo $mform->show();
+?>
 ```
 **Ausgabe**
+
+Am einfachsten geht's mit `REX_FOR_VIDEO[1]`
+
+Alternativ:
+
 ```
 <?php
 //Variablen
 $localAutoplay = "";
 $Media = "/media/";
-$url = 'REX_VALUE[3]';
+$url = 'REX_VALUE[1]';
 // GET INPUT LINK AND CHECK IS IT URL/MEDIA
 $plyr = new rex_video();
 $link = $plyr->getVideoType($url);
@@ -45,13 +58,16 @@ if(strpos($link, $Media) !== false) {
 ?>
 ```
 
-##AFTERGLOW
+## AFTERGLOW
+
+> Da Afterglow aktuell noch in einer frühen Beta-Phase steckt, haben wir hier zunächst auf eine Ausgabe über eine REX_VAR verzichtet. 
+
 **Eingabe**
 ```
 <?php
-	$mform = new MForm();
-	$mform->addFieldset("Video");
-    $mform->addCustomLinkField("3", array('label'=>'Link', 'class'=>'test', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
+$mform = new MForm();
+$mform->addFieldset("Video");
+$mform->addCustomLinkField("3", array('label'=>'Link', 'class'=>'test', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
     echo $mform->show();
  ?>
 ```
