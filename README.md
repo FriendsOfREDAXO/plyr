@@ -4,7 +4,7 @@ REDAXO-AddOn: Video
 
 Das AddOn stellt die Video-Player [Plyr](https://plyr.io) und die aktuelle [Afterglow](https://afterglowplayer.com) beta zur Auswahl.
 
-![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/video/assets/video_01.png)
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/video/assets/video_01.jpg)
 
 Es können lokale Videos und Youtube- sowie Vimeo-Videos (aktuell nur Plyr) eingebunden werden.  
 Wir haben uns bewußt gegen eine automatische Einbindung im Frontend entschieden um dem Entwickler alle Freiheiten zu lassen. 
