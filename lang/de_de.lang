@@ -1,4 +1,3 @@
-//KONFIGURATION
 title = Video
 module = Module
 help = Hilfe
@@ -16,3 +15,4 @@ plyr_test = Konfiguration Test
 Sounds_afterglow = Ton
 afterglow_test = Konfiguration Test
 Theme_afterglow = Theme
+disabled = deaktiviert
