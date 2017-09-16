@@ -1,18 +1,19 @@
-//CONFIGURATION
+//KONFIGURATION
 title = Video
 module = Module
 help = Help
 player = Videoplayer
 config = Configuration
 config_save = Save
-config_saved = Saved Configuration 
+config_saved = Saved Configuration
 Autoplay_plyr = Autoplay
 Autoplay_afterglow = Autoplay
 Controls_plyr = Hide Controls
-Click_plyr = Click on video = Autoplay
+Click_plyr = Click on video to play
 plyr_title = Plyr
 afterglow_title = Afterglow
 plyr_test = Configuration Test
 Sounds_afterglow = Sound
 afterglow_test = Configuration Test
 Theme_afterglow = Theme
+disabled = disabled
