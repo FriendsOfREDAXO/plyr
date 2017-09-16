@@ -9,13 +9,14 @@ Das AddOn stellt die Video-Player [Plyr](https://plyr.io) und die aktuelle [Afte
 Es können lokale Videos und Youtube- sowie Vimeo-Videos (aktuell nur Plyr) eingebunden werden.  
 Wir haben uns bewußt gegen eine automatische Einbindung im Frontend entschieden um dem Entwickler alle Freiheiten zu lassen. 
 
+> Möchte man die mitgelieferten Player nicht verwenden, kann man deren Einbindung deaktivieren. Die Methoden der rex_video class, stehen dann weiterhin zur Verfügung. 
 
 ## Features
 - Auswahl des gewünschten Players
 - Einbindung des Players im Backend
 - Konfigurationsseiten für die jeweiligen Player
 - Test der Grundeinstellungen
-- Funktionen zur Ermittlung von VIMEO und Youtube-IDs
+- Methoden zur Ermittlung von VIMEO und Youtube-IDs
 - REX_FOR_VIDEO[] Variable
 
 
@@ -67,7 +68,10 @@ JS für Afterglow
 ```
 
 
-## Hilfsfunktionen
+## Hilfsmethoden in der rex_video class
+
+`getVideoType($url)`
+Gibt sofern es sich um eine Mediapool-Datei handelt die URL zum Medium zurück. 
 
 `checkYoutube($url)` 
 Prüft ob es sich um eine Youtube-URL handelt
@@ -81,6 +85,12 @@ Prüft ob es sich um eine Vimeo-URL handelt
 `getVimeoId($url)` 
 Ermittelt die Vimeo-Id eines Videos
 
+**Beispiel**
+
+```
+$plyr = new rex_video();
+$url = $plyr->getVideoType($url);
+```
 
 ## Bugtracker
 
