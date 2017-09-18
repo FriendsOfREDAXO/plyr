@@ -25,7 +25,7 @@ if (rex::isBackend() && is_object(rex::getUser())) {
 		if($this->getConfig('player') == 'Plyr') {
     	rex_view::addCssFile($this->getAssetsUrl('Plyr/css/plyr.css'));
     	rex_view::addJsFile($this->getAssetsUrl('Plyr/js/plyr.js'));   
-    	rex_view::addJsFile($this->getAssetsUrl('Plyr/js/plyr_video_backend.js'));
+    	rex_view::addJsFile($this->getAssetsUrl('js/plyr_video_backend.js'));
 	}
 
 	
