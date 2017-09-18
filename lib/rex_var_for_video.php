@@ -9,7 +9,7 @@
         $value = $this->getContextData()->getValue('value' . $id);
         
 //Variablen
-$localAutoplay = "";
+$localAutoplay = $out = "";
 $Media = "/media/";
 $url = $value;
 // GET INPUT LINK AND CHECK IS IT URL/MEDIA
