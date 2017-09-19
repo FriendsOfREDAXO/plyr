@@ -6,8 +6,8 @@ Das AddOn stellt die Video-Player [Plyr](https://plyr.io) und die aktuelle [Afte
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/video/assets/video_01.jpg)
 
-Es können lokale Videos und Youtube- sowie Vimeo-Videos (aktuell nur Plyr) eingebunden werden.  
-Wir haben uns bewußt gegen eine automatische Einbindung im Frontend entschieden um dem Entwickler alle Freiheiten zu lassen. 
+Es können lokale Audio-Dateien (Plyr), Videos und Youtube- sowie Vimeo-Videos (aktuell nur Plyr) eingebunden werden.  
+Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden um dem Entwickler alle Freiheiten zu lassen. 
 
 > Möchte man die mitgelieferten Player nicht verwenden, kann man deren Einbindung deaktivieren. Die Methoden der rex_video class, stehen dann weiterhin zur Verfügung. 
 
@@ -57,7 +57,7 @@ JS für Plyr
 
 ```html
 <script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Plyr/js/plyr.js') ?>"></script>
-<script type="text/javascript" src="<?= rex_url::base('assets/addons/video/js/plyr_video.js') ?>"></script>
+<script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Plyr/js/plyr_video.js') ?>"></script>
 
 ```
 
@@ -84,6 +84,12 @@ Prüft ob es sich um eine Vimeo-URL handelt
 
 `getVimeoId($url)` 
 Ermittelt die Vimeo-Id eines Videos
+
+`checkMedia($url)` 
+Überprüft ob es sich um ein MP4-Video aus dem Medienpool handelt
+
+`checkAudio($url)` 
+Überprüft ob es sich um eine MP3-Audio-Datei aus dem Medienpool handelt
 
 **Beispiel**
 

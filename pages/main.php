@@ -21,6 +21,7 @@ $select = new rex_select();
 $select->setId('player');
 $select->setAttribute('class', 'form-control selectpicker');
 $select->setName('config[player]');
+$select->AddOption('Deaktivieren', 'Deaktivieren'); 
 $select->addOption('Plyr', 'Plyr');
 $select->addOption('Afterglow', 'Afterglow');
 $select->setSelected($this->getConfig('player'));

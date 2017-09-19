@@ -22,18 +22,23 @@ if (rex::isBackend() && is_object(rex::getUser())) {
     	$page['subpages']['afterglow_test'] = ['title' => $this->i18n('afterglow_test')];
     	$this->setProperty('page', $page);
 	}
-		if($this->getConfig('player') == 'Plyr') {
+	if($this->getConfig('player') == 'Audio') {
+		$page = $this->getProperty('page');
+    	$page['subpages']['audio'] = ['title' =>  $this->i18n('audio_title')];
+    	$page['subpages']['audio_test'] = ['title' => $this->i18n('audio_test')];
+    	$this->setProperty('page', $page);
+	}
+	
+	if($this->getConfig('player') == 'Plyr') {
     	rex_view::addCssFile($this->getAssetsUrl('Plyr/css/plyr.css'));
     	rex_view::addJsFile($this->getAssetsUrl('Plyr/js/plyr.js'));   
     	rex_view::addJsFile($this->getAssetsUrl('js/plyr_video_backend.js'));
 	}
 
-	
 	if($this->getConfig('player') == 'Afterglow') {
 		rex_view::addJsFile($this->getAssetsUrl('Afterglow/dist/afterglow.min.js'));
 		rex_view::addJsFile($this->getAssetsUrl('js/afterglow.js'));
 	}
-	 
 }
  
 if (rex::isBackend()) {

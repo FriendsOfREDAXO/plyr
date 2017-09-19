@@ -8,7 +8,9 @@ if (rex_post('formsubmit', 'string') == '1') {
     $this->setConfig(rex_post('config', [
         ['autoplay_plyr', 'string'],
         ['controls_plyr', 'string'],
-        ['click_plyr', 'string']
+        ['click_plyr', 'string'],
+        ['autoplay_audio', 'string'],
+        ['loop_audio', 'string'],
     ]));
 
     echo rex_view::success($this->i18n('config_saved'));
@@ -19,6 +21,11 @@ if (rex_post('formsubmit', 'string') == '1') {
 ///PLYRAXO///
 /////////////
 
+$content .= '<fieldset><legend>' . $this->i18n('plyr_video') . '</legend>';
+
+///////////////
+/////Video/////
+///////////////
 
 // AUTOPLAY //
 $formElements = [];
@@ -79,6 +86,50 @@ $fragment = new rex_fragment();
 $fragment->setVar('elements', $formElements, false);
 $content .= $fragment->parse('core/form/container.php');
 
+///////////////
+/////Audio/////
+///////////////
+
+$content .= '<fieldset><legend>' . $this->i18n('plyr_audio') . '</legend>';
+/*
+// AUTOPLAY //
+$formElements = [];
+$n = [];
+$n['label'] = '<label for="Autoplay_audio">' . $this->i18n('Autoplay_audio') . '</label>';
+$select = new rex_select();
+$select->setId('autoplay_audio');
+$select->setAttribute('class', 'form-control selectpicker');
+$select->setName('config[autoplay_audio]');
+$select->addOption('Ja', 'Autoplay');
+$select->addOption('Nein', ' ');
+
+$select->setSelected($this->getConfig('autoplay_audio'));
+$n['field'] = $select->get();
+$formElements[] = $n;
+
+$fragment = new rex_fragment();
+$fragment->setVar('elements', $formElements, false);
+$content .= $fragment->parse('core/form/container.php');
+*/
+// LOOP //
+
+$formElements = [];
+$n = [];
+$n['label'] = '<label for="Loop_audio">' . $this->i18n('Loop_audio') . '</label>';
+$select = new rex_select();
+$select->setId('loop_audio');
+$select->setAttribute('class', 'form-control selectpicker');
+$select->setName('config[loop_audio]');
+$select->addOption('Wiederholen', 'loop');
+$select->addOption('Nicht Wiederholen', ' ');
+
+$select->setSelected($this->getConfig('loop_audio'));
+$n['field'] = $select->get();
+$formElements[] = $n;
+
+$fragment = new rex_fragment();
+$fragment->setVar('elements', $formElements, false);
+$content .= $fragment->parse('core/form/container.php');
 
 // Save-Button
 $formElements = [];

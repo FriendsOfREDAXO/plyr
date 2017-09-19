@@ -1,3 +1,4 @@
+//KONFIGURATION
 title = Video
 module = Module
 help = Hilfe
@@ -5,14 +6,27 @@ player = Videoplayer
 config = Konfiguration
 config_save = Speichern
 config_saved = Konfiguration wurde gespeichert 
+disabled = deaktiviert
+
+// PLYR // 
+plyr_title = Plyr
+plyr_test = Konfiguration Test
 Autoplay_plyr = Autoplay
 Autoplay_afterglow = Autoplay
 Controls_plyr = Verstecke Zeitanzeige
 Click_plyr = Klick auf Video = Abspielen
-plyr_title = Plyr
-afterglow_title = Afterglow
-plyr_test = Konfiguration Test
-Sounds_afterglow = Ton
+plyr_video = Plyr-Video
+plyr_audio = Plyr-Audio
+
+// AUDIO //
+audio_title = Audio
+audio_test = Konfiguration Test
+Autoplay_audio = Autoplay
+Loop_audio = Wiederholen?
+
+// AFTERGLOW //
 afterglow_test = Konfiguration Test
+afterglow_title = Afterglow
+Sounds_afterglow = Ton
 Theme_afterglow = Theme
-disabled = deaktiviert
+
