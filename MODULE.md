@@ -1,8 +1,6 @@
 # Module
 
-> Die hier gezeigte Module nuzten das AddOn **mform**. Es kann aber auch ein normaler Input oder Medialink genuzt werden. 
-
-Die hier gezeigte Lösung hat den Vorteil, dass es eine Auswahl für einen externen und einen Medienlink in einem Value zur Verfügung stellt. 
+> Die hier gezeigte Module nuzten das AddOn **mform**. Es kann aber auch ein normaler Input oder Medialink genuzt werden. Die hier gezeigte Lösung hat den Vorteil, dass es eine Auswahl für einen externen und einen Medienlink in einem Value zur Verfügung stellt. 
 
 
 ## PLYR
