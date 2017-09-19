@@ -31,8 +31,6 @@
 			if($autoplayStandard == 'Ja') {
 				$localAutoplay = "autoplay";
 			}
-			dump("TEST");
-			
 			$out =  '
 				<section>
 					<video '.$localAutoplay.' volume=1>
