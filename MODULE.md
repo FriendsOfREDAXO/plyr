@@ -101,7 +101,7 @@ if($afterglow->checkYoutube($link) == true) {
 		<video autoplay="'.$autoplay.'" data-volume="'.$sounds.'" data-skin="'.$theme.'" id="video1"  width="1920" height="1080" data-youtube-id="YH3c1QZzRK4" data-autoresize="fit"></video>
 		';
 }
-}
+
 	
 // Lokales MP4 Video als Standard-Player
 if(strpos($link, $Media) !== false) {
