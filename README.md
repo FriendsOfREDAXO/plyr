@@ -2,7 +2,7 @@
 REDAXO-AddOn: Video
 ================================================================================
 
-Das AddOn stellt die Video-Player [Plyr](https://plyr.io) und die aktuelle [Afterglow](https://afterglowplayer.com) beta zur Auswahl.
+Das AddOn stellt den Video-/Audio-Player [Plyr](https://plyr.io) und die aktuelle [Afterglow](https://afterglowplayer.com) beta (nur Video) zur Auswahl.
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/video/assets/video_01.jpg)
 
