@@ -57,7 +57,7 @@ JS für Plyr
 
 ```html
 <script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Plyr/js/plyr.js') ?>"></script>
-<script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Plyr/js/plyr_video.js') ?>"></script>
+<script type="text/javascript" src="<?= rex_url::base('assets/addons/video/js/plyr_video.js') ?>"></script>
 
 ```
 
