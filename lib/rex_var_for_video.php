@@ -32,21 +32,17 @@
 				$localAutoplay = "autoplay";
 			}
 			$out =  '
-				<section>
 					<video '.$localAutoplay.' volume=1>
 						<source src="'.$link.'" type="video/mp4">
 					</video>
-				</section>
 				';
 			
 		}
 		if($plyr->checkAudio($url) !== false) {
 			$out =   '
-				<section>
 					<audio '.$loop_audio.'>
 						<source src="'.$link.'" type="audio/mp3">
 					</audio>
-				</section>
 				';
 		}
 	
