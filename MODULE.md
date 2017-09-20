@@ -20,7 +20,7 @@ Am einfachsten geht's mit `REX_FOR_VIDEO[1]`
 
 Alternativ:
 
-```
+```php
 <?php
 //Variablen
 $localAutoplay = "";
@@ -73,7 +73,7 @@ if($plyr->checkAudio($file) !== false) {
 
 
 **Eingabe**
-```
+```php
 <?php
 $mform = new MForm();
 $mform->addFieldset("Video");
@@ -82,7 +82,7 @@ $mform->addCustomLinkField("1", array('label'=>'Link', 'class'=>'test', 'data-te
  ?>
 ```
 **Ausgabe**
-```
+```php
 <?php
 
 //Variablen
