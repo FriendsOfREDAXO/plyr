@@ -6,7 +6,7 @@
 ## PLYR
 
 **Eingabe**
-```
+```php
 <?php
 $mform = new MForm();
 $mform->addFieldset("Video");
