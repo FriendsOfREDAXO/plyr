@@ -36,7 +36,7 @@ if (rex::isBackend() && is_object(rex::getUser())) {
 	}
 
 	if($this->getConfig('player') == 'Afterglow') {
-		rex_view::addJsFile($this->getAssetsUrl('Afterglow/dist/afterglow.min.js'));
+		rex_view::addJsFile($this->getAssetsUrl('Afterglow/afterglow.min.js'));
 		rex_view::addJsFile($this->getAssetsUrl('js/afterglow.js'));
 	}
 }

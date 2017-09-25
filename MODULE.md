@@ -94,21 +94,25 @@ $autoplay = rex_config::get('video', 'autoplay_afterglow');
 $sounds = rex_config::get('video', 'sound_afterglow');
 $theme = rex_config::get('video', 'theme_afterglow');
 
-// YOUTUBE mit LIGHTBOX-Feature
+// YOUTUBE mit LIGHTBOX-Feature   
 if($afterglow->checkYoutube($link) == true) {
-	echo '
-		<a class="afterglow" href="#video1">Launch lightbox</a>
-		<video autoplay="'.$autoplay.'" data-volume="'.$sounds.'" data-skin="'.$theme.'" id="video1"  width="1920" height="1080" data-youtube-id="YH3c1QZzRK4" data-autoresize="fit"></video>
-		';
+    echo '
+    	<a class="afterglow" href="#video1">Launch lightbox</a>
+        <video  autoplay="'.$autoplay.'" data-volume="'.$sounds.'" data-skin="'.$theme.'" id="video1" width="1920" height="1080"  data-youtube-id="'.$afterglow->getYoutubeId($link).'" data-autoresize="fit"></video>
+        ';
 }
 
-	
+if($afterglow->checkVimeo($link) == true) {
+	echo '
+		 <video class="afterglow" id="myvideo" width="960" height="540" data-vimeo-id="'.$afterglow->getVimeoId($link).'"></video>
+		';
+}
 // Lokales MP4 Video als Standard-Player
 if(strpos($link, $Media) !== false) {
-	echo '
-		<video autoplay="'.$autoplay.'" data-volume="'.$sounds.'" data-skin="'.$theme.'" class="afterglow" id="myvideo">
-			<source type="video/mp4" src="'.$link.'" />
-		</video>
-		';
+    echo '
+        <video autoplay="'.$autoplay.'" data-volume="'.$sounds.'" data-skin="'.$theme.'" class="afterglow" id="myvideo">
+            <source type="video/mp4" src="'.$link.'" />
+        </video>
+        ';
 }
 ```
