@@ -66,7 +66,7 @@ if($plyr->checkAudio($file) !== false) {
 
 ## AFTERGLOW
 
-> Da Afterglow aktuell noch in einer frühen Beta-Phase steckt, haben wir hier zunächst auf eine Ausgabe über eine REX_VAR verzichtet.
+> Da Afterglow aktuell noch in einer frühen Entwicklungsphase steckt, haben wir hier zunächst auf eine Ausgabe über eine REX_VAR verzichtet.
 
  * Afterglow hat ein "Lightbox"-Feature, womit man das Video hinter einem Link verstecken kann (im YouTube-Beispiel enthalten).
   Es wird mittels hinzufügen von `class="afterglow"` wieder zum Standard-Player 
