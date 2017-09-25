@@ -6,7 +6,7 @@ Das AddOn stellt den Video-/Audio-Player [Plyr](https://plyr.io) und [Afterglow]
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/video/assets/video_01.jpg)
 
-Es können lokale Audio-Dateien (Plyr), Videos und Youtube- sowie Vimeo-Videos (aktuell nur Plyr) eingebunden werden.  
+Es können lokale Audio-Dateien (Plyr), Videos und Youtube- sowie Vimeo-Videos eingebunden werden.  
 Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden um dem Entwickler alle Freiheiten zu lassen. 
 
 > Möchte man die mitgelieferten Player nicht verwenden, kann man deren Einbindung deaktivieren. Die Methoden der rex_video class, stehen dann weiterhin zur Verfügung. 
@@ -44,7 +44,7 @@ Eigene CSS und JS sollten nach Möglichkeit an anderer Stelle abgelegt werden um
 
 Plyr benötigigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Player initialisiert. 
 
-Afterglow benötigt nur das eigentliche Skript. 
+Afterglow liefert kein separates CSS aktuell mit. 
 
 
 CSS für Plyr
