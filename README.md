@@ -64,7 +64,7 @@ JS für Plyr
 JS für Afterglow
 
 ```html
-<script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Afterglow/dist/afterglow.min.js') ?>"></script> 
+<script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Afterglow/afterglow.min.js') ?>"></script> 
 ```
 
 
