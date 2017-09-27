@@ -116,7 +116,9 @@ if($afterglow->checkMedia($file) !== false) {
 }
 ```
 
+
 * Afterglow hat ein "Lightbox"-Feature, womit man das Video hinter einem Link verstecken kann.
+
 ```
 <?php
 $file = 'REX_VALUE[1]';
