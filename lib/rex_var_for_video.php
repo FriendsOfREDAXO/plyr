@@ -1,4 +1,15 @@
-<?php class rex_var_for_video extends rex_var 
+<?php 
+/**
+ * This file is part of the video package.
+ *
+ * @author (c) Friends Of REDAXO
+ * @author <friendsof@redaxo.org>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+class rex_var_for_video extends rex_var 
 {
    protected function getOutput() 
    {
