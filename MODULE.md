@@ -7,12 +7,10 @@
 
 **Eingabe**
 ```php
-<?php
 $mform = new MForm();
 $mform->addFieldset("Video");
 $mform->addCustomLinkField("1", array('label'=>'Video', 'class'=>'test', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
 echo $mform->show();
-?>
 ```
 **Ausgabe**
 
@@ -23,7 +21,6 @@ Am einfachsten geht's mit:
 Alternativ:
 
 ```php
-<?php
 //Variablen
 $localAutoplay = "";
 $Media = "/media/";
@@ -69,15 +66,12 @@ if($plyr->checkAudio($file) !== false) {
 ## AFTERGLOW
 
 
-
 **Eingabe**
 ```php
-<?php
 $mform = new MForm();
 $mform->addFieldset("Video");
 $mform->addCustomLinkField("1", array('label'=>'Link', 'class'=>'test', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
     echo $mform->show();
- ?>
 ```
 **Ausgabe**
 
@@ -87,7 +81,6 @@ Am einfachsten geht's mit:
 
 Alternativ:
 ```php
-<?php
 $file = 'REX_VALUE[1]';
 $afterglow = new rex_video();
 $link = $afterglow->getVideoType($file);
@@ -119,8 +112,7 @@ if($afterglow->checkMedia($file) !== false) {
 
 * Afterglow hat ein "Lightbox"-Feature, womit man das Video hinter einem Link verstecken kann.
 
-```
-<?php
+```php
 $file = 'REX_VALUE[1]';
 $afterglow = new rex_video();
 $link = $afterglow->getVideoType($file);
@@ -135,5 +127,4 @@ if($afterglow->checkYoutube($link) == true) {
         <video  autoplay="'.$autoplay.'" data-volume="'.$sounds.'" data-skin="'.$theme.'" id="video1" width="1920" height="1080"  data-youtube-id="'.$afterglow->getYoutubeId($link).'" data-autoresize="fit"></video>
         ';
 }
-?>
-````
+```
