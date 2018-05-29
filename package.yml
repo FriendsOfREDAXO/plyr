@@ -9,11 +9,11 @@ page:
     icon: rex-icon fa-television
     subpages:
         main:  
-             title: 'translate:title'    
+             title: 'translate:video_title'    
         help:  
-             title: 'translate:help' 
+             title: 'translate:video_help' 
         module: 
-             title: 'translate:module' 
+             title: 'translate:video_module' 
 requires:
     redaxo: '^5.3' 
     php:
