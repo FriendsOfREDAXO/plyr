@@ -1,7 +1,7 @@
 //CONFIGURATION
-title = Video
-module = Module
-help = Help
+video_title = Video
+video_module = Module
+video_help = Help
 player = Videoplayer
 config = Configuration
 config_save = Save
