@@ -9,7 +9,7 @@
 ```php
 $mform = new MForm();
 $mform->addFieldset("Video");
-$mform->addCustomLinkField("1", array('label'=>'Video', 'class'=>'test', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
+$mform->addCustomLinkField("1", array('label'=>'Video', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
 echo $mform->show();
 ```
 **Ausgabe**
@@ -70,7 +70,7 @@ if($plyr->checkAudio($file) !== false) {
 ```php
 $mform = new MForm();
 $mform->addFieldset("Video");
-$mform->addCustomLinkField("1", array('label'=>'Link', 'class'=>'test', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
+$mform->addCustomLinkField("1", array('label'=>'Link', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
     echo $mform->show();
 ```
 **Ausgabe**
