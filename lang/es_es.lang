@@ -1,0 +1,32 @@
+//KONFIGURATION
+video_title = Video
+video_module = Módulo
+video_help = Ayuda
+player = Videoplayer
+config = Ajustes
+config_save = Guardar
+config_saved = Configuración guardada
+disabled = Deshabilitado
+
+// PLYR // 
+plyr_title = Plyr
+plyr_test = Prueba de configuración
+Autoplay_plyr = Autoplay
+Autoplay_afterglow = Autoplay
+Controls_plyr = Ocultar controles
+Click_plyr = Dale play
+plyr_video = Plyr-Video
+plyr_audio = Plyr-Audio
+
+// AUDIO //
+audio_title = Audio
+audio_test = Prueba de ajustes
+Autoplay_audio = Autoplay
+Loop_audio = Repetir?
+
+// AFTERGLOW //
+afterglow_test = Prueba de ajustes
+afterglow_title = Resplandor
+Sounds_afterglow = Tono
+Theme_afterglow = Tema
+
