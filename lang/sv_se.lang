@@ -1,0 +1,32 @@
+//KONFIGURATION
+video_title = Video
+video_module = Moduler
+video_help = Hjälp
+player = Videoplayer
+config = Konfiguration
+config_save = Spara
+config_saved = Konfiguratonen sparades
+disabled = deaktiverad
+
+// PLYR // 
+plyr_title = Plyr
+plyr_test = Konfigurationstest
+Autoplay_plyr = Autoplay
+Autoplay_afterglow = Autoplay
+Controls_plyr = Dölja tidsvisning
+Click_plyr = Klick på video = spela
+plyr_video = Plyr-Video
+plyr_audio = Plyr-Audio
+
+// AUDIO //
+audio_title = Audio
+audio_test = Konfiguration test
+Autoplay_audio = Autoplay
+Loop_audio = Upprepa?
+
+// AFTERGLOW //
+afterglow_test = Konfiguration test
+afterglow_title = Afterglow
+Sounds_afterglow = Ljud
+Theme_afterglow = Mall (theme)
+
