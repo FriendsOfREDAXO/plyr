@@ -25,6 +25,9 @@ $(document).ready(function() {
  		 	hideControls		: hideControls,
  			autoplay			: autoplay,
  			volume				: volume,
+		        youtube: { 
+				noCookie: true
+                        },
  			clickToPlay			: clickToPlay,
  			disableContextMenu  : true
  	});
