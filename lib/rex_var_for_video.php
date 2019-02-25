@@ -34,17 +34,17 @@ class rex_var_for_video extends rex_var
 			$loop_audio = rex_config::get('video', 'loop_audio');
 			
 			if($player->checkYoutube($link) == true) {
-				$out = '<div class="rex_video '.$autoplayStandard.' '.$hideControls.' '.$clickToPlay.'" data-type="youtube"  data-video-id="'.$player->getYoutubeId($link).'"></div></br>';
+				$out = '<div class="rex_video '.$autoplayStandard.' '.$hideControls.' '.$clickToPlay.'" data-plyr-provider="youtube" data-plyr-embed-id="'.$player->getYoutubeId($link).'"></div></br>';
 			}
 			if($player->checkVimeo($link) == true) {
-				$out =  '<div class="rex_video '.$hideControls.' '.$autoplayStandard.' '.$clickToPlay.'" data-type="vimeo" data-video-id="'.$player->getVimeoId($link).'"></div></br>';
+				$out =  '<div class="rex_video '.$hideControls.' '.$autoplayStandard.' '.$clickToPlay.'" data-plyr-provider="vimeo" data-plyr-embed-id"'.$player->getVimeoId($link).'"></div></br>';
 			}
 			if($player->checkMedia($url) !== false) {
 				if($autoplayStandard == 'Ja') {
 					$localAutoplay = "autoplay";
 				}
 				$out =  '
-						<video '.$localAutoplay.' volume=1>
+						<video class="rex_video" '.$localAutoplay.' volume=1>
 							<source src="'.$link.'" type="video/mp4">
 						</video>
 					';
@@ -52,7 +52,7 @@ class rex_var_for_video extends rex_var
 			}
 			if($player->checkAudio($url) !== false) {
 				$out =   '
-						<audio '.$loop_audio.'>
+						<audio class="rex_video" '.$loop_audio.'>
 							<source src="'.$link.'" type="audio/mp3">
 						</audio>
 					';
@@ -88,3 +88,4 @@ class rex_var_for_video extends rex_var
 	return self::quote($out);
    }
 }
+
