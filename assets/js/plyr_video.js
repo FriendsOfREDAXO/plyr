@@ -21,13 +21,13 @@ $(document).ready(function() {
 	if($('.rex_video').hasClass('Deaktivieren')) {
 		clickToPlay = false;
 	}
-	var player = plyr.setup({
+	const player = Plyr.setup('.rex_video',{
  		 	hideControls		: hideControls,
  			autoplay			: autoplay,
+ 			volume				: volume,
  			clickToPlay			: clickToPlay,
  			disableContextMenu  : true
  	});
-
 
  	
 });
