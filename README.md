@@ -122,12 +122,10 @@ Plyr und Afterglow stehen unter MIT-Lizenz. Die Player bedienen sich jedoch teil
 * https://github.com/FriendsOfREDAXO
 
 **Projekt-Lead**
-[IngoWinter](https://github.com/IngoWinter)
+[Thomas Skerbis](https://github.com/skerbis)
 
 
 ## Credits:
 
 First Release: [Christian Gehrke](https://github.com/chrison94)
-
-Project initiator:  [Thomas Skerbis](https://github.com/skerbis)
 
