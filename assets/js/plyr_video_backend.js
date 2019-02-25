@@ -27,6 +27,9 @@ $(document).on('rex:ready',function() {
  			autoplay			: autoplay,
  			volume				: volume,
  			clickToPlay			: clickToPlay,
+		        youtube: { 
+				noCookie: true
+                        },
  			disableContextMenu  : true
  	});
 
