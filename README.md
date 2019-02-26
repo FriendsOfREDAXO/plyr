@@ -68,6 +68,8 @@ JS für Afterglow
 ```
 
 
+
+
 ## Hilfsmethoden in der rex_video class
 
 `getVideoType($url)`
@@ -97,6 +99,11 @@ Ermittelt die Vimeo-Id eines Videos
 $plyr = new rex_video();
 $url = $plyr->getVideoType($url);
 ```
+
+## Direkte Verarbeitung 
+
+`$video = rex_video::outputVideo($file);`
+
 
 ## Bugtracker
 
