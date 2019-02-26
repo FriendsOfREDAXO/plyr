@@ -18,6 +18,10 @@ Am einfachsten geht's mit:
 
 `REX_FOR_VIDEO[1]`
 
+oder `echo rex_video::outputVideo('REX_FOR_VIDEO[1]');`
+
+
+
 Alternativ:
 
 ```php
@@ -78,6 +82,8 @@ $mform->addCustomLinkField("1", array('label'=>'Link', 'data-tel'=>'disable', 'd
 Am einfachsten geht's mit:
 
 `REX_FOR_VIDEO[1]`
+
+oder `echo rex_video::outputVideo('REX_FOR_VIDEO[1]');`
 
 Alternativ:
 ```php
