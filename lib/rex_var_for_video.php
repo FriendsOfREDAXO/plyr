@@ -44,12 +44,13 @@ class rex_var_for_video extends rex_var
 					$localAutoplay = "autoplay";
 				}
 				$out =  '
-						<video class="rex_video '.$hideControls.'" '.$localAutoplay.' playsinline volume=1>
+						<video class="rex_video '.$hideControls.' '.$autoplayStandard.' '.$clickToPlay.'" '.$localAutoplay.' playsinline volume=1>
 							<source src="'.$link.'" type="video/mp4">
 						</video>
 					';
 
 			}
+
 			if($player->checkAudio($url) !== false) {
 				$out =   '
 						<audio class="rex_video" '.$loop_audio.'>
