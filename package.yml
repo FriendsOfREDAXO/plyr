@@ -15,6 +15,6 @@ page:
         module: 
              title: 'translate:video_module' 
 requires:
-    redaxo: '^5.3' 
+    redaxo: '^5.6' 
     php:
         version: '>=5.6'
