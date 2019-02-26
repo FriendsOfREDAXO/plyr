@@ -49,7 +49,7 @@ if($plyr->checkMedia($file) !== false) {
     }
     echo '
     	<section>
-			<video>
+			<video class="rex_video '.$hideControls.' '.$autoplayStandard.' '.$clickToPlay.'" playsinline volume=1>
 				<source src="'.$link.'" type="video/mp4">
 			</video>
 		</section>
@@ -58,7 +58,7 @@ if($plyr->checkMedia($file) !== false) {
 if($plyr->checkAudio($file) !== false) {
 	echo '	
 		<section>
-			<audio '.$autoplay_audio.' '.$loop_audio.'>
+			<audio class="rex_video" '.$autoplay_audio.' '.$loop_audio.'>
 				<source src="'.$link.'" type="audio/mp3">
 			</audio>
 		</section>
@@ -106,12 +106,11 @@ if($afterglow->checkVimeo($link) == true) {
 		';
 }
 // Lokales MP4 Video als Standard-Player
-if($afterglow->checkMedia($file) !== false) {
-    echo '
-        <video autoplay="'.$autoplay.'" data-volume="'.$sounds.'" data-skin="'.$theme.'" class="afterglow" id="myvideo" width="1080" height="720">
-            <source type="video/mp4" src="'.$link.'" />
-        </video>
-        ';
+<?php if ($afterglow->checkMedia($file) !== false)
+{
+    $aplay = '';
+    if ($autoplay != "") $aplay = 'autoplay="' . $autoplay . '" ';
+    echo ' <video ' . $aplay . 'data-volume="' . $sounds . '" data-skin="' . $theme . '" class="afterglow" id="myvideo" width="1080" height="720"> <source type="video/mp4" src="' . $link . '" /> </video> ';
 }
 ```
 
