@@ -102,11 +102,6 @@ $url = $plyr->getVideoType($url);
 
 Du hast einen Fehler gefunden oder ein nettes Feature parat? [Lege ein Issue an](https://github.com/FriendsOfREDAXO/video/issues). Bevor du ein neues Issue erstellst, suche bitte ob bereits eines mit deinem Anliegen existiert.
 
-
-## Changelog
-
-siehe [CHANGELOG.md](https://github.com/FriendsOfREDAXO/video/blob/master/CHANGELOG.md)
-
 ## Lizenz
 
 siehe [LICENSE.md](https://github.com/FriendsOfREDAXO/video/blob/master/LICENSE.md)
