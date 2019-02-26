@@ -100,9 +100,12 @@ $plyr = new rex_video();
 $url = $plyr->getVideoType($url);
 ```
 
-## Direkte Verarbeitung 
+## Direkte Verarbeitung über statische Methode
 
-`$video = rex_video::outputVideo($file);`
+`$video = rex_video::outputVideo($url);`
+
+Bei Dateien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
+
 
 
 ## Bugtracker
