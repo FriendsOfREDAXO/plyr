@@ -18,9 +18,9 @@ class rex_var_for_video extends rex_var
             return false;
         }
     $value = $this->getContextData()->getValue('value' . $id);
-       
+    $out = '';   
        if($value) {
-       rex_video::outputVideo($value);
+       $out = rex_video::outputVideo($value);
        }
 	// Reine Textausgaben müssen mit 'self::quote()' als String maskiert werden.
 	return self::quote($out);
