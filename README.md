@@ -17,7 +17,8 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 - Konfigurationsseiten für die jeweiligen Player
 - Test der Grundeinstellungen
 - Methoden zur Ermittlung von VIMEO und Youtube-IDs
-- REX_FOR_VIDEO[] Variable
+- REX_FOR_VIDEO[] Variable zur schnellen Ausgabe in einem Modul 
+- Liefert eine statische PHP Methode   
 
 
 ## Installation
@@ -44,9 +45,6 @@ Eigene CSS und JS sollten nach Möglichkeit an anderer Stelle abgelegt werden um
 
 Plyr benötigigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Player initialisiert. 
 
-Afterglow liefert kein separates CSS aktuell mit. 
-
-
 CSS für Plyr
 
 ```html
@@ -62,12 +60,18 @@ JS für Plyr
 ```
 
 JS für Afterglow
+(Afterglow benötigt kein CSS)
 
 ```html
 <script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Afterglow/afterglow.min.js') ?>"></script> 
 ```
 
+## Direkte Verarbeitung über statische Methode
 
+`$video = rex_video::outputVideo($url);`
+
+Bei Dateien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
+Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten. 
 
 
 ## Hilfsmethoden in der rex_video class
@@ -99,13 +103,6 @@ Ermittelt die Vimeo-Id eines Videos
 $plyr = new rex_video();
 $url = $plyr->getVideoType($url);
 ```
-
-## Direkte Verarbeitung über statische Methode
-
-`$video = rex_video::outputVideo($url);`
-
-Bei Dateien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
-
 
 
 ## Bugtracker
