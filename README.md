@@ -50,13 +50,13 @@ Afterglow liefert kein separates CSS aktuell mit.
 CSS für Plyr
 
 ```html
-<link rel="stylesheet" href="<?= rex_url::base('assets/addons/video/Plyr/css/plyr.css') ?>">
+<link rel="stylesheet" href="<?= rex_url::base('assets/addons/video/Plyr/plyr.css') ?>">
 ```
 
 JS für Plyr
 
 ```html
-<script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Plyr/js/plyr.js') ?>"></script>
+<script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Plyr/plyr.min.js') ?>"></script>
 <script type="text/javascript" src="<?= rex_url::base('assets/addons/video/js/plyr_video.js') ?>"></script>
 
 ```
@@ -100,7 +100,7 @@ $url = $plyr->getVideoType($url);
 
 ## Bugtracker
 
-Du hast einen Fehler gefunden oder ein nettes Feature parat? [Lege ein Issue an](https://github.com/FriendsOfREDAXO/video/issues). Bevor du ein neues Issue erstellst, suche bitte ob bereits eines mit deinem Anliegen existiert und lese die [Issue Guidelines (englisch)](https://github.com/necolas/issue-guidelines) von [Nicolas Gallagher](https://github.com/necolas/).
+Du hast einen Fehler gefunden oder ein nettes Feature parat? [Lege ein Issue an](https://github.com/FriendsOfREDAXO/video/issues). Bevor du ein neues Issue erstellst, suche bitte ob bereits eines mit deinem Anliegen existiert.
 
 
 ## Changelog
