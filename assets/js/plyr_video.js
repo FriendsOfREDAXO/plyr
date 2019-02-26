@@ -1,8 +1,9 @@
 $(document).ready(function() {
 	var hideControls = true;
 	var autoplay = false;
+	var volume = 5;
 	var clickToPlay = true;
-	
+
 	if($('.rex_video').hasClass('Ausblenden')) {
 		hideControls = true;
 	}
@@ -25,13 +26,12 @@ $(document).ready(function() {
  		 	hideControls		: hideControls,
  			autoplay			: autoplay,
  			volume				: volume,
+ 			clickToPlay			: clickToPlay,
 		        youtube: { 
 				noCookie: true
                         },
- 			clickToPlay			: clickToPlay,
  			disableContextMenu  : true
  	});
-
- 	
 });
+
 
