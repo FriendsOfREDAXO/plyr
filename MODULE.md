@@ -18,7 +18,7 @@ Am einfachsten geht's mit:
 
 `REX_FOR_VIDEO[1]`
 
-oder `echo rex_video::outputVideo('REX_FOR_VIDEO[1]');`
+oder `echo rex_video::outputVideo('REX_VALUE[1]');`
 
 
 
@@ -83,7 +83,7 @@ Am einfachsten geht's mit:
 
 `REX_FOR_VIDEO[1]`
 
-oder `echo rex_video::outputVideo('REX_FOR_VIDEO[1]');`
+oder `echo rex_video::outputVideo('REX_VALUE[1]');`
 
 Alternativ:
 ```php
