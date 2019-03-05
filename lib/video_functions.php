@@ -95,7 +95,7 @@ class rex_video
         return $vimeoID;
     }
 
-    public static function outputVideo($url)
+public static function outputVideo($url,$poster=NULL)
     {
 
         //Variablen
@@ -118,7 +118,7 @@ class rex_video
             }
             if ($player->checkVimeo($link) == true)
             {
-                $out = '<div class="rex_video ' . $hideControls . ' ' . $autoplayStandard . ' ' . $clickToPlay . '" data-plyr-provider="vimeo" data-plyr-embed-id"' . $player->getVimeoId($link) . '"></div></br>';
+                $out = '<div class="rex_video ' . $hideControls . ' ' . $autoplayStandard . ' ' . $clickToPlay . '" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"></div></br>';
             }
             if ($player->checkMedia($url) !== false)
             {
@@ -126,8 +126,14 @@ class rex_video
                 {
                     $localAutoplay = "autoplay";
                 }
+
+                if ($poster)
+                    {
+                    $poster = ' poster="'.$poster.'"';
+                }
+
                 $out = '
-						<video class="rex_video ' . $hideControls . ' ' . $autoplayStandard . ' ' . $clickToPlay . '" ' . $localAutoplay . ' playsinline volume=1>
+						<video class="rex_video ' . $hideControls . ' ' . $autoplayStandard . ' ' . $clickToPlay . '" ' . $localAutoplay . ' playsinline volume=1'.$poster.'>
 							<source src="' . $link . '" type="video/mp4">
 						</video>
 					';
