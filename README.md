@@ -68,7 +68,7 @@ JS für Afterglow
 
 ## Direkte Verarbeitung über statische Methode
 
-`$video = rex_video::outputVideo($url);`
+`$video = rex_video::outputVideo($url,$poster);`
 
 Bei Dateien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
 Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten. 
