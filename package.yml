@@ -10,11 +10,11 @@ page:
     subpages:
         main:  
              title: 'translate:video_title'    
-        help:  
-             title: 'translate:video_help' 
         module: 
-             title: 'translate:video_module' 
+             title: 'translate:video_module'
+        help:  
+             { title: 'translate:video_help',  icon: rex-icon fa-question-circle, subPath: README.md} 
 requires:
     redaxo: '^5.6' 
     php:
-        version: '>=5.6'
+        version: '>=5.7.0-beta3'
