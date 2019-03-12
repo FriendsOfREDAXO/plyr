@@ -1,6 +1,5 @@
 
-REDAXO-AddOn: Video
-================================================================================
+## REDAXO-AddOn: Video
 
 Das AddOn stellt den Video-/Audio-Player [Plyr](https://plyr.io) und [Afterglow](https://afterglowplayer.com) (nur Video) zur Auswahl.
 
@@ -11,7 +10,7 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 
 > Möchte man die mitgelieferten Player nicht verwenden, kann man deren Einbindung deaktivieren. Die Methoden der rex_video class, stehen dann weiterhin zur Verfügung. 
 
-## Features
+### Features
 - Auswahl des gewünschten Players
 - Einbindung des Players im Backend
 - Konfigurationsseiten für die jeweiligen Player
@@ -21,7 +20,7 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 - Liefert eine statische PHP Methode   
 
 
-## Installation
+### Installation
 
 1. Über Installer laden oder Zip-Datei im AddOn-Ordner entpacken, der Ordner muss „video“ heißen.
 2. AddOn installieren und aktivieren.
@@ -34,7 +33,7 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 Den Modulcode findet man oben in den Reitern. 
 
 
-## Einbindung im Frontend
+### Einbindung im Frontend
 
 Die nötigen Dateien findet man in den Assets-Ordnern der jeweiligen Player. 
 
@@ -59,14 +58,14 @@ JS für Plyr
 
 ```
 
-JS für Afterglow
+### JS für Afterglow
 (Afterglow benötigt kein CSS)
 
 ```html
 <script type="text/javascript" src="<?= rex_url::base('assets/addons/video/Afterglow/afterglow.min.js') ?>"></script> 
 ```
 
-## Direkte Verarbeitung über statische Methode
+### Direkte Verarbeitung über statische Methode
 
 `$video = rex_video::outputVideo($url,$poster);`
 
@@ -97,7 +96,7 @@ Ermittelt die Vimeo-Id eines Videos
 `checkAudio($url)` 
 Überprüft ob es sich um eine MP3-Audio-Datei aus dem Medienpool handelt
 
-**Beispiel**
+### Beispiel
 
 ```php
 $plyr = new rex_video();
@@ -130,4 +129,3 @@ Plyr und Afterglow stehen unter MIT-Lizenz. Die Player bedienen sich jedoch teil
 ## Credits:
 
 First Release: [Christian Gehrke](https://github.com/chrison94)
-
