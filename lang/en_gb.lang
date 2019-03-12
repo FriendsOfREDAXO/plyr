@@ -21,10 +21,12 @@ plyr_audio = Plyr-Audio
 // AUDIO //
 audio_title = Audio
 audio_test = Configuration Test
+Autoplay_audio = Autoplay
+Loop_audio = Repeat?
 
 // AFTERGLOW //
-afterglow_title = Afterglow
 afterglow_test = Configuration Test
+afterglow_title = Afterglow
 Sounds_afterglow = Sound
 Theme_afterglow = Theme
 
