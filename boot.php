@@ -49,7 +49,3 @@ if (rex::isBackend() && is_object(rex::getUser())) {
 		rex_view::addJsFile($this->getAssetsUrl('js/afterglow.js'));
 	}
 }
- 
-if (rex::isBackend()) {
-
-}
