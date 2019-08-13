@@ -9,8 +9,6 @@
  * file that was distributed with this source code.
  */
 
-$this->setProperty('author', 'Friends Of REDAXO');
-
 if (rex::isBackend() && is_object(rex::getUser())) {
    
 }
