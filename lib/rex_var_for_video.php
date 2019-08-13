@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-class rex_var_for_video extends rex_var 
+class rex_var_plyr extends rex_var 
 {
    protected function getOutput() 
    {
@@ -20,7 +20,7 @@ class rex_var_for_video extends rex_var
     $value = $this->getContextData()->getValue('value' . $id);
     $out = '';   
        if($value) {
-       $out = rex_video::outputVideo($value);
+       $out = rex_plyr::outputVideo($value);
        }
 	// Reine Textausgaben müssen mit 'self::quote()' als String maskiert werden.
 	return self::quote($out);
