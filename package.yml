@@ -2,14 +2,7 @@ package: plyr
 version: 'Plyr' 
 author: Friends Of REDAXO
 supportpage: https://github.com/FriendsOfREDAXO/video
-page:
-    title: 'Video'
-    perm: video[]
-    pjax: false
-    icon: rex-icon fa-television
-    subpages:
-        help:  
-             { title: 'translate:video_help',  icon: rex-icon fa-question-circle, subPath: README.md} 
+
 requires:
     redaxo: '^5.6' 
     php:
