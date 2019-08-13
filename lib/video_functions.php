@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-class rex_video
+class rex_plyr
 {
 
     function getVideoType($url)
