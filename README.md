@@ -6,13 +6,13 @@ Das AddOn stellt den Video-/Audio-Player [Plyr](https://plyr.io) zur Verfügung.
 Es können lokale Audio-Dateien (mp3), Videos und Youtube- sowie Vimeo-Videos eingebunden werden.  
 Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden um dem Entwickler alle Freiheiten zu lassen. 
 
-### Features
+### AddOn Features
 - REX_PLYR[] Variable zur schnellen Ausgabe in einem Modul 
 - Statische PHP Methode zur Ausgabe des Videos
 - Einbindung des Players im Backend
 - Methoden zur Ermittlung des Videotyps
 - Controls können je Ausgabe definiert werden
-
+- Kein JQuery benötigt
 
 ### Einbindung im Frontend
 
@@ -29,11 +29,12 @@ CSS für Plyr
 
 JS für Plyr
 
-```html
-<script type="text/javascript" src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
-<script type="text/javascript" src="<?= rex_url::base('assets/addons/plyr/plyr_init.js') ?>"></script>
-
+```php
+<script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
+<script src="<?= rex_url::base('assets/addons/plyr/plyr_init.js') ?>"></script>
 ```
+
+>Alle Infos zur Konfiguration der Skripte oder der Controls der nachfolgenden Ausgaben, finden sich auf der GitHub-Site von [Plyr](https://plyr.io). 
 
 ## Modul-Beispiel, hier mit MFORM CustomLink 
 
@@ -62,7 +63,7 @@ $media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,
 
 ### Ausgabe per `REX_PLYR`
 
-```
+```php
 REX_PLYR[1]
 ```
 
