@@ -23,14 +23,14 @@ Plyr benötigigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Play
 CSS für Plyr
 
 ```html
-<link rel="stylesheet" href="<?= rex_url::base('assets/vendor/plyr/dist/plyr.css') ?>">
+<link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.css') ?>">
 ```
 
 JS für Plyr
 
 ```html
-<script type="text/javascript" src="<?= rex_url::base('assets/vendor/plyr/dist/plyr.min.js') ?>"></script>
-<script type="text/javascript" src="<?= rex_url::base('assets/plyr_init.js') ?>"></script>
+<script type="text/javascript" src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
+<script type="text/javascript" src="<?= rex_url::base('assets/addons/plyr/plyr_init.js') ?>"></script>
 
 ```
 
