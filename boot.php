@@ -12,5 +12,5 @@
 if (rex::isBackend() && is_object(rex::getUser())) {
       rex_view::addCssFile($this->getAssetsUrl('vendor/plyr/dist/plyr.css'));
     	rex_view::addJsFile($this->getAssetsUrl('vendor/plyr/dist/plyr.min.js'));   
-    	rex_view::addJsFile($this->getAssetsUrl('plyr_init.js'));
+    	rex_view::addJsFile($this->getAssetsUrl('plyr_be_init.js'));
 }
