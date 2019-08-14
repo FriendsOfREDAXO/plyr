@@ -94,7 +94,7 @@ class rex_plyr
         return $vimeoID;
     }
 
-public static function outputVideo($url,$controls=NULL, $poster=NULL)
+public static function outputMedia($url,$controls=NULL, $poster=NULL)
     {
 
         $player = new rex_plyr();
