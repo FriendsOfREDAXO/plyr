@@ -8,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-$plyr = rex_addon::get('matomo');
+$plyr = rex_addon::get('plyr');
 if (rex::isBackend() && is_object(rex::getUser())) {
     rex_view::addCssFile($plyr->getAssetsUrl('vendor/plyr/dist/plyr.css'));
     rex_view::addJsFile($plyr->getAssetsUrl('vendor/plyr/dist/plyr.min.js'));   
