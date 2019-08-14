@@ -39,10 +39,10 @@ JS für Plyr
 ### Eingabe
 
 ```php
-<?php
 $mform = new MForm();
 $mform->addFieldset("Video");
 $mform->addCustomLinkField("1", array('label'=>'Video', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
+$mform->addMediaField(1, array('label'=>'Image'));
 echo $mform->show();
 ```
 
