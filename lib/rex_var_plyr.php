@@ -30,7 +30,7 @@ class rex_var_plyr extends rex_var
 
     $out = '';   
        if($value) {
-       $out = rex_plyr::rex_plyr::outputMedia($value,$controls,$poster);
+       $out = rex_plyr::outputMedia($value,$controls,$poster);
        }
 	// Reine Textausgaben müssen mit 'self::quote()' als String maskiert werden.
 	return self::quote($out);
