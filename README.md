@@ -34,6 +34,25 @@ JS für Plyr
 
 ```
 
+## Modul-Beispiel, hier mit MFORM CustomLink 
+
+**Eingabe**
+
+```php
+<?php
+$mform = new MForm();
+$mform->addFieldset("Video");
+$mform->addCustomLinkField("1", array('label'=>'Video', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
+echo $mform->show();
+```
+
+**Ausgabe**
+
+```
+REX_PLYR[1]
+```
+
+
 ### Direkte Verarbeitung über statische Methode
 
 `$video = rex_plyr::outputVideo($url,$poster);`
