@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the video package.
+ * This file is part of the plyr package.
  *
  * @author (c) Friends Of REDAXO
  * @author <friendsof@redaxo.org>
@@ -12,7 +12,7 @@
 class rex_plyr
 {
 
-    function getVideoType($url)
+    function getType($url)
     {
         if ($url)
         {
@@ -98,18 +98,9 @@ class rex_plyr
 public static function outputVideo($url,$poster=NULL)
     {
 
-        //Variablen
-        $localAutoplay = $out = "";
-        // GET INPUT LINK AND CHECK IT IS URL/MEDIA
-        $player = new rex_video();
-        $link = $player->getVideoType($url);
+        $player = new rex_plyr();
+        $link = $player->getType($url);
         // GET STANDARD CONFIG VARIABLES
-
-            $autoplayStandard = rex_config::get('video', 'autoplay_plyr');
-            $hideControls = rex_config::get('video', 'controls_plyr');
-            $clickToPlay = rex_config::get('video', 'click_plyr');
-            //$autoplay_audio = rex_config::get('video', 'autoplay_audio');
-            $loop_audio = rex_config::get('video', 'loop_audio');
 
             if ($player->checkYoutube($link) == true)
             {
@@ -128,20 +119,20 @@ public static function outputVideo($url,$poster=NULL)
                     }
 
                 $out = '
-						<video class="rex_video" ' . $localAutoplay . ' playsinline volume=1'.$poster.'>
-							<source src="' . $link . '" type="video/mp4">
-						</video>
-					';
+                        <video class="rex_video" playsinline volume=1'.$poster.'>
+                            <source src="' . $link . '" type="video/mp4">
+                        </video>
+                    ';
 
             }
 
             if ($player->checkAudio($url) !== false)
             {
                 $out = '
-						<audio class="rex_video" ' . $loop_audio . '>
-							<source src="' . $link . '" type="audio/mp3">
-						</audio>
-					';
+                        <audio class="rex_video">
+                            <source src="' . $link . '" type="audio/mp3">
+                        </audio>
+                    ';
             }
         
         return $out;
