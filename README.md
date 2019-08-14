@@ -3,6 +3,8 @@
 
 Das AddOn stellt den Video-/Audio-Player [Plyr](https://plyr.io) zur Verfügung.
 
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/video/assets/video_01.jpg)
+
 Es können lokale Audio-Dateien (mp3), Videos und Youtube- sowie Vimeo-Videos eingebunden werden.  
 Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden um dem Entwickler alle Freiheiten zu lassen. 
 
