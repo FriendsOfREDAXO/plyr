@@ -104,11 +104,11 @@ public static function outputVideo($url,$poster=NULL)
 
             if ($player->checkYoutube($link) == true)
             {
-                $out = '<div class="rex-plyr" data-plyr-provider="youtube" data-plyr-embed-id="' . $player->getYoutubeId($link) . '"></div></br>';
+                $out = '<div class="rex-plyr" data-plyr-provider="youtube" data-plyr-embed-id="' . $player->getYoutubeId($link) . '"></div>';
             }
             if ($player->checkVimeo($link) == true)
             {
-                $out = '<div class="rex-plyr" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"></div></br>';
+                $out = '<div class="rex-plyr" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"></div>';
             }
             if ($player->checkMedia($url) !== false)
             {
