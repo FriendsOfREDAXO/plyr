@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the videopackage.
+ * This file is part of the plyr package.
  *
  * @author (c) Friends Of REDAXO
  * @author <friendsof@redaxo.org>
