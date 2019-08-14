@@ -36,7 +36,7 @@ JS für Plyr
 
 ## Modul-Beispiel, hier mit MFORM CustomLink 
 
-### Eingabe**
+### Eingabe
 
 ```php
 <?php
@@ -60,7 +60,7 @@ REX_PLYR[id=1 controls="play,progress"]
 
 ## Direkte Verarbeitung über statische Methode
 
-`$video = rex_plyr::outputVideo($url,$controls,$poster);`
+`$video = rex_plyr::outputMedia($url,$controls,$poster);`
 
 Beispiel:
 
