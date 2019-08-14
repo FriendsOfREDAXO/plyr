@@ -75,7 +75,6 @@ class rex_plyr
         return false;
     }
 
-    // FÜR AFTERGLOW NACH UPDATE ODER PLYR
     function checkVimeo($url)
     {
         if (preg_match('~(?:<iframe [^>]*src=")?(?:https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w]*\/videos?)?\/([0-9]+)[^\s]*)"?(?:[^>]*></iframe>)?(?:<p>.*</p>)?~ix', $url))
