@@ -55,7 +55,7 @@ REX_PLYR[1]
 
 ### Direkte Verarbeitung über statische Methode
 
-`$video = rex_plyr::outputVideo($url,$poster);`
+`$video = rex_plyr::outputVideo($url,$controls,$poster);`
 
 Bei Dateien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
 Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten. 
