@@ -94,20 +94,25 @@ class rex_plyr
         return $vimeoID;
     }
 
-public static function outputVideo($url,$poster=NULL)
+public static function outputVideo($url,$controls=NULL, $poster=NULL)
     {
 
         $player = new rex_plyr();
         $link = $player->checkUrl($url);
-        // GET STANDARD CONFIG VARIABLES
+    
+     if ($controls)
+     {  
+    $player_conf = json_encode(explode(",",$controls));
+    $controls = ' data-plyr-config=\'{"controls":'.$player_conf.'}\'';
+     }
 
             if ($player->checkYoutube($link) == true)
             {
-                $out = '<div class="rex-plyr" data-plyr-provider="youtube" data-plyr-embed-id="' . $player->getYoutubeId($link) . '"></div>';
+                $out = '<div class="rex-plyr" data-plyr-provider="youtube" data-plyr-embed-id="' . $player->getYoutubeId($link) . '"'.$controls.'></div>';
             }
             if ($player->checkVimeo($link) == true)
             {
-                $out = '<div class="rex-plyr" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"></div>';
+                $out = '<div class="rex-plyr" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"'.$controls.'></div>';
             }
             if ($player->checkMedia($url) !== false)
             {
@@ -118,7 +123,7 @@ public static function outputVideo($url,$poster=NULL)
                     }
 
                 $out = '
-                        <video class="rex-plyr" playsinline volume=1'.$poster.'>
+                        <video class="rex-plyr"'.$controls.'playsinline volume=1'.$poster.'>
                             <source src="' . $link . '" type="video/mp4">
                         </video>
                     ';
@@ -128,7 +133,7 @@ public static function outputVideo($url,$poster=NULL)
             if ($player->checkAudio($url) !== false)
             {
                 $out = '
-                        <audio class="rex-plyr">
+                        <audio class="rex-plyr"'.$controls.'>
                             <source src="' . $link . '" type="audio/mp3">
                         </audio>
                     ';
@@ -139,4 +144,3 @@ public static function outputVideo($url,$poster=NULL)
 
 }
 ?>
-
