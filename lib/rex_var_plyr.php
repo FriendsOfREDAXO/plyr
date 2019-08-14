@@ -13,7 +13,7 @@ class rex_var_plyr extends rex_var
 {
    protected function getOutput() 
    {
-
+   $controls=$poster=NULL;
     $id = $this->getArg('id', 0, true);
         if (!in_array($this->getContext(), ['module', 'action']) || !is_numeric($id) || $id < 1 || $id > 20) {
             return false;
