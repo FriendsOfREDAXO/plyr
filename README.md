@@ -36,7 +36,7 @@ JS für Plyr
 
 ## Modul-Beispiel, hier mit MFORM CustomLink 
 
-**Eingabe**
+### Eingabe**
 
 ```php
 <?php
@@ -46,18 +46,27 @@ $mform->addCustomLinkField("1", array('label'=>'Video', 'data-tel'=>'disable', '
 echo $mform->show();
 ```
 
-**Ausgabe**
+### Ausgabe
 
 ```
 REX_PLYR[1]
 ```
 
+oder mit Konfiguration der Player-Elemente:
 
-### Direkte Verarbeitung über statische Methode
+```php
+REX_PLYR[id=1 controls="play,progress"]
+```
+
+## Direkte Verarbeitung über statische Methode
 
 `$video = rex_plyr::outputVideo($url,$controls,$poster);`
 
-Bei Dateien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
+Beispiel:
+
+`$media = rex_plyr::outputVideo('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/poster.jpg');`
+
+Bei Medien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
 Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten. 
 
 
