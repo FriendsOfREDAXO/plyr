@@ -11,6 +11,7 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 - Statische PHP Methode zur Ausgabe des Videos
 - Einbindung des Players im Backend
 - Methoden zur Ermittlung des Videotyps
+- Controls können je Ausgabe definiert werden
 
 
 ### Einbindung im Frontend
