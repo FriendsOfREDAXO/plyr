@@ -1,1 +1,1 @@
-const players = Plyr.setup('.js-player');
+const players = Plyr.setup('.rex-plyr');
