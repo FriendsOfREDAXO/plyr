@@ -12,6 +12,7 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 - REX_PLYR[] Variable zur schnellen Ausgabe in einem Modul 
 - Statische PHP Methode zur Ausgabe des Videos
 - Einbindung des Players im Backend
+- Plyr bindet sich in die Detailseite des Medienpools ein
 - Methoden zur Ermittlung des Videotyps
 - Controls können je Ausgabe definiert werden
 - Kein JQuery benötigt
@@ -79,7 +80,7 @@ REX_PLYR[id=1 controls="play,progress" poster="/media/poster.jpg"]
 Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten. 
 
 
-## Hilfsmethoden in der rex_video class
+## Hilfsmethoden in der rex_plyr class
 
 `checkUrl($url)`
 Gibt sofern es sich um eine Mediapool-Datei handelt die URL zum Medium zurück. 
@@ -105,7 +106,7 @@ Ermittelt die Vimeo-Id eines Videos
 ### Beispiel
 
 ```php
-$plyr = getYoutubeId($url);
+$plyr = new rex_plyr();
 $id = $plyr->getVideoType($url);
 ```
 
