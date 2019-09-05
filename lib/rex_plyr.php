@@ -123,7 +123,7 @@ public static function outputMedia($url,$controls=NULL, $poster=NULL)
                     }
 
                 $out = '
-                        <video class="rex-plyr"'.$controls.'playsinline volume=1'.$poster.'>
+                        <video class="rex-plyr"'.$controls.' playsinline volume=1'.$poster.'>
                             <source src="' . $link . '" type="video/mp4">
                         </video>
                     ';
