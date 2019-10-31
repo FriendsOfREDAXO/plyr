@@ -64,8 +64,10 @@ Beispiel:
 $media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/cover/REX_MEDIA[1]');
 ```
 
+> Bei Medien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
+Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten. 
 
-### Ausgabe per `REX_PLYR`
+### Alternative Ausgabe per `REX_PLYR`
 
 ```php
 REX_PLYR[1]
@@ -76,10 +78,6 @@ oder mit Konfiguration der Player-Elemente:
 ```php
 REX_PLYR[id=1 controls="play,progress" poster="/media/poster.jpg"]
 ```
-
-> Bei Medien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
-Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten. 
-
 
 ## Hilfsmethoden in der rex_plyr class
 
