@@ -12,7 +12,7 @@
 class rex_plyr
 {
 
-    function checkUrl($url)
+    public static function checkUrl($url)
     {
         if ($url)
         {
@@ -28,7 +28,7 @@ class rex_plyr
         }
     }
 
-    function checkYoutube($url)
+    public static function checkYoutube($url)
     {
         if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url))
         {
@@ -37,7 +37,7 @@ class rex_plyr
         return false;
     }
 
-    function getYoutubeId($urL)
+    public static function getYoutubeId($urL)
     {
         $youtubeID = "";
         if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $urL, $match))
@@ -47,7 +47,7 @@ class rex_plyr
         return $youtubeID;
     }
 
-    function checkMedia($url)
+    public static function checkMedia($url)
     {
         $media = rex_media::get($url);
         $checkPath = pathinfo($url);
@@ -61,7 +61,7 @@ class rex_plyr
         return false;
     }
 
-    function checkAudio($url)
+    public static function checkAudio($url)
     {
         $audio = rex_media::get($url);
         $checkPath = pathinfo($url);
@@ -75,7 +75,7 @@ class rex_plyr
         return false;
     }
 
-    function checkVimeo($url)
+    public static function checkVimeo($url)
     {
         if (preg_match('~(?:<iframe [^>]*src=")?(?:https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w]*\/videos?)?\/([0-9]+)[^\s]*)"?(?:[^>]*></iframe>)?(?:<p>.*</p>)?~ix', $url))
         {
@@ -84,7 +84,7 @@ class rex_plyr
         return false;
     }
 
-    function getVimeoId($url)
+    public static function getVimeoId($url)
     {
         $vimeoID = "";
         if (preg_match('~(?:<iframe [^>]*src=")?(?:https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w]*\/videos?)?\/([0-9]+)[^\s]*)"?(?:[^>]*></iframe>)?(?:<p>.*</p>)?~ix', $url, $match))
@@ -94,7 +94,7 @@ class rex_plyr
         return $vimeoID;
     }
 
-public static function outputMedia($url,$controls=NULL, $poster=NULL)
+    public static function outputMedia($url,$controls=NULL, $poster=NULL)
     {
 
         $player = new rex_plyr();
