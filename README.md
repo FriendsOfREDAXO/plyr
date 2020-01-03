@@ -106,7 +106,7 @@ Ermittelt die Vimeo-Id eines Videos
 
 ```php
 $plyr = new rex_plyr();
-$id = $plyr->getVideoType($url);
+$id = $plyr->checkMedia($url);
 ```
 
 
