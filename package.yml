@@ -1,7 +1,7 @@
 package: plyr 
 version: '3.1.2'
 author: Friends Of REDAXO
-supportpage: https://github.com/FriendsOfREDAXO/video
+supportpage: https://github.com/FriendsOfREDAXO/plyr
 
 requires:
     redaxo: '^5.6' 
