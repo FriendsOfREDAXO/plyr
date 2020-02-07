@@ -1,9 +1,9 @@
 package: plyr 
-version: '3.1.2'
+version: '3.1.3-dev'
 author: Friends Of REDAXO
 supportpage: https://github.com/FriendsOfREDAXO/plyr
 
 requires:
-    redaxo: '^5.6' 
+    redaxo: '^5.8' 
     php:
-        version: '>=5.7.0-beta3'
+        version: '^7.1'
