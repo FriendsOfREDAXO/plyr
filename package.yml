@@ -1,7 +1,8 @@
 package: plyr 
-version: '3.1.3-dev'
+version: '3.2.0-dev'
 author: Friends Of REDAXO
 supportpage: https://github.com/FriendsOfREDAXO/plyr
+vendor-version: '3.5.10'
 
 requires:
     redaxo: '^5.8' 
