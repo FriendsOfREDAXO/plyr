@@ -1,0 +1,9 @@
+node_modules
+.DS_Store
+credentials.json
+*.mp4
+!dist/blank.mp4
+npm-debug.log
+yarn-error.log
+*.webm
+.idea/
