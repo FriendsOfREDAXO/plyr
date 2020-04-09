@@ -94,6 +94,16 @@ class rex_plyr
         return $vimeoID;
     }
 
+    public static function checkExternalMp4($url)
+    {
+        $checkSource = get_headers($url, 1);
+        if(isset($checkSource['Content-Type']) && $checkSource['Content-Type'] === 'video/mp4')
+        {
+            return true;
+        }
+        return false;
+    }
+    
     public static function outputMedia($url,$controls=NULL, $poster=NULL)
     {
 
@@ -114,7 +124,7 @@ class rex_plyr
             {
                 $out = '<div class="rex-plyr" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"'.$controls.'></div>';
             }
-            if ($player->checkMedia($url) !== false)
+            if ($player->checkMedia($url) !== false || $player->checkExternalMp4($url) === true)
             {
 
                 if ($poster)
