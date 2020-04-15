@@ -99,6 +99,9 @@ Ermittelt die Vimeo-Id eines Videos
 `checkMedia($url)` 
 Überprüft ob es sich um ein MP4-Video aus dem Medienpool handelt
 
+`checkExternalMp4($url)`
+Überprüft ob ein externes MP4-Video verlinkt ist.
+
 `checkAudio($url)` 
 Überprüft ob es sich um eine MP3-Audio-Datei aus dem Medienpool handelt
 
