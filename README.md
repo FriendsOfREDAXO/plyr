@@ -79,6 +79,46 @@ oder mit Konfiguration der Player-Elemente:
 REX_PLYR[id=1 controls="play,progress" poster="/media/poster.jpg"]
 ```
 
+## Alternative init.js zur Änderung der Vollbildanzeige bei Orientierungsänderung des Geräts
+
+```js
+document.addEventListener("DOMContentLoaded", function(){
+const players = Plyr.setup('.rex-plyr',{
+youtube: {
+noCookie: true
+},
+fullscreen: {
+enabled: true,
+fallback: true,
+iosNative: false }
+});
+});
+
+const players = new Plyr('.rex-plyr');
+players.on('play', event => {
+const instance = event.detail.plyr;
+
+screen.orientation.addEventListener("change", function() {
+if(screen.orientation.type = 'landscape-primary') {
+players.fullscreen.enter();
+}
+if(screen.orientation.type = 'portrait-primary') {
+players.fullscreen.exit();
+}
+}, false);
+
+window.addEventListener('orientationchange', function() {
+if (window.orientation & 2) {
+players.fullscreen.enter();
+} else {
+players.fullscreen.exit();
+}
+
+});
+
+});
+```
+
 ## Hilfsmethoden in der rex_plyr class
 
 `checkUrl($url)`
