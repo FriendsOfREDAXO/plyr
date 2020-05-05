@@ -79,7 +79,9 @@ oder mit Konfiguration der Player-Elemente:
 REX_PLYR[id=1 controls="play,progress" poster="/media/poster.jpg"]
 ```
 
-## Alternative init.js zur Änderung der Vollbildanzeige bei Orientierungsänderung des Geräts
+## Alternative init.js
+
+zur Änderung der Vollbildanzeige bei Orientierungsänderung des Geräts
 
 ```js
 document.addEventListener("DOMContentLoaded", function(){
