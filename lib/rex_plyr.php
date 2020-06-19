@@ -51,6 +51,9 @@ class rex_plyr
             if (strtolower($checkPath['extension']) == "mp4") {
                 return true;
             }
+            if (strtolower($checkPath['extension']) == "mov") {
+                return true;
+            }
         }
         return false;
     }
