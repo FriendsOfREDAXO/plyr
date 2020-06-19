@@ -144,6 +144,9 @@ Ermittelt die Vimeo-Id eines Videos
 `checkExternalMp4($url)`
 Überprüft ob ein externes MP4-Video verlinkt ist.
 
+`checkVideo($url)`
+Überprüft ob es sich um eine Video-Datei / eine Video-Url handelt die plyr abspielen kann.
+
 `checkAudio($url)` 
 Überprüft ob es sich um eine MP3-Audio-Datei aus dem Medienpool handelt
 
