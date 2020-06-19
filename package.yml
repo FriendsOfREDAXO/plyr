@@ -3,7 +3,6 @@ version: '3.5.0'
 vendor: '3.6.2'
 author: Friends Of REDAXO
 supportpage: https://github.com/FriendsOfREDAXO/plyr
-vendor-version: '3.5.10'
 
 requires:
     redaxo: '^5.8' 
