@@ -60,7 +60,7 @@ class rex_plyr
 
     public static function checkVideo($url)
     {
-        if (rex_plyr::checkYoutube($url) || rex_plyr::checkVimeo($url) || rex_plyr::checkMedia($url) || checkExternalMp4($url)) {
+        if (rex_plyr::checkYoutube($url) || rex_plyr::checkVimeo($url) || rex_plyr::checkMedia($url) || rex_plyr::checkExternalMp4($url)) {
             return true;
         }
         return false;
