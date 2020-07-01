@@ -60,7 +60,7 @@ class rex_plyr
 
     public static function checkVideo($url)
     {
-        if (rex_plyr::checkYoutube($url) || rex_plyr::checkVimeo($url) || rex_plyr::checkMedia($url) || rex_plyr::checkExternalMp4($url)) {
+        if (rex_plyr::checkYoutube($url) || rex_plyr::checkVimeo($url) || rex_plyr::checkMedia($url) || checkExternalMp4($url)) {
             return true;
         }
         return false;
@@ -97,9 +97,12 @@ class rex_plyr
 
     public static function checkExternalMp4($url)
     {
-        $checkSource = get_headers($url, 1);
-        if (isset($checkSource['Content-Type']) && $checkSource['Content-Type'] === 'video/mp4') {
+        if (filter_var($url, FILTER_VALIDATE_URL) === TRUE) 
+        {    
+            $checkSource = get_headers($url, 1);
+            if (isset($checkSource['Content-Type']) && $checkSource['Content-Type'] === 'video/mp4') {
             return true;
+            }
         }
         return false;
     }
@@ -145,4 +148,5 @@ class rex_plyr
         return $out;
     }
 }
+
 
