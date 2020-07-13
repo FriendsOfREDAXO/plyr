@@ -58,14 +58,6 @@ class rex_plyr
         return false;
     }
 
-    public static function checkVideo($url)
-    {
-        if (rex_plyr::checkYoutube($url) || rex_plyr::checkVimeo($url) || rex_plyr::checkMedia($url) || checkExternalMp4($url)) {
-            return true;
-        }
-        return false;
-    }
-
     public static function checkAudio($url)
     {
         $audio = rex_media::get($url);
@@ -106,6 +98,15 @@ class rex_plyr
         }
         return false;
     }
+    
+        public static function checkVideo($url)
+    {
+        if (rex_plyr::checkYoutube($url) || rex_plyr::checkVimeo($url) || rex_plyr::checkMedia($url) || checkExternalMp4($url)) {
+            return true;
+        }
+        return false;
+    }
+    
 
     public static function outputMedia($url, $controls = NULL, $poster = NULL)
     {
