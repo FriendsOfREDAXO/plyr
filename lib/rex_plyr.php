@@ -13,6 +13,12 @@
 class rex_plyr
 {
 
+    /**
+     * @param mixed $url
+     *
+     * @return [url]
+     */
+
     public static function checkUrl($url)
     {
         if ($url) {
@@ -26,6 +32,11 @@ class rex_plyr
         }
     }
 
+    /**
+     * @param mixed $url
+     *
+     * @return [boolean]
+     */
     public static function checkYoutube($url)
     {
         if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url)) {
@@ -34,6 +45,11 @@ class rex_plyr
         return false;
     }
 
+    /**
+     * @param mixed $urL
+     *
+     * @return [youtube_id]
+     */
     public static function getYoutubeId($urL)
     {
         $youtubeID = "";
@@ -43,6 +59,11 @@ class rex_plyr
         return $youtubeID;
     }
 
+    /**
+     * @param mixed $url
+     *
+     * @return [boolean]
+     */
     public static function checkMedia($url)
     {
         $media = rex_media::get($url);
@@ -57,7 +78,25 @@ class rex_plyr
         }
         return false;
     }
-
+    
+    /**
+     * @param mixed $url
+     *
+     * @return [boolean]
+     */
+    public static function checkVideo($url)
+    {
+        if (rex_plyr::checkYoutube($url) || rex_plyr::checkVimeo($url) || rex_plyr::checkMedia($url) || rex_plyr::checkExternalMp4($url)) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
+     * @param mixed $url
+     *
+     * @return [bolean]
+     */
     public static function checkAudio($url)
     {
         $audio = rex_media::get($url);
@@ -70,6 +109,11 @@ class rex_plyr
         return false;
     }
 
+    /**
+     * @param mixed $url
+     *
+     * @return [boolean]
+     */
     public static function checkVimeo($url)
     {
         if (preg_match('~(?:<iframe [^>]*src=")?(?:https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w]*\/videos?)?\/([0-9]+)[^\s]*)"?(?:[^>]*></iframe>)?(?:<p>.*</p>)?~ix', $url)) {
@@ -78,6 +122,11 @@ class rex_plyr
         return false;
     }
 
+    /**
+     * @param mixed $url
+     *
+     * @return [VimeoID]
+     */
     public static function getVimeoId($url)
     {
         $vimeoID = "";
@@ -86,31 +135,36 @@ class rex_plyr
         }
         return $vimeoID;
     }
-
+    
+    /**
+     * checkExternalMp4
+     *
+     * @param  mixed $url
+     * @return boolean
+     */
     public static function checkExternalMp4($url)
     {
-        if (filter_var($url, FILTER_VALIDATE_URL) === TRUE) 
-        {    
+        if (filter_var($url, FILTER_VALIDATE_URL) === true) {
             $checkSource = get_headers($url, 1);
             if (isset($checkSource['Content-Type']) && $checkSource['Content-Type'] === 'video/mp4') {
-            return true;
+                return true;
             }
         }
         return false;
     }
     
-        public static function checkVideo($url)
-    {
-        if (rex_plyr::checkYoutube($url) || rex_plyr::checkVimeo($url) || rex_plyr::checkMedia($url) || rex_plyr::checkExternalMp4($url)) {
-            return true;
-        }
-        return false;
-    }
+
     
 
-    public static function outputMedia($url, $controls = NULL, $poster = NULL)
+    /**
+     * @param mixed $url
+     * @param null $controls
+     * @param null $poster
+     *
+     * @return [player output html]
+     */
+    public static function outputMedia($url, $controls = null, $poster = null)
     {
-
         $player = new rex_plyr();
         $link = $player->checkUrl($url);
 
@@ -126,7 +180,6 @@ class rex_plyr
             $out = '<div class="rex-plyr" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $controls . '></div>';
         }
         if ($player->checkMedia($url) !== false || $player->checkExternalMp4($url) === true) {
-
             if ($poster) {
                 $poster = ' poster="' . $poster . '"';
             }
@@ -149,5 +202,3 @@ class rex_plyr
         return $out;
     }
 }
-
-
