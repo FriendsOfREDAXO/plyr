@@ -23,7 +23,7 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 Die nötigen Dateien findet man im Assets-Ordner. 
 Eigene CSS und JS sollten nach Möglichkeit an anderer Stelle abgelegt werden um Probleme nach einem Update zu vermeiden. 
 
-Plyr benötigigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Player initialisiert. 
+Plyr benötigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Player initialisiert. 
 
 CSS für Plyr
 
