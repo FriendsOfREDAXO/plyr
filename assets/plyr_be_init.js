@@ -4,8 +4,8 @@ $(document).on('rex:ready',function() {
 	 youtube: { 
 		 noCookie: true
 	 },
-	 iconUrl: 'assets/addons/plyr/vendor/plyr/dist/plyr.svg',
-   blankVideo: 'assets/addons/plyr/vendor/plyr/dist/blank.mp4'
+	 iconUrl: '../assets/addons/plyr/vendor/plyr/dist/plyr.svg',
+    blankVideo: '../assets/addons/plyr/vendor/plyr/dist/blank.mp4'
  });
 
 });
