@@ -96,7 +96,7 @@ REX_PLYR[id=1 controls="play,progress" poster="/media/poster.jpg"]
 ### Eingabe
 
 ```php
-REX_MEDIALIST[id="1" type="mp4" widget="1"]
+REX_MEDIALIST[id="1" type="mp3,mp4" widget="1"]
 ```
 
 ### Ausgabe über `rex_plyr::outputMp4Playlist`
