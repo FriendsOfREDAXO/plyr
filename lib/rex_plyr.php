@@ -229,7 +229,7 @@ class rex_plyr
 		$out .= 'iconUrl: "assets/addons/plyr/vendor/plyr/dist/plyr.svg",';
 		$out .= 'blankVideo: "assets/addons/plyr/vendor/plyr/dist/blank.mp4"';
 		$out .= '}),';
-		$out .= '$plyr_id,';
+		$out .= $plyr_id .',';
 		$out .= '[';
 		$first_element = true;
 		foreach ($media_filenames as $media_filename) {
