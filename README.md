@@ -102,7 +102,7 @@ REX_PLYR[id=1 controls="play,progress" poster="/media/poster.jpg"]
 REX_MEDIALIST[id="1" type="mp3,mp4" widget="1"]
 ```
 
-### Ausgabe über `rex_plyr::outputMp4Playlist`
+### Ausgabe über `rex_plyr::outputMediaPlaylist`
 
 ```php
 $media = rex_plyr::outputMediaPlaylist($media_filenames,$controls);
@@ -112,7 +112,7 @@ Beispiel:
 
 ```php
 $media_filenames = preg_grep('/^\s*$/s', explode(",", REX_MEDIALIST[1]), PREG_GREP_INVERT);
-$media = rex_plyr::outputMp4Playlist($media_filenames,'play-large,play,progress,airplay,pip');
+$media = rex_plyr::outputMediaPlaylist($media_filenames,'play-large,play,progress,airplay,pip');
 ```
 
 ## Alternative init.js
