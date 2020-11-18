@@ -17,7 +17,7 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 - Methoden zur Ermittlung des Videotyps
 - Methode zur Erstellung von Playlists 
 - Controls können je Ausgabe definiert werden
-- Kein JQuery benötigt
+- JQuery wird für Playlists benötigt
 
 ### Einbindung im Frontend
 
