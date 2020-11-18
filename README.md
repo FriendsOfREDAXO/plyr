@@ -31,11 +31,23 @@ CSS für Plyr
 <link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.css') ?>">
 ```
 
+Zusätzliches CSS für Playlist
+
+```html
+<link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/plyr_playlist.css') ?>">
+```
+
 JS für Plyr
 
 ```php
 <script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
 <script src="<?= rex_url::base('assets/addons/plyr/plyr_init.js') ?>"></script>
+```
+
+JS für Plyr Playlist lautet anders
+```php
+<script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
+<script src="<?= rex_url::base('assets/addons/plyr/plyr_playlist.js') ?>"></script>
 ```
 
 >Alle Infos zur Konfiguration der Skripte oder der Controls der nachfolgenden Ausgaben, finden sich auf der GitHub-Site von [Plyr](https://plyr.io). 
@@ -65,7 +77,8 @@ $media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,
 ```
 
 > Bei Medien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
-Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten. 
+Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten.
+
 
 ### Alternative Ausgabe per `REX_PLYR`
 
@@ -77,6 +90,26 @@ oder mit Konfiguration der Player-Elemente:
 
 ```php
 REX_PLYR[id=1 controls="play,progress" poster="/media/poster.jpg"]
+```
+## Modul-Beispiel für Playlist
+
+### Eingabe
+
+```php
+REX_MEDIALIST[id="1" type="mp3,mp4" widget="1"]
+```
+
+### Ausgabe über `rex_plyr::outputMp4Playlist`
+
+```php
+$media = rex_plyr::outputMediaPlaylist($media_filenames,$controls);
+```
+
+Beispiel:
+
+```php
+$media_filenames = preg_grep('/^\s*$/s', explode(",", REX_MEDIALIST[1]), PREG_GREP_INVERT);
+$media = rex_plyr::outputMp4Playlist($media_filenames,'play-large,play,progress,airplay,pip');
 ```
 
 ## Alternative init.js

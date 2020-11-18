@@ -201,4 +201,57 @@ class rex_plyr
 
         return $out;
     }
+    
+    /**
+     * @param mixed[] $media_filenames Array with video/mp4 audio/mp3 file names from media pool
+     * @param null $controls
+     *
+     * @return [player output html]
+     */
+    public static function outputMediaPlaylist($media_filenames, $controls = null)
+    {
+        $plyr_id = rand();
+        $out = '<div class="plyr-container">';
+        $out .= '<div id="player-'. $plyr_id .'">';
+        $plyr_media = rex_plyr::outputMedia($media_filenames[0], $controls);
+         $out .= str_replace('class="rex-plyr"', 'class="rex-plyr" id="plyr-'. $plyr_id .'"', 
+        	str_replace("data-plyr-config='{", 'data-plyr-config=\'{"plyrId":"'. $plyr_id .'",', $plyr_media)
+        );
+        $out .= '</div>';
+        $out .= '</div>';
+        $out .= '</div>';
+        $out .= '<script>';
+        $out .= '$(document).ready(function () {';
+	    $out .= 'loadPlaylist(Plyr.setup("#plyr-'. $plyr_id .'", {';
+		$out .= 'youtube: { ';
+		$out .= 'noCookie: true ';
+		$out .= '},';
+		$out .= 'iconUrl: "assets/addons/plyr/vendor/plyr/dist/plyr.svg",';
+		$out .= 'blankVideo: "assets/addons/plyr/vendor/plyr/dist/blank.mp4"';
+		$out .= '}),';
+		$out .= $plyr_id .',';
+		$out .= '[';
+		$first_element = true;
+		foreach ($media_filenames as $media_filename) {
+			$media = rex_media::get($media_filename);
+			if ($media instanceof rex_media) {
+				if ($first_element) {
+					$first_element = false;
+				} else {
+					$out .= ',';
+				}
+
+				$out .= '{' . PHP_EOL;
+				$out .= 'type: "video/mp4",' . PHP_EOL;
+				$out .= 'title: "' . $media->getTitle() . '",' . PHP_EOL;
+				$out .= 'src: "' . $media->getUrl() . '",' . PHP_EOL;
+				$out .= '}' . PHP_EOL;
+			}
+		}
+		$out .= ']';
+	    $out .= ');';
+        $out .= '});';
+        $out .= '</script>';
+        return $out;
+    }
 }
