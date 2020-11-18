@@ -254,3 +254,4 @@ class rex_plyr
         $out .= '</script>';
         return $out;
     }
+}
