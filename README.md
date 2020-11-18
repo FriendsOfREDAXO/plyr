@@ -15,6 +15,7 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 - Einbindung des Players im Backend
 - Plyr bindet sich in die Detailseite des Medienpools ein
 - Methoden zur Ermittlung des Videotyps
+- Methode zur Erstellung von Playlists 
 - Controls können je Ausgabe definiert werden
 - Kein JQuery benötigt
 
@@ -216,4 +217,5 @@ Plyr und Afterglow stehen unter MIT-Lizenz. Die Player bedienen sich jedoch teil
 ## Credits:
 
 First Release: [Christian Gehrke](https://github.com/chrison94)
+PlayLists: [Tobias Krais](https://github.com/tobiaskrais)
 
