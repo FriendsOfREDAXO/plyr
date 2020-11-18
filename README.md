@@ -102,7 +102,7 @@ REX_MEDIALIST[id="1" type="mp3,mp4" widget="1"]
 ### Ausgabe über `rex_plyr::outputMp4Playlist`
 
 ```php
-$media = rex_plyr::outputMp4Playlist($media_filenames,$controls);
+$media = rex_plyr::outputMediaPlaylist($media_filenames,$controls);
 ```
 
 Beispiel:
