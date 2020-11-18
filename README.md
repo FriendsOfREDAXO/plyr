@@ -94,6 +94,8 @@ REX_PLYR[id=1 controls="play,progress" poster="/media/poster.jpg"]
 ```
 ## Modul-Beispiel für Playlist
 
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/video/assets/playlist.jpg)
+
 ### Eingabe
 
 ```php
