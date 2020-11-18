@@ -203,12 +203,12 @@ class rex_plyr
     }
     
     /**
-     * @param mixed[] $media_filenames Array with video/mp4 file names from media pool
+     * @param mixed[] $media_filenames Array with video/mp4 audio/mp3 file names from media pool
      * @param null $controls
      *
      * @return [player output html]
      */
-    public static function outputMp4Playlist($media_filenames, $controls = null)
+    public static function outputMediaPlaylist($media_filenames, $controls = null)
     {
         $plyr_id = rand();
         $out = '<div class="plyr-container">';
