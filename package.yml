@@ -7,4 +7,4 @@ supportpage: https://github.com/FriendsOfREDAXO/plyr
 requires:
     redaxo: '^5.8' 
     php:
-        version: '^7.1'
+        version: '>=7.1'
