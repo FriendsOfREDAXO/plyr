@@ -167,7 +167,7 @@ class rex_plyr
     {
         $player = new rex_plyr();
         $link = $player->checkUrl($url);
-	$conent_suffix = $consent_content = '';    
+	$consent_suffix = $consent_content = '';    
 	if($consent)
 	{
 		$consent_suffix = '_consent';
@@ -179,10 +179,10 @@ class rex_plyr
         }
 
         if ($player->checkYoutube($link) == true) {
-            $out = '<div class="rex-plyr" data-plyr-provider="youtube" data-plyr-embed-id="' . $player->getYoutubeId($link) . '"' . $controls . '>'.$consent_content.'</div>';
+            $out = '<div class="rex-plyr'.$consent_suffix.'" data-plyr-provider="youtube" data-plyr-embed-id="' . $player->getYoutubeId($link) . '"' . $controls . '>'.$consent_content.'</div>';
         }
         if ($player->checkVimeo($link) == true) {
-            $out = '<div class="rex-plyr" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $controls . '>'.$consent_content.'</div>';
+            $out = '<div class="rex-plyr'.$consent_suffix.'" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $controls . '>'.$consent_content.'</div>';
         }
         if ($player->checkMedia($url) !== false || $player->checkExternalMp4($url) === true) {
             if ($poster) {
