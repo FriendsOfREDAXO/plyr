@@ -68,17 +68,58 @@ echo $mform->show();
 ### Ausgabe über `rex_plyr::outputMedia`
 
 ```php
-$media = rex_plyr::outputMedia($url,$controls,$poster);
+$media = rex_plyr::outputMedia($url,$controls,$poster,$consent);
 ```
 
 Beispiel:
 
 ```php
-$media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/cover/REX_MEDIA[1]');
+$media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/cover/REX_MEDIA[1]',$consent);
 ```
 
 > Bei Medien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
 Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten.
+
+## Plyr und Consent-Abfragen
+
+Der Parameter $consent erlaubt es einen Platzhalter-Text / Bild etc. einzubinden, der z.B. nach Aktivierung im Consent-Manager ersetzt wird. 
+
+```php
+$consent = '    
+<div class="aspect-ratio-16-9">
+		<div class="container uk-background-secondary uk-light uk-padding">
+			<h2 class="page-title">Externes Video</h2>
+			<p class="page-description">Bitte aktivieren Sie die Optionen zur Darstellung externer Video in den Datenschutzeinstellungen</p>
+            <p><a class="uk-button uk-button-primary consent_manager-show-box">Datenschutz-Einstellungen bearbeiten</a></p>
+		</div>
+	</div>'; 
+  $media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/cover/REX_MEDIA[1]',$consent);
+
+```
+Videos, die einen Consent erfordern erhalten die CSS-Class rex-plyr_consent. 
+Aktuell Youtube und Vimeo
+
+Im Consent-Manager muss beim Cookie folgendes Script eingesetzt werden: 
+
+```js
+<script>
+
+ const players = Plyr.setup('.rex-plyr_consent',{
+	 youtube: { 
+		 noCookie: true
+	 },
+	 vimeo: {
+	        dnt: false
+	 },
+	 iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
+   blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
+ });	
+
+
+</script>
+```
+
+
 
 
 ### Alternative Ausgabe per `REX_PLYR`
@@ -114,6 +155,7 @@ Beispiel:
 $media_filenames = preg_grep('/^\s*$/s', explode(",", REX_MEDIALIST[1]), PREG_GREP_INVERT);
 $media = rex_plyr::outputMediaPlaylist($media_filenames,'play-large,play,progress,airplay,pip');
 ```
+
 
 ## Alternative init.js
 
