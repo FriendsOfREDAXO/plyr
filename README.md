@@ -93,11 +93,12 @@ $consent = '
             <p><a class="uk-button uk-button-primary consent_manager-show-box">Datenschutz-Einstellungen bearbeiten</a></p>
 		</div>
 	</div>'; 
-  $media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/cover/REX_MEDIA[1]',$consent);
+echo rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/cover/REX_MEDIA[1]',$consent);
 
 ```
 Videos, die einen Consent erfordern erhalten die CSS-Class rex-plyr_consent. 
 Aktuell Youtube und Vimeo
+Es bietet sich an den Consent-Text zentral abzulegen, z.B. als Property im Project-Addon. 
 
 Im Consent-Manager muss beim Cookie folgendes Script eingesetzt werden: 
 
