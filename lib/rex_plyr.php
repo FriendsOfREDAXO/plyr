@@ -163,12 +163,12 @@ class rex_plyr
      *
      * @return [player output html]
      */
-    public static function outputMedia($url, $controls = null, $poster = null, $consent = false)
+    public static function outputMedia($url, $controls = null, $poster = null, $consent = null)
     {
         $player = new rex_plyr();
         $link = $player->checkUrl($url);
 	$conent_suffix = $consent_content = '';    
-	if($consent!=false)
+	if($consent)
 	{
 		$consent_suffix = '_consent';
 		$consent_content = $consent;
