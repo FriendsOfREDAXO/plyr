@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function(){
          blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
  });
 	
- const players = Plyr.setup('.rex-plyr-yt',{
+ const players = Plyr.setup('.rex-plyr-consent',{
 	 youtube: { 
 		 noCookie: true
 	 },
