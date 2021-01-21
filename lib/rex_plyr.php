@@ -167,12 +167,13 @@ class rex_plyr
     {
         $player = new rex_plyr();
         $link = $player->checkUrl($url);
-	$consent_suffix = $consent_content = '';    
-	if($consent)
-	{
-		$consent_suffix = '_consent';
-		$consent_content = $consent;
-	}
+        $consent_suffix = $consent_content = '';
+        $out = '';
+        
+        if($consent) {
+            $consent_suffix = '_consent';
+            $consent_content = $consent;
+        }
         if ($controls) {
             $player_conf = json_encode(explode(",", $controls));
             $controls = ' data-plyr-config=\'{"controls":' . $player_conf . '}\'';
