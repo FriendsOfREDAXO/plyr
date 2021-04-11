@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of the plyr package.
  *
@@ -215,14 +214,17 @@ class rex_plyr
      * @return [player output html]
      */
     public static function outputMediaPlaylist($media_filenames, $controls = null)
-    {
-        $plyr_id = rand();
+    {   $plyr = rex_addon::get('plyr');
+        $svg_url = $plyr->getAssetsUrl("vendor/plyr/dist/plyr.svg");
+        $blank_mp4 = $plyr->getAssetsUrl("vendor/plyr/dist/blank.mp4");
+        $plyr_id = rand(); 
         $out = '<div class="plyr-container">';
         $out .= '<div id="player-'. $plyr_id .'">';
         $plyr_media = rex_plyr::outputMedia($media_filenames[0], $controls);
          $out .= str_replace('class="rex-plyr"', 'class="rex-plyr" id="plyr-'. $plyr_id .'"', 
         	str_replace("data-plyr-config='{", 'data-plyr-config=\'{"plyrId":"'. $plyr_id .'",', $plyr_media)
         );
+
         $out .= '</div>';
         $out .= '</div>';
         $out .= '<script>';
@@ -231,9 +233,9 @@ class rex_plyr
 		$out .= 'youtube: { ';
 		$out .= 'noCookie: true ';
 		$out .= '},';
-		$out .= 'iconUrl: "/assets/addons/plyr/vendor/plyr/dist/plyr.svg",';
-		$out .= 'blankVideo: "/assets/addons/plyr/vendor/plyr/dist/blank.mp4"';
-		$out .= '}),';
+		$out .= 'iconUrl: "'.$svg_url.'",';
+		$out .= 'blankVideo: "'.$blank_mp4.'"';
+        $out .= '}),';
 		$out .= $plyr_id .',';
 		$out .= '[';
 		$first_element = true;
