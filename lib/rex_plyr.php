@@ -225,7 +225,6 @@ class rex_plyr
         );
         $out .= '</div>';
         $out .= '</div>';
-        $out .= '</div>';
         $out .= '<script>';
         $out .= '$(document).ready(function () {';
 	    $out .= 'loadPlaylist(Plyr.setup("#plyr-'. $plyr_id .'", {';
