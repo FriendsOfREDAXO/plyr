@@ -231,8 +231,8 @@ class rex_plyr
 		$out .= 'youtube: { ';
 		$out .= 'noCookie: true ';
 		$out .= '},';
-		$out .= 'iconUrl: "assets/addons/plyr/vendor/plyr/dist/plyr.svg",';
-		$out .= 'blankVideo: "assets/addons/plyr/vendor/plyr/dist/blank.mp4"';
+		$out .= 'iconUrl: "/assets/addons/plyr/vendor/plyr/dist/plyr.svg",';
+		$out .= 'blankVideo: "/assets/addons/plyr/vendor/plyr/dist/blank.mp4"';
 		$out .= '}),';
 		$out .= $plyr_id .',';
 		$out .= '[';
