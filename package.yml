@@ -5,6 +5,6 @@ author: Friends Of REDAXO
 supportpage: https://github.com/FriendsOfREDAXO/plyr
 
 requires:
-    redaxo: '^5.8' 
+    redaxo: '^5.9' 
     php:
         version: '>=7.1'
