@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	 vimeo: {
 	        dnt: false
 	 },
-	 iconUrl: 'vendor/plyr/dist/plyr.svg',
-         blankVideo: 'vendor/plyr/dist/blank.mp4'
+	 iconUrl: 'plyr.svg',
+         blankVideo: 'blank.mp4'
  });	
 });
