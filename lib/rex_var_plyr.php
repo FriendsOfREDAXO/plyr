@@ -24,8 +24,8 @@ class rex_var_plyr extends rex_var
      $controls = $this->getArg('controls');
      }
 
-     if ($this->hasArg('poster') && $this->getParsedArg('poster')) {
-     $poster = $this->getParsedArg('poster');
+     if ($this->hasArg('poster') && $this->getArg('poster')) {
+     $poster = $this->getArg('poster');
      }  
 
     $out = '';   
