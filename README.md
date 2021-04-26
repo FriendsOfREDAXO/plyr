@@ -44,6 +44,7 @@ JS für Plyr
 <script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
 <script src="<?= rex_url::base('assets/addons/plyr/plyr_init.js') ?>"></script>
 ```
+> Die `plyr_init.js` ist als Beispiel anzusehen und bietet "nur" basic Settings. Es empfiehlt sich eine eigene anzulegen. Siehe z.B. weiter unten.  
 
 JS für Plyr Playlist lautet anders
 ```php
