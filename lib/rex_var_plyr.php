@@ -25,7 +25,7 @@ class rex_var_plyr extends rex_var
      }
 
      if ($this->hasArg('poster') && $this->getParsedArg('poster')) {
-     $poster = $this->getArg('poster');
+     $poster = $this->getParsedArg('poster');
      }  
 
     $out = '';   
