@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(){
 		 noCookie: true
 	 },
 	 vimeo: {
-	        dnt: false
+	        dnt: true
 	 },
          iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
          blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
