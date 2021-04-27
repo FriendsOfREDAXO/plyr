@@ -1,5 +1,5 @@
 
-## REDAXO-AddOn: Plyr
+# REDAXO-AddOn: Plyr
 
 Das AddOn stellt den Video-/Audio-Player [Plyr](https://plyr.io) zur Verfügung.
 
@@ -9,7 +9,7 @@ Das AddOn stellt den Video-/Audio-Player [Plyr](https://plyr.io) zur Verfügung.
 Es können lokale Audio-Dateien (mp3), Videos und Youtube- sowie Vimeo-Videos eingebunden werden.  
 Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden um dem Entwickler alle Freiheiten zu lassen. 
 
-### AddOn Features
+## AddOn Features
 - REX_PLYR[] Variable zur schnellen Ausgabe in einem Modul 
 - Statische PHP Methode zur Ausgabe des Videos
 - Einbindung des Players im Backend
@@ -26,19 +26,19 @@ Eigene CSS und JS sollten nach Möglichkeit an anderer Stelle abgelegt werden um
 
 Plyr benötigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Player initialisiert. 
 
-CSS für Plyr
+#### CSS für Plyr
 
 ```html
 <link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.css') ?>">
 ```
 
-Zusätzliches CSS für Playlist
+#### Zusätzliches CSS für Playlist
 
 ```html
 <link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/plyr_playlist.css') ?>">
 ```
 
-JS für Plyr
+### JS für Plyr
 
 ```php
 <script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
@@ -46,7 +46,7 @@ JS für Plyr
 ```
 Die `plyr_init.js` ist als Beispiel anzusehen und bietet "nur" basic Settings. Sollte die Webpräsenz in einem Unterordner angelegt sein, müssen die Pfade für `iconUrl` und `blankVideo` angepasst werden. 
 
-Inhalt der `plyr_init.js`
+### Inhalt der `plyr_init.js`
 
 ```js
 document.addEventListener("DOMContentLoaded", function(){
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 ```
 
-
+## JS für Playlists
 
 JS für Plyr Playlist lautet anders
 ```php
