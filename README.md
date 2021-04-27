@@ -44,7 +44,27 @@ JS für Plyr
 <script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
 <script src="<?= rex_url::base('assets/addons/plyr/plyr_init.js') ?>"></script>
 ```
-> Die `plyr_init.js` ist als Beispiel anzusehen und bietet "nur" basic Settings. Es empfiehlt sich eine eigene anzulegen. Siehe z.B. weiter unten.  
+Die `plyr_init.js` ist als Beispiel anzusehen und bietet "nur" basic Settings. Sollte die Webpräsenz in einem Unterordner angelegt sein, müssen die Pfade für `iconUrl` und `blankVideo` angepasst werden. 
+
+Inhalt der `plyr_init.js`
+
+```js
+document.addEventListener("DOMContentLoaded", function(){
+ const players = Plyr.setup('.rex-plyr',{
+	 youtube: { 
+		 noCookie: true
+	 },
+	 vimeo: {
+	        dnt: true
+	 },
+         iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
+         blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
+ });	
+});
+
+```
+
+
 
 JS für Plyr Playlist lautet anders
 ```php
