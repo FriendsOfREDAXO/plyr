@@ -88,14 +88,15 @@ echo $mform->show();
 
 ### Ausgabe über `rex_plyr::outputMedia`
 
+Aufbau: 
 ```php
 $media = rex_plyr::outputMedia($url,$controls,$poster,$consent);
 ```
 
-Beispiel:
+Ausgabe-Code:
 
 ```php
-$media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/cover/REX_MEDIA[1]',$consent);
+$media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/cover/REX_MEDIA[1]');
 ```
 Die controls können durch `autostart` und `loop` ergänzt werden. 
 
