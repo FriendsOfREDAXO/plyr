@@ -91,6 +91,12 @@ $media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,mute,volume,progr
 
 ### CSS für Playlist
 
+Falls nicht bereits schon eingebunden: 
+
+```html
+<link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.css') ?>">
+```
+zusätzlich: 
 ```html
 <link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/plyr_playlist.css') ?>">
 ```
