@@ -19,6 +19,12 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 - Controls können je Ausgabe definiert werden
 - JQuery wird für Playlists benötigt
 
+> Bei Medien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
+Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten.
+
+
+## Standard-Player 
+
 ### Einbindung im Frontend
 
 Die nötigen Dateien findet man im Assets-Ordner. 
@@ -30,12 +36,6 @@ Plyr benötigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Player
 
 ```html
 <link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.css') ?>">
-```
-
-#### Zusätzliches CSS für Playlist
-
-```html
-<link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/plyr_playlist.css') ?>">
 ```
 
 ### JS für Plyr
@@ -64,15 +64,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 ```
 
-## JS für Playlists
-
-JS für Plyr Playlist lautet anders
-```php
-<script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
-<script src="<?= rex_url::base('assets/addons/plyr/plyr_playlist.js') ?>"></script>
-```
-
->Alle Infos zur Konfiguration der Skripte oder der Controls der nachfolgenden Ausgaben, finden sich auf der GitHub-Site von [Plyr](https://plyr.io). 
+>Alle weiteren Infos zur Konfiguration der Skripte oder der Controls der Ausgaben, finden sich auf der GitHub-Site von [Plyr](https://plyr.io). 
 
 ## Modul-Beispiel, hier mit MFORM CustomLink 
 
@@ -88,21 +80,47 @@ echo $mform->show();
 
 ### Ausgabe über `rex_plyr::outputMedia`
 
-Aufbau: 
 ```php
-$media = rex_plyr::outputMedia($url,$controls,$poster,$consent);
+$media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,mute,volume,progress,airplay,pip,autoplay,loop','/media/cover/REX_MEDIA[1]');
+```
+> Beispiel mit allen Parametern, die nicht gewünschten Parameter bitte entfernen
+
+## Playlist-Modus
+
+### CSS für Playlist
+
+```html
+<link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/plyr_playlist.css') ?>">
 ```
 
-Ausgabe-Code:
+### JS für Playlists
+
+JS für Plyr Playlist lautet anders
+```php
+<script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
+<script src="<?= rex_url::base('assets/addons/plyr/plyr_playlist.js') ?>"></script>
+```
+
+### Modul-Eingabe Playlist
 
 ```php
-$media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/cover/REX_MEDIA[1]');
+REX_MEDIALIST[id="1" type="mp3,mp4" widget="1"]
 ```
-Die controls können durch `autostart` und `loop` ergänzt werden. 
 
+#### Modul-Ausgabe Playlist 
 
-> Bei Medien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
-Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten.
+Die Ausgebe erfolgt über `rex_plyr::outputMediaPlaylist`
+
+Aufbau:
+
+`rex_plyr::outputMediaPlaylist($media_filenames,$controls)`
+
+Modul-Ausgabe
+
+```php
+$media_filenames = preg_grep('/^\s*$/s', explode(",", REX_MEDIALIST[1]), PREG_GREP_INVERT);
+$media = rex_plyr::outputMediaPlaylist($media_filenames,'play-large,play,progress,airplay,pip');
+```
 
 ## Plyr und Consent-Abfragen
 
@@ -158,28 +176,7 @@ oder mit Konfiguration der Player-Elemente:
 ```php
 REX_PLYR[id=1 controls="play,progress" poster="/media/poster.jpg"]
 ```
-## Modul-Beispiel für Playlist
 
-![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/video/assets/playlist.jpg)
-
-### Eingabe
-
-```php
-REX_MEDIALIST[id="1" type="mp3,mp4" widget="1"]
-```
-
-### Ausgabe über `rex_plyr::outputMediaPlaylist`
-
-```php
-$media = rex_plyr::outputMediaPlaylist($media_filenames,$controls);
-```
-
-Beispiel:
-
-```php
-$media_filenames = preg_grep('/^\s*$/s', explode(",", REX_MEDIALIST[1]), PREG_GREP_INVERT);
-$media = rex_plyr::outputMediaPlaylist($media_filenames,'play-large,play,progress,airplay,pip');
-```
 
 
 ## Alternative init.js
