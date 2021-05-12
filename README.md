@@ -38,7 +38,7 @@ Plyr benötigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Player
 <link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.css') ?>">
 ```
 
-### JS für Plyr
+#### JS für Plyr
 
 ```php
 <script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
@@ -46,7 +46,7 @@ Plyr benötigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Player
 ```
 Die `plyr_init.js` ist als Beispiel anzusehen und bietet "nur" basic Settings. Sollte die Webpräsenz in einem Unterordner angelegt sein, müssen die Pfade für `iconUrl` und `blankVideo` angepasst werden. 
 
-### Inhalt der `plyr_init.js`
+#### Inhalt der `plyr_init.js`
 
 ```js
 document.addEventListener("DOMContentLoaded", function(){
