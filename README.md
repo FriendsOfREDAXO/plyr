@@ -66,9 +66,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
 >Alle weiteren Infos zur Konfiguration der Skripte oder der Controls der Ausgaben, finden sich auf der GitHub-Site von [Plyr](https://plyr.io). 
 
-## Modul-Beispiel, hier mit MFORM CustomLink 
+### Modul-Beispiel, hier mit MFORM CustomLink 
 
-### Eingabe
+#### Eingabe
 
 ```php
 $mform = new MForm();
@@ -78,7 +78,7 @@ $mform->addMediaField(1, array('label'=>'Image'));
 echo $mform->show();
 ```
 
-### Ausgabe über `rex_plyr::outputMedia`
+#### Ausgabe über `rex_plyr::outputMedia`
 
 ```php
 $media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,mute,volume,progress,airplay,pip,autoplay,loop','/media/cover/REX_MEDIA[1]');
