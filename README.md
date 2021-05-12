@@ -96,7 +96,7 @@ Falls nicht bereits schon eingebunden:
 ```html
 <link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.css') ?>">
 ```
-zusätzlich: 
+und zusätzlich: 
 ```html
 <link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/plyr_playlist.css') ?>">
 ```
