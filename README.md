@@ -85,7 +85,9 @@ $media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,mute,volume,progr
 ```
 > Beispiel mit allen Parametern, die nicht gewünschten Parameter bitte entfernen
 
-## Playlist-Modus
+## Playlist-Player
+
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/video/assets/playlist.jpg)
 
 ### CSS für Playlist
 
