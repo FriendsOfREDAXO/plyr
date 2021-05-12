@@ -111,11 +111,7 @@ REX_MEDIALIST[id="1" type="mp3,mp4" widget="1"]
 
 #### Modul-Ausgabe Playlist 
 
-Die Ausgebe erfolgt über `rex_plyr::outputMediaPlaylist`
-
-Aufbau:
-
-`rex_plyr::outputMediaPlaylist($media_filenames,$controls)`
+Die Ausgabe erfolgt über `rex_plyr::outputMediaPlaylist`
 
 Modul-Ausgabe
 
@@ -165,9 +161,10 @@ Im Consent-Manager muss beim Cookie folgendes Script eingesetzt werden:
 ```
 
 
+## `REX_PLYR`
 
+Zur Ausgabe der Videos steht auch eine REDAXO-Variable zur Verfügung. 
 
-### Alternative Ausgabe per `REX_PLYR`
 
 ```php
 REX_PLYR[1]
@@ -176,7 +173,7 @@ REX_PLYR[1]
 oder mit Konfiguration der Player-Elemente:
 
 ```php
-REX_PLYR[id=1 controls="play,progress" poster="/media/poster.jpg"]
+REX_PLYR[id=1 controls="play,progress"]
 ```
 
 
@@ -223,7 +220,13 @@ players.fullscreen.exit();
 });
 ```
 
-## Hilfsmethoden in der rex_plyr class
+## Methoden in der rex_plyr class
+
+`rex_plyr::outputMedia($url,$controls,$poster,$consent)`
+Erstellt einen Player annhand einer Mediendatei oder URL. 
+
+`rex_plyr::outputMediaPlaylist($media_filenames,$controls)`
+Erstellt eine Playlist anhand des übergebenen Arrays
 
 `checkUrl($url)`
 Gibt sofern es sich um eine Mediapool-Datei handelt die URL zum Medium zurück. 
