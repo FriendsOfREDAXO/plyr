@@ -163,7 +163,7 @@ Im Consent-Manager muss beim Cookie folgendes Script eingesetzt werden:
 
 ## `REX_PLYR`
 
-Zur Ausgabe der Videos steht auch eine REDAXO-Variable zur Verfügung. 
+Zur Ausgabe der Medien steht auch eine REDAXO-Variable zur Verfügung. 
 
 
 ```php
