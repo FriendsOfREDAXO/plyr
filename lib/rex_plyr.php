@@ -168,7 +168,7 @@ class rex_plyr
         $link = $player->checkUrl($url);
         $consent_suffix = $consent_content = '';
         $out = '';
-        
+
         if($consent) {
             $consent_suffix = '_consent';
             $consent_content = $consent;
@@ -179,6 +179,14 @@ class rex_plyr
             $controls = ' data-plyr-config=\'{"controls":' . $player_conf . '}\'';
             $autoplay = ($control_attr && in_array('autoplay', $control_attr)) ? ' autoplay muted' : '';
             $loop = ($control_attr && in_array('loop', $control_attr)) ? ' loop' : '';
+            $control_nojs = '';
+            if ($autoplay || $loop) {
+            	if ($autoplay && $loop) {
+            		$control_nojs = (count($control_attr) > 2) ? ' controls' : '';
+            	} elseif (count($control_attr) > 1) {
+            		$control_nojs = ' controls';
+            	}
+            }
         }
 
         if ($player->checkYoutube($link) == true) {
@@ -192,7 +200,7 @@ class rex_plyr
                 $poster = ' data-poster="' . $poster . '"';
             }
             $out = '
-                        <video class="rex-plyr"' . $controls . $autoplay . $loop .' playsinline volume=1' . $poster . '>
+                        <video controls class="rex-plyr"' . $controls . $autoplay . $loop . $control_nojs .' playsinline volume=1' . $poster . '>
                             <source src="' . $link . '" type="video/mp4">
                         </video>
                     ';
@@ -200,7 +208,7 @@ class rex_plyr
 
         if ($player->checkAudio($url) !== false) {
             $out = '
-                        <audio class="rex-plyr"' . $controls . $autoplay . $loop . '>
+                        <audio controls class="rex-plyr"' . $controls . $autoplay . $loop . $control_nojs . '>
                             <source src="' . $link . '" type="audio/mp3">
                         </audio>
                     ';
