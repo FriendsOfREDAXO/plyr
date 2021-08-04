@@ -74,6 +74,9 @@ class rex_plyr
             if (strtolower($checkPath['extension']) == "mov") {
                 return true;
             }
+	    if (strtolower($checkPath['extension']) == "m4v") {
+                return true;
+            }
         }
         return false;
     }
@@ -135,7 +138,7 @@ class rex_plyr
         return $vimeoID;
     }
     
-    /**
+     /**
      * checkExternalMp4
      *
      * @param  mixed $url
@@ -151,9 +154,6 @@ class rex_plyr
         }
         return false;
     }
-    
-
-    
 
     /**
      * @param mixed $url
@@ -204,8 +204,8 @@ class rex_plyr
                             <source src="' . $link . '" type="video/mp4">
                         </video>
                     ';
-        }
-
+        }    
+	  
         if ($player->checkAudio($url) !== false) {
             $out = '
                         <audio controls class="rex-plyr"' . $controls . $autoplay . $loop . $control_nojs . '>
@@ -234,7 +234,6 @@ class rex_plyr
          $out .= str_replace('class="rex-plyr"', 'class="rex-plyr" id="plyr-'. $plyr_id .'"', 
         	str_replace("data-plyr-config='{", 'data-plyr-config=\'{"plyrId":"'. $plyr_id .'",', $plyr_media)
         );
-
         $out .= '</div>';
         $out .= '</div>';
         $out .= '<script>';
