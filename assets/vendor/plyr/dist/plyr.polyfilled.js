@@ -4055,7 +4055,7 @@ typeof navigator === "object" && (function (global, factory) {
     isEdge: window.navigator.userAgent.includes('Edge'),
     isWebkit: 'WebkitAppearance' in document.documentElement.style && !/Edge/.test(navigator.userAgent),
     isIPhone: /(iPhone|iPod)/gi.test(navigator.platform),
-    isIos: /(iPad|iPhone|iPod)/gi.test(navigator.platform)
+    isIos: navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1 || /(iPad|iPhone|iPod)/gi.test(navigator.platform)
   };
 
   // ==========================================================================
@@ -4589,6 +4589,14 @@ typeof navigator === "object" && (function (global, factory) {
 
   // ==========================================================================
 
+  function supportsCSS(declaration) {
+    if (!window || !window.CSS) {
+      return false;
+    }
+
+    return window.CSS.supports(declaration);
+  } // Standard/common aspect ratios
+
   const standardRatios = [[1, 1], [4, 3], [3, 4], [5, 4], [4, 5], [3, 2], [2, 3], [16, 10], [10, 16], [16, 9], [9, 16], [21, 9], [9, 21], [32, 9], [9, 32]].reduce((out, [x, y]) => ({ ...out,
     [x / y]: [x, y]
   }), {}); // Validate an aspect ratio
@@ -4638,10 +4646,10 @@ typeof navigator === "object" && (function (global, factory) {
         videoWidth,
         videoHeight
       } = this.media;
-      ratio = reduceAspectRatio([videoWidth, videoHeight]);
+      ratio = [videoWidth, videoHeight];
     }
 
-    return ratio;
+    return reduceAspectRatio(ratio);
   } // Set aspect ratio for responsive container
 
   function setAspectRatio(input) {
@@ -4658,8 +4666,8 @@ typeof navigator === "object" && (function (global, factory) {
       return {};
     }
 
-    const [x, y] = ratio;
-    const useNative = window.CSS ? window.CSS.supports(`aspect-ratio: ${x}/${y}`) : false;
+    const [x, y] = reduceAspectRatio(ratio);
+    const useNative = supportsCSS(`aspect-ratio: ${x}/${y}`);
     const padding = 100 / x * y;
 
     if (useNative) {
@@ -4679,7 +4687,7 @@ typeof navigator === "object" && (function (global, factory) {
         this.media.style.transform = `translateY(-${offset}%)`;
       }
     } else if (this.isHTML5) {
-      wrapper.classList.toggle(this.config.classNames.videoFixedRatio, ratio !== null);
+      wrapper.classList.add(this.config.classNames.videoFixedRatio);
     }
 
     return {
@@ -4698,6 +4706,13 @@ typeof navigator === "object" && (function (global, factory) {
 
 
     return [x, y];
+  } // Get the size of the viewport
+  // https://stackoverflow.com/questions/1248081/how-to-get-the-browser-viewport-dimensions
+
+  function getViewportSize() {
+    const width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    const height = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+    return [width, height];
   }
 
   // ==========================================================================
@@ -7032,7 +7047,7 @@ typeof navigator === "object" && (function (global, factory) {
     // Sprite (for icons)
     loadSprite: true,
     iconPrefix: 'plyr',
-    iconUrl: 'https://cdn.plyr.io/3.6.7/plyr.svg',
+    iconUrl: 'https://cdn.plyr.io/3.6.8/plyr.svg',
     // Blank video (used to prevent errors on source change)
     blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
     // Quality default
@@ -8043,42 +8058,52 @@ typeof navigator === "object" && (function (global, factory) {
           timers.controls = setTimeout(() => ui.toggleControls.call(player, false), delay);
         }); // Set a gutter for Vimeo
 
-        const setGutter = (ratio, padding, toggle) => {
+        const setGutter = () => {
           if (!player.isVimeo || player.config.vimeo.premium) {
             return;
           }
 
-          const target = player.elements.wrapper.firstChild;
-          const [, y] = ratio;
-          const [videoX, videoY] = getAspectRatio.call(player);
-          target.style.maxWidth = toggle ? `${y / videoY * videoX}px` : null;
-          target.style.margin = toggle ? '0 auto' : null;
-        }; // Resize on fullscreen change
-
-
-        const setPlayerSize = measure => {
-          // If we don't need to measure the viewport
-          if (!measure) {
-            return setAspectRatio.call(player);
-          }
-
-          const rect = elements.container.getBoundingClientRect();
+          const target = elements.wrapper;
           const {
-            width,
-            height
-          } = rect;
-          return setAspectRatio.call(player, `${width}:${height}`);
-        };
+            active
+          } = player.fullscreen;
+          const [videoWidth, videoHeight] = getAspectRatio.call(player);
+          const useNativeAspectRatio = supportsCSS(`aspect-ratio: ${videoWidth} / ${videoHeight}`); // If not active, remove styles
+
+          if (!active) {
+            if (useNativeAspectRatio) {
+              target.style.width = null;
+              target.style.height = null;
+            } else {
+              target.style.maxWidth = null;
+              target.style.margin = null;
+            }
+
+            return;
+          } // Determine which dimension will overflow and constrain view
+
+
+          const [viewportWidth, viewportHeight] = getViewportSize();
+          const overflow = viewportWidth / viewportHeight > videoWidth / videoHeight;
+
+          if (useNativeAspectRatio) {
+            target.style.width = overflow ? 'auto' : '100%';
+            target.style.height = overflow ? '100%' : 'auto';
+          } else {
+            target.style.maxWidth = overflow ? `${viewportHeight / videoHeight * videoWidth}px` : null;
+            target.style.margin = overflow ? '0 auto' : null;
+          }
+        }; // Handle resizing
+
 
         const resized = () => {
           clearTimeout(timers.resized);
-          timers.resized = setTimeout(setPlayerSize, 50);
+          timers.resized = setTimeout(setGutter, 50);
         };
 
         on.call(player, elements.container, 'enterfullscreen exitfullscreen', event => {
           const {
-            target,
-            usingNative
+            target
           } = player.fullscreen; // Ignore events not from target
 
           if (target !== elements.container) {
@@ -8088,29 +8113,13 @@ typeof navigator === "object" && (function (global, factory) {
 
           if (!player.isEmbed && is.empty(player.config.ratio)) {
             return;
-          }
-
-          const isEnter = event.type === 'enterfullscreen'; // Set the player size when entering fullscreen to viewport size
-
-          const {
-            padding,
-            ratio
-          } = setPlayerSize(isEnter); // Set Vimeo gutter
-
-          setGutter(ratio, padding, isEnter); // Horrible hack for Safari 14 not repainting properly on entering fullscreen
-
-          if (isEnter) {
-            setTimeout(() => repaint(elements.container), 100);
-          } // If not using native browser fullscreen API, we need to check for resizes of viewport
+          } // Set Vimeo gutter
 
 
-          if (!usingNative) {
-            if (isEnter) {
-              on.call(player, window, 'resize', resized);
-            } else {
-              off.call(player, window, 'resize', resized);
-            }
-          }
+          setGutter(); // Watch for resizes
+
+          const method = event.type === 'enterfullscreen' ? on : off;
+          method.call(player, window, 'resize', resized);
         });
       });
 
