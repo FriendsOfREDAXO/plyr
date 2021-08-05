@@ -138,7 +138,7 @@ class rex_plyr
         return $vimeoID;
     }
     
-     /**
+    /**
      * checkExternalMp4
      *
      * @param  mixed $url
@@ -146,14 +146,15 @@ class rex_plyr
      */
     public static function checkExternalMp4($url)
     {
-        if (filter_var($url, FILTER_VALIDATE_URL) === true) {
-            $checkSource = get_headers($url, 1);
-            if (isset($checkSource['Content-Type']) && $checkSource['Content-Type'] === 'video/mp4') {
+
+        if (filter_var($url, FILTER_VALIDATE_URL) == true) {
+            if (get_headers($url, 1) && get_headers($url, 1)["Content-Type"] == 'video/mp4') {
                 return true;
             }
         }
         return false;
     }
+    	
 
     /**
      * @param mixed $url
@@ -195,7 +196,7 @@ class rex_plyr
         if ($player->checkVimeo($link) == true) {
             $out = '<div class="rex-plyr'.$consent_suffix.'" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $controls . '>'.$consent_content.'</div>';
         }
-        if ($player->checkMedia($url) !== false || $player->checkExternalMp4($url) === true) {
+        if ($player->checkMedia($url) !== false ||  $player->checkExternalMp4($url) === true) {
             if ($poster) {
                 $poster = ' data-poster="' . $poster . '"';
             }
