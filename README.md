@@ -51,15 +51,24 @@ Die `plyr_init.js` ist als Beispiel anzusehen und bietet "nur" basic Settings. S
 ```js
 document.addEventListener("DOMContentLoaded", function(){
  const players = Plyr.setup('.rex-plyr',{
-	 youtube: { 
-		 noCookie: true
-	 },
-	 vimeo: {
-	        dnt: true
-	 },
-         iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
-         blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
- });	
+	  youtube: {
+            noCookie: true
+        },
+        vimeo: {
+            dnt: false
+        },
+        iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
+        blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
+    });
+    if (document.querySelector('.rex-plyr')) {
+        players.forEach(function (player) {
+            player.on('play', function () {
+                var others = players.filter(other => other != player)
+                others.forEach(function (other) {
+                    other.pause();
+                })
+            });
+        });
 });
 
 ```
@@ -150,8 +159,8 @@ Im Consent-Manager muss beim Cookie folgendes Script eingesetzt werden:
 
 ```js
 <script>
-
-const players = Plyr.setup('.rex-plyr', {
+document.addEventListener("DOMContentLoaded", function(){
+const players = Plyr.setup('.rex-plyr_consent', {
         youtube: {
             noCookie: true
         },
@@ -171,7 +180,7 @@ const players = Plyr.setup('.rex-plyr', {
             });
         });
     }
-
+});
 </script>
 ```
 
