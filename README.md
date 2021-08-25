@@ -151,7 +151,7 @@ Im Consent-Manager muss beim Cookie folgendes Script eingesetzt werden:
 ```js
 <script>
 
- const players = Plyr.setup('.rex-plyr_consent',{
+ var players = Plyr.setup('.rex-plyr_consent',{
 	 youtube: { 
 		 noCookie: true
 	 },
@@ -161,16 +161,15 @@ Im Consent-Manager muss beim Cookie folgendes Script eingesetzt werden:
 	 iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
    blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
  });	
-
- // Stop other videos    
  players.forEach(function(player) {
-  player.on('play',function(){
-    var others = players.filter(other => other != player)
-    others.forEach(function(other) {
-      other.pause();
-    })
-  });
-});  
+      player.on('play',function(){
+         var others = players.filter(other => other != player)
+         others.forEach(function(other) {
+            other.pause();
+         })
+      });
+   });
+
 </script>
 ```
 
@@ -303,4 +302,3 @@ Plyr und Afterglow stehen unter MIT-Lizenz. Die Player bedienen sich jedoch teil
 
 First Release: [Christian Gehrke](https://github.com/chrison94)
 PlayLists: [Tobias Krais](https://github.com/tobiaskrais)
-
