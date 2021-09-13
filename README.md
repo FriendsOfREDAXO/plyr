@@ -75,6 +75,23 @@ document.addEventListener("DOMContentLoaded", function(){
 
 >Alle weiteren Infos zur Konfiguration der Skripte oder der Controls der Ausgaben, finden sich auf der GitHub-Site von [Plyr](https://plyr.io). 
 
+### Ausgabe eines Mediums
+
+Die Ausgabe erfolgt über die Methode outputMedia(). 
+
+Einzelmedium:
+
+`rex_plyr::outputMedia($file,$controls,$poster)`
+
+PlayList: 
+
+`rex_plyr::outputMediaPlaylist($media_filenames,$controls)`
+
+oder über die REX_VALUE für Einzelmedien: 
+
+`REX_PLYR[id=1 controls="play,progress"]`
+
+
 
 ### Modul-Beispiel mit MFORM CustomLink
 
@@ -93,7 +110,7 @@ echo $mform->show();
 #### Ausgabe über `rex_plyr::outputMedia`
 
 ```php
-$media = rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,mute,volume,progress,airplay,pip,autoplay,loop','/media/cover/REX_MEDIA[1]');
+echo rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,mute,volume,progress,airplay,pip,autoplay,loop','/media/cover/REX_MEDIA[1]');
 ```
 > Beispiel mit allen Parametern, die nicht gewünschten Parameter bitte entfernen
 
@@ -135,7 +152,7 @@ Modul-Ausgabe
 
 ```php
 $media_filenames = preg_grep('/^\s*$/s', explode(",", REX_MEDIALIST[1]), PREG_GREP_INVERT);
-$media = rex_plyr::outputMediaPlaylist($media_filenames,'play-large,play,progress,airplay,pip');
+echo rex_plyr::outputMediaPlaylist($media_filenames,'play-large,play,progress,airplay,pip');
 ```
 
 ## Plyr und Consent-Abfragen
