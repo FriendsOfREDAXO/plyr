@@ -75,7 +75,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
 >Alle weiteren Infos zur Konfiguration der Skripte oder der Controls der Ausgaben, finden sich auf der GitHub-Site von [Plyr](https://plyr.io). 
 
-### Modul-Beispiel, hier mit MFORM CustomLink 
+
+### Modul-Beispiel mit MFORM CustomLink
+
+Das CustomLink-Widget bietet sich an, weil die Redaktion damit lokale und externe Medien verlinken kann. 
 
 #### Eingabe
 
@@ -138,6 +141,9 @@ $media = rex_plyr::outputMediaPlaylist($media_filenames,'play-large,play,progres
 ## Plyr und Consent-Abfragen
 
 Der Parameter $consent erlaubt es einen Platzhalter-Text / Bild etc. einzubinden, der z.B. nach Aktivierung im Consent-Manager ersetzt wird. 
+
+> Das o.g. Intitialisierungsskript 'plyr_init.js' wird nicht benötigt und muss aus dem Template entfernt werden.  
+
 
 ```php
 $consent = '    
