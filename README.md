@@ -10,8 +10,8 @@ Es können lokale Audio-Dateien (mp3), Videos und Youtube- sowie Vimeo-Videos ei
 Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden um dem Entwickler alle Freiheiten zu lassen. 
 
 ## AddOn Features
-- REX_PLYR[] Variable zur schnellen Ausgabe in einem Modul 
 - Statische PHP Methode zur Ausgabe des Videos
+- REX_PLYR[] Variable zur schnellen Ausgabe in einem Modul 
 - Einbindung des Players im Backend
 - Plyr bindet sich in die Detailseite des Medienpools ein
 - Methoden zur Ermittlung des Videotyps
@@ -21,6 +21,23 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 
 > Bei Medien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
 Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten.
+
+##Ausgabe eines Mediums
+
+Die Ausgabe erfolgt über die Methode outputMedia(). 
+
+Einzelmedium:
+
+`rex_plyr::outputMedia($file,$controls,$poster)`
+
+oder über die REX_VALUE für Einzelmedien: 
+
+`REX_PLYR[id=1 controls="play,progress"]`
+
+PlayLists werden wie folgt ausgegeben: 
+
+`rex_plyr::outputMediaPlaylist($media_filenames,$controls)`
+
 
 
 ## Standard-Player 
@@ -74,23 +91,6 @@ document.addEventListener("DOMContentLoaded", function(){
 ```
 
 >Alle weiteren Infos zur Konfiguration der Skripte oder der Controls der Ausgaben, finden sich auf der GitHub-Site von [Plyr](https://plyr.io). 
-
-### Ausgabe eines Mediums
-
-Die Ausgabe erfolgt über die Methode outputMedia(). 
-
-Einzelmedium:
-
-`rex_plyr::outputMedia($file,$controls,$poster)`
-
-PlayList: 
-
-`rex_plyr::outputMediaPlaylist($media_filenames,$controls)`
-
-oder über die REX_VALUE für Einzelmedien: 
-
-`REX_PLYR[id=1 controls="play,progress"]`
-
 
 
 ### Modul-Beispiel mit MFORM CustomLink
@@ -210,14 +210,14 @@ const players = Plyr.setup('.rex-plyr_consent', {
 
 ## `REX_PLYR`
 
-Zur Ausgabe der Medien steht auch eine REDAXO-Variable zur Verfügung. 
+Zur Ausgabe einzelner Medien steht auch eine REDAXO-Variable zur Verfügung. 
 
 
 ```php
 REX_PLYR[1]
 ```
 
-oder mit Konfiguration der Player-Elemente:
+oder mit Konfiguration der Controls:
 
 ```php
 REX_PLYR[id=1 controls="play,progress"]
