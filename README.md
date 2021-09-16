@@ -22,7 +22,7 @@ Wir haben uns bewusst gegen eine automatische Einbindung im Frontend entschieden
 > Bei Medien aus dem Medienpool muss nur der Dateiname angegeben werden. Bei Youtube und Vimeo immer die vollständige URL. 
 Diese Methode bietet sich an um evtl. mehrere Videos z.B. aus einer Datenbank oder Medialist zu verarbeiten.
 
-##Ausgabe eines Mediums
+## Ausgabe eines Mediums
 
 Die Ausgabe erfolgt über die Methode outputMedia(). 
 
