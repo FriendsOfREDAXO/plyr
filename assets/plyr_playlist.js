@@ -27,10 +27,10 @@ function loadPlaylist(players, player_id, myPlaylist) {
 
 	setTimeout(function () {}, 600);
 
-	$(document).on("click", "ul.plyr-playlist li a", function (event) {
+	$(document).on("click", "ul.plyr-playlist#playlist-"+ player_id +" li a", function (event) {
 		event.preventDefault();
 
-		$("li.pls-playing").removeClass("pls-playing");
+		$("ul.plyr-playlist#playlist-"+ player_id +" li.pls-playing").removeClass("pls-playing");
 		$(this)
 				.parent()
 				.addClass("pls-playing");
