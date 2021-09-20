@@ -110,7 +110,7 @@ echo $mform->show();
 #### Ausgabe über `rex_plyr::outputMedia`
 
 ```php
-echo rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,mute,volume,progress,airplay,pip,autoplay,loop','/media/cover/REX_MEDIA[1]');
+echo rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,fullscreen,mute,volume,progress,airplay,pip,autoplay,loop','/media/cover/REX_MEDIA[1]');
 ```
 > Beispiel mit allen Parametern, die nicht gewünschten Parameter bitte entfernen
 
