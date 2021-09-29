@@ -13,11 +13,10 @@ class rex_plyr
 {
 
     /**
-     * @param mixed $url
+     * @param string $url
      *
-     * @return [url]
+     * @return string
      */
-
     public static function checkUrl($url)
     {
         if ($url) {
@@ -32,9 +31,9 @@ class rex_plyr
     }
 
     /**
-     * @param mixed $url
+     * @param string $url
      *
-     * @return [boolean]
+     * @return boolean
      */
     public static function checkYoutube($url)
     {
@@ -45,23 +44,23 @@ class rex_plyr
     }
 
     /**
-     * @param mixed $urL
+     * @param string $url
      *
-     * @return [youtube_id]
+     * @return string
      */
-    public static function getYoutubeId($urL)
+    public static function getYoutubeId($url)
     {
         $youtubeID = "";
-        if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $urL, $match)) {
+        if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
             $youtubeID = $match[1];
         }
         return $youtubeID;
     }
 
     /**
-     * @param mixed $url
+     * @param string $url
      *
-     * @return [boolean]
+     * @return boolean
      */
     public static function checkMedia($url)
     {
@@ -82,9 +81,9 @@ class rex_plyr
     }
     
     /**
-     * @param mixed $url
+     * @param string $url
      *
-     * @return [boolean]
+     * @return boolean
      */
     public static function checkVideo($url)
     {
@@ -95,9 +94,9 @@ class rex_plyr
     }
     
     /**
-     * @param mixed $url
+     * @param string $url
      *
-     * @return [bolean]
+     * @return boolean
      */
     public static function checkAudio($url)
     {
@@ -112,9 +111,9 @@ class rex_plyr
     }
 
     /**
-     * @param mixed $url
+     * @param string $url
      *
-     * @return [boolean]
+     * @return boolean
      */
     public static function checkVimeo($url)
     {
@@ -125,9 +124,9 @@ class rex_plyr
     }
 
     /**
-     * @param mixed $url
+     * @param string $url
      *
-     * @return [VimeoID]
+     * @return string
      */
     public static function getVimeoId($url)
     {
@@ -141,7 +140,7 @@ class rex_plyr
     /**
      * checkExternalMp4
      *
-     * @param  mixed $url
+     * @param  string $url
      * @return boolean
      */
     public static function checkExternalMp4($url)
@@ -158,11 +157,11 @@ class rex_plyr
     	
 
     /**
-     * @param mixed $url
-     * @param null $controls
-     * @param null $poster
+     * @param string $url
+     * @param string $controls
+     * @param string $poster
      *
-     * @return [player output html]
+     * @return string
      */
     public static function outputMedia($url, $controls = null, $poster = null, $consent = null)
     {
@@ -220,10 +219,10 @@ class rex_plyr
     }
     
     /**
-     * @param mixed[] $media_filenames Array with video/mp4 audio/mp3 file names from media pool
-     * @param null $controls
+     * @param array $media_filenames Array with video/mp4 audio/mp3 file names from media pool
+     * @param string $controls
      *
-     * @return [player output html]
+     * @return string
      */
     public static function outputMediaPlaylist($media_filenames, $controls = null)
     {   $plyr = rex_addon::get('plyr');
