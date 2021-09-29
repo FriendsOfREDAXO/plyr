@@ -147,11 +147,12 @@ class rex_plyr
     public static function checkExternalMp4($url)
     {
 
-        if (filter_var($url, FILTER_VALIDATE_URL) == true) {
-            if (get_headers($url, 1) && get_headers($url, 1)["Content-Type"] == 'video/mp4') {
-                return true;
-            }
-        }
+      if (filter_var($url, FILTER_VALIDATE_URL) == true) {
+           
+	if ($checkurl = get_headers($url, 1)) {
+			if ($checkurl['Content-Type'] == 'video/mp4') {
+                            eturn true; }
+       }
         return false;
     }
     	
