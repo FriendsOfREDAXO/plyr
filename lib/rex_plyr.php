@@ -151,7 +151,7 @@ class rex_plyr
            
 	if ($checkurl = get_headers($url, 1)) {
 			if ($checkurl['Content-Type'] == 'video/mp4') {
-                            eturn true; }
+                            return true; }
        }
         return false;
     }
