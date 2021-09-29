@@ -210,6 +210,10 @@ const players = Plyr.setup('.rex-plyr_consent', {
 
 ## `REX_PLYR`
 
+REX_PLYR nimmt eine einfache REX_VAR an. 
+z.B.  `REX_VALUE[1]` aus der Moduleingabe wäre in der Ausgabe `REX_PLYR[1]`
+Es nimmt keine REX_MEDIA Daten an. Daher empfiehlt sich dafür als Eingabe Custom URL Widget aus mform. Damit kann man Medien und Urls einfach übergeben. 
+
 Zur Ausgabe einzelner Medien steht auch eine REDAXO-Variable zur Verfügung. 
 
 
