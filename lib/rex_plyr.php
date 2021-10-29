@@ -188,8 +188,12 @@ class rex_plyr
             		$control_nojs = ' controls';
             	}
             }
-        }
-
+        } else {
+	    $controls = '';
+	    $autoplay = '';
+	    $loop = '';
+	    $control_nojs = '';
+	}
         if ($player->checkYoutube($link) == true) {
             $out = '<div class="rex-plyr'.$consent_suffix.'" data-plyr-provider="youtube" data-plyr-embed-id="' . $player->getYoutubeId($link) . '"' . $controls . '>'.$consent_content.'</div>';
         }
@@ -199,7 +203,9 @@ class rex_plyr
         if ($player->checkMedia($url) !== false ||  $player->checkExternalMp4($url) === true) {
             if ($poster) {
                 $poster = ' data-poster="' . $poster . '"';
-            }
+            } else {
+	        $poster = '';
+	    }
             $out = '
                         <video controls class="rex-plyr"' . $controls . $autoplay . $loop . $control_nojs .' playsinline volume=1' . $poster . '>
                             <source src="' . $link . '" type="video/mp4">
