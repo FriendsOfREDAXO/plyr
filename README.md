@@ -271,6 +271,117 @@ players.fullscreen.exit();
 });
 ```
 
+## youtube vimeo playlist (BETA)
+
+Erlaubt das gemischte Abspielen von Youtube und Vimeo-Videos.
+
+Beipspiel für Bootstrap 4
+
+CSS
+
+```html
+<link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.css') ?>">
+```
+und zusätzlich: 
+```html
+<link rel="stylesheet" href="<?= rex_url::base('assets/addons/plyr/youtube_vimeo_playlist.css') ?>">
+```
+
+
+JS 
+```php
+<script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
+<script src="<?= rex_url::base('assets/addons/plyr/youtube_vimeo_playlist.js') ?>"></script>
+```
+
+
+
+
+- JQuery wird benötigt. 
+
+
+### Modul
+
+Eingabe 
+
+```php
+<?php 
+$id = 1;
+$mform = new MForm();
+$mform->addFieldset('Linkliste');
+$mform->addCustomLinkField("$id.0.1", ['label' => 'Link', 'data-intern'=>'enable','data-extern'=>'enable']);
+$mform->addTextField("$id.0.title", array('label'=>'titel'));
+echo MBlock::show($id, $mform->show(), array('min'=>1,'max'=>40)); 
+```
+
+Ausgabe 
+
+```php
+<?php 
+$data = rex_var::toArray("REX_VALUE[1]"); 
+$video1 = $playlist = '';
+foreach ($data as $value) {
+ 
+   if ($video1 == '') {
+      $video1 = $value[1];
+   }
+    
+   $playlist .= '{
+        type: "vimeo",
+        title: "'.$value['title'].'",
+        author: "",
+        sources: [{
+            src: "'.$value[1].'",
+            type: "vimeo"
+        }],
+        poster: ""
+    },';
+    
+    
+}    
+
+?>
+
+
+<div class="container-fluid">
+<div class="row">
+
+  <div id="player1-REX_SLICE_ID" class="player order-md-first order-lg-last col-sm-12 col-md-7">
+    <div class="js-player-REX_SLICE_ID" data-plyr-provider="vimeo" data-plyr-embed-id="<?=$video1?>" data-plyr-config='{"controls":["play","progress","airplay","pip","volume","mute","fullscreen"]}'>     
+   </div>
+  </div>
+
+  </div>  
+  </div>  
+
+<script>
+var waitForJQuery = setInterval(function () {
+    if (typeof $ != 'undefined') {
+
+
+/* PLAYLIST  */
+$(document).ready(function () {
+var myPlaylist = [
+ <?php echo $playlist; ?>
+];
+
+var target = ".js-player-REX_SLICE_ID";
+var id = '#player1-REX_SLICE_ID';
+var listclass = "col-sm-12 col-md-5";
+var limit = 30;
+
+
+    loadPlaylist(target, myPlaylist, id, listclass, limit);  // LOAD VIDEO LIST
+
+}); 
+ clearInterval(waitForJQuery);
+    }
+}, 10);
+
+</script>    
+
+
+
 ## Methoden in der rex_plyr class
 
 `rex_plyr::outputMedia($url,$controls,$poster,$consent)`
