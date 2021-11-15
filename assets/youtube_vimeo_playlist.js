@@ -29,7 +29,7 @@ function loadPlaylist(target, myPlaylist, id, listclass, limit) {
 
             items.push(
                 '<li class="' + playingclass + '"><a href="#" data-plyr-provider="' + val.sources[0].type + '" data-plyr-embed-id="' + val.sources[0].src + '">' +
-                val.title + " - " + val.author + "</a></li> ");
+                val.title + "" + val.author + "</a></li> ");
 
             if (id == limit)
                 return false;
