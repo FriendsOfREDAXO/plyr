@@ -28,15 +28,13 @@ Die Ausgabe erfolgt über die Methode outputMedia().
 
 Einzelmedium:
 
-`rex_plyr::outputMedia($file,$controls,$poster)`
-
 oder über die REX_VALUE für Einzelmedien: 
 
 `REX_PLYR[id=1 controls="play,progress"]`
 
 PlayLists werden wie folgt ausgegeben: 
 
-`rex_plyr::outputMediaPlaylist($media_filenames,$controls)`
+`rex_plyr::outputMediaPlaylist($media_filenames,$setup)`
 
 
 
@@ -110,7 +108,7 @@ echo $mform->show();
 #### Ausgabe über `rex_plyr::outputMedia`
 
 ```php
-echo rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,fullscreen,mute,volume,progress,airplay,pip,autoplay,loop','/media/cover/REX_MEDIA[1]');
+echo rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,fullscreen,mute,volume,progress,airplay,pip,autoplay,loop,nopreload','/media/cover/REX_MEDIA[1]');
 ```
 > Beispiel mit allen Parametern, die nicht gewünschten Parameter bitte entfernen
 
@@ -384,10 +382,10 @@ var limit = 30;
 
 ## Methoden in der rex_plyr class
 
-`rex_plyr::outputMedia($url,$controls,$poster,$consent)`
+`rex_plyr::outputMedia($url,$setup,$poster,$consent)`
 Erstellt einen Player annhand einer Mediendatei oder URL. 
 
-`rex_plyr::outputMediaPlaylist($media_filenames,$controls)`
+`rex_plyr::outputMediaPlaylist($media_filenames,$setup)`
 Erstellt eine Playlist anhand des übergebenen Arrays
 
 `checkUrl($url)`
