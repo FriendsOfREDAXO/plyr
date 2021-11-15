@@ -309,7 +309,7 @@ Eingabe
 $id = 1;
 $mform = new MForm();
 $mform->addFieldset('Linkliste');
-$mform->addCustomLinkField("$id.0.1", ['label' => 'Link', 'data-intern'=>'enable','data-extern'=>'enable']);
+$mform->addCustomLinkField("$id.0.1", ['label' => 'Link', 'data-media'=>'disable', 'data-mailto'=>'disable', 'data-intern'=>'disable','data-extern'=>'enable']);
 $mform->addTextField("$id.0.title", array('label'=>'titel'));
 echo MBlock::show($id, $mform->show(), array('min'=>1,'max'=>40)); 
 ```
