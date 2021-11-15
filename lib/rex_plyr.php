@@ -178,6 +178,11 @@ class rex_plyr
         }
         if ($controls) {
             $control_attr = explode(",", $controls);
+            $nopreload = '';
+            if ($control_attr && in_array('nopreload', $control_attr))
+            {
+                 $nopreload = ' prelaod="none"';
+            } 
             $player_conf = json_encode($control_attr);
             $controls = ' data-plyr-config=\'{"controls":' . $player_conf . '}\'';
             $autoplay = ($control_attr && in_array('autoplay', $control_attr)) ? ' autoplay muted' : '';
@@ -217,7 +222,7 @@ class rex_plyr
                 $poster = '';
             }
             $out = '
-                        <video controls class="rex-plyr"' . $controls . $autoplay . $loop . $control_nojs . ' playsinline volume=1' . $poster . '>
+                        <video controls class="rex-plyr"' . $controls . $autoplay . $loop . $nopreload . $control_nojs . ' playsinline volume=1' . $poster . '>
                             <source src="' . $link . '" type="video/mp4">
                         </video>
                     ';
