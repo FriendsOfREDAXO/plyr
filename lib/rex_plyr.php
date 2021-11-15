@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the plyr package.
  *
@@ -73,13 +74,13 @@ class rex_plyr
             if (strtolower($checkPath['extension']) == "mov") {
                 return true;
             }
-	    if (strtolower($checkPath['extension']) == "m4v") {
+            if (strtolower($checkPath['extension']) == "m4v") {
                 return true;
             }
         }
         return false;
     }
-    
+
     /**
      * @param string $url
      *
@@ -92,7 +93,7 @@ class rex_plyr
         }
         return false;
     }
-    
+
     /**
      * @param string $url
      *
@@ -136,7 +137,7 @@ class rex_plyr
         }
         return $vimeoID;
     }
-    
+
     /**
      * checkExternalMp4
      *
@@ -146,15 +147,16 @@ class rex_plyr
     public static function checkExternalMp4($url)
     {
 
-      if (filter_var($url, FILTER_VALIDATE_URL) == true) {
-           
-	if ($checkurl = get_headers($url, 1)) {
-			if ($checkurl['Content-Type'] == 'video/mp4') {
-                            return true; }
-       }
-        return false;
+        if (filter_var($url, FILTER_VALIDATE_URL) == true) {
+
+            if ($checkurl = get_headers($url, 1)) {
+                if ($checkurl['Content-Type'] == 'video/mp4') {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
-    	
 
     /**
      * @param string $url
@@ -170,7 +172,7 @@ class rex_plyr
         $consent_suffix = $consent_content = '';
         $out = '';
 
-        if($consent) {
+        if ($consent) {
             $consent_suffix = '_consent';
             $consent_content = $consent;
         }
@@ -182,37 +184,37 @@ class rex_plyr
             $loop = ($control_attr && in_array('loop', $control_attr)) ? ' loop' : '';
             $control_nojs = '';
             if ($autoplay || $loop) {
-            	if ($autoplay && $loop) {
-            		$control_nojs = (count($control_attr) > 2) ? ' controls' : '';
-            	} elseif (count($control_attr) > 1) {
-            		$control_nojs = ' controls';
-            	}
+                if ($autoplay && $loop) {
+                    $control_nojs = (count($control_attr) > 2) ? ' controls' : '';
+                } elseif (count($control_attr) > 1) {
+                    $control_nojs = ' controls';
+                }
             }
         } else {
-	    $controls = '';
-	    $autoplay = '';
-	    $loop = '';
-	    $control_nojs = '';
-	}
+            $controls = '';
+            $autoplay = '';
+            $loop = '';
+            $control_nojs = '';
+        }
         if ($player->checkYoutube($link) == true) {
-            $out = '<div class="rex-plyr'.$consent_suffix.'" data-plyr-provider="youtube" data-plyr-embed-id="' . $player->getYoutubeId($link) . '"' . $controls . '>'.$consent_content.'</div>';
+            $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="youtube" data-plyr-embed-id="' . $player->getYoutubeId($link) . '"' . $controls . '>' . $consent_content . '</div>';
         }
         if ($player->checkVimeo($link) == true) {
-            $out = '<div class="rex-plyr'.$consent_suffix.'" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $controls . '>'.$consent_content.'</div>';
+            $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $controls . '>' . $consent_content . '</div>';
         }
         if ($player->checkMedia($url) !== false ||  $player->checkExternalMp4($url) === true) {
             if ($poster) {
                 $poster = ' data-poster="' . $poster . '"';
             } else {
-	        $poster = '';
-	    }
+                $poster = '';
+            }
             $out = '
-                        <video controls class="rex-plyr"' . $controls . $autoplay . $loop . $control_nojs .' playsinline volume=1' . $poster . '>
+                        <video controls class="rex-plyr"' . $controls . $autoplay . $loop . $control_nojs . ' playsinline volume=1' . $poster . '>
                             <source src="' . $link . '" type="video/mp4">
                         </video>
                     ';
-        }    
-	  
+        }
+
         if ($player->checkAudio($url) !== false) {
             $out = '
                         <audio controls class="rex-plyr"' . $controls . $autoplay . $loop . $control_nojs . '>
@@ -223,7 +225,7 @@ class rex_plyr
 
         return $out;
     }
-    
+
     /**
      * @param array $media_filenames Array with video/mp4 audio/mp3 file names from media pool
      * @param string $controls
@@ -231,48 +233,51 @@ class rex_plyr
      * @return string
      */
     public static function outputMediaPlaylist($media_filenames, $controls = null)
-    {   $plyr = rex_addon::get('plyr');
+    {
+        $plyr = rex_addon::get('plyr');
         $svg_url = $plyr->getAssetsUrl("vendor/plyr/dist/plyr.svg");
         $blank_mp4 = $plyr->getAssetsUrl("vendor/plyr/dist/blank.mp4");
-        $plyr_id = rand(); 
+        $plyr_id = rand();
         $out = '<div class="plyr-container">';
-        $out .= '<div id="player-'. $plyr_id .'">';
+        $out .= '<div id="player-' . $plyr_id . '">';
         $plyr_media = rex_plyr::outputMedia($media_filenames[0], $controls);
-         $out .= str_replace('class="rex-plyr"', 'class="rex-plyr" id="plyr-'. $plyr_id .'"', 
-        	str_replace("data-plyr-config='{", 'data-plyr-config=\'{"plyrId":"'. $plyr_id .'",', $plyr_media)
+        $out .= str_replace(
+            'class="rex-plyr"',
+            'class="rex-plyr" id="plyr-' . $plyr_id . '"',
+            str_replace("data-plyr-config='{", 'data-plyr-config=\'{"plyrId":"' . $plyr_id . '",', $plyr_media)
         );
         $out .= '</div>';
         $out .= '</div>';
         $out .= '<script>';
         $out .= '$(document).ready(function () {';
-	    $out .= 'loadPlaylist(Plyr.setup("#plyr-'. $plyr_id .'", {';
-		$out .= 'youtube: { ';
-		$out .= 'noCookie: true ';
-		$out .= '},';
-		$out .= 'iconUrl: "'.$svg_url.'",';
-		$out .= 'blankVideo: "'.$blank_mp4.'"';
+        $out .= 'loadPlaylist(Plyr.setup("#plyr-' . $plyr_id . '", {';
+        $out .= 'youtube: { ';
+        $out .= 'noCookie: true ';
+        $out .= '},';
+        $out .= 'iconUrl: "' . $svg_url . '",';
+        $out .= 'blankVideo: "' . $blank_mp4 . '"';
         $out .= '}),';
-		$out .= $plyr_id .',';
-		$out .= '[';
-		$first_element = true;
-		foreach ($media_filenames as $media_filename) {
-			$media = rex_media::get($media_filename);
-			if ($media instanceof rex_media) {
-				if ($first_element) {
-					$first_element = false;
-				} else {
-					$out .= ',';
-				}
+        $out .= $plyr_id . ',';
+        $out .= '[';
+        $first_element = true;
+        foreach ($media_filenames as $media_filename) {
+            $media = rex_media::get($media_filename);
+            if ($media instanceof rex_media) {
+                if ($first_element) {
+                    $first_element = false;
+                } else {
+                    $out .= ',';
+                }
 
-				$out .= '{' . PHP_EOL;
-				$out .= 'type: "video/mp4",' . PHP_EOL;
-				$out .= 'title: "' . $media->getTitle() . '",' . PHP_EOL;
-				$out .= 'src: "' . $media->getUrl() . '",' . PHP_EOL;
-				$out .= '}' . PHP_EOL;
-			}
-		}
-		$out .= ']';
-	    $out .= ');';
+                $out .= '{' . PHP_EOL;
+                $out .= 'type: "video/mp4",' . PHP_EOL;
+                $out .= 'title: "' . $media->getTitle() . '",' . PHP_EOL;
+                $out .= 'src: "' . $media->getUrl() . '",' . PHP_EOL;
+                $out .= '}' . PHP_EOL;
+            }
+        }
+        $out .= ']';
+        $out .= ');';
         $out .= '});';
         $out .= '</script>';
         return $out;
