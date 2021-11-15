@@ -196,12 +196,20 @@ class rex_plyr
             $loop = '';
             $control_nojs = '';
         }
+        $provider = '';
+        
         if ($player->checkYoutube($link) == true) {
-            $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="youtube" data-plyr-embed-id="' . $player->getYoutubeId($link) . '"' . $controls . '>' . $consent_content . '</div>';
+            $provider = 'youtube';
         }
         if ($player->checkVimeo($link) == true) {
-            $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $controls . '>' . $consent_content . '</div>';
+            $provider = 'vimeo';
         }
+        
+        if ($provider!='')
+        {    
+        $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $controls . '>' . $consent_content . '</div>';
+        }
+        
         if ($player->checkMedia($url) !== false ||  $player->checkExternalMp4($url) === true) {
             if ($poster) {
                 $poster = ' data-poster="' . $poster . '"';
