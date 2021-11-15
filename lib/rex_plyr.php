@@ -160,12 +160,12 @@ class rex_plyr
 
     /**
      * @param string $url
-     * @param string $controls
+     * @param string $setup
      * @param string $poster
      *
      * @return string
      */
-    public static function outputMedia($url, $controls = null, $poster = null, $consent = null)
+    public static function outputMedia($url, $setup = null, $poster = null, $consent = null)
     {
         $player = new rex_plyr();
         $link = $player->checkUrl($url);
@@ -176,15 +176,15 @@ class rex_plyr
             $consent_suffix = '_consent';
             $consent_content = $consent;
         }
-        if ($controls) {
-            $control_attr = explode(",", $controls);
+        if ($setup) {
+            $control_attr = explode(",", $setup);
             $nopreload = '';
             if ($control_attr && in_array('nopreload', $control_attr))
             {
                  $nopreload = ' prelaod="none"';
             } 
             $player_conf = json_encode($control_attr);
-            $controls = ' data-plyr-config=\'{"controls":' . $player_conf . '}\'';
+            $setup = ' data-plyr-config=\'{"controls":' . $player_conf . '}\'';
             $autoplay = ($control_attr && in_array('autoplay', $control_attr)) ? ' autoplay muted' : '';
             $loop = ($control_attr && in_array('loop', $control_attr)) ? ' loop' : '';
             $control_nojs = '';
@@ -196,7 +196,7 @@ class rex_plyr
                 }
             }
         } else {
-            $controls = '';
+            $setup = '';
             $autoplay = '';
             $loop = '';
             $control_nojs = '';
@@ -212,7 +212,7 @@ class rex_plyr
         
         if ($provider!='')
         {    
-        $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $controls . '>' . $consent_content . '</div>';
+        $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $setup . '>' . $consent_content . '</div>';
         }
         
         if ($player->checkMedia($url) !== false ||  $player->checkExternalMp4($url) === true) {
@@ -222,7 +222,7 @@ class rex_plyr
                 $poster = '';
             }
             $out = '
-                        <video controls class="rex-plyr"' . $controls . $autoplay . $loop . $nopreload . $control_nojs . ' playsinline volume=1' . $poster . '>
+                        <video controls class="rex-plyr"' . $setup . $autoplay . $loop . $nopreload . $control_nojs . ' playsinline volume=1' . $poster . '>
                             <source src="' . $link . '" type="video/mp4">
                         </video>
                     ';
@@ -230,7 +230,7 @@ class rex_plyr
 
         if ($player->checkAudio($url) !== false) {
             $out = '
-                        <audio controls class="rex-plyr"' . $controls . $autoplay . $loop . $control_nojs . '>
+                        <audio controls class="rex-plyr"' . $setup . $autoplay . $loop . $control_nojs . '>
                             <source src="' . $link . '" type="audio/mp3">
                         </audio>
                     ';
@@ -241,11 +241,11 @@ class rex_plyr
 
     /**
      * @param array $media_filenames Array with video/mp4 audio/mp3 file names from media pool
-     * @param string $controls
+     * @param string $setup
      *
      * @return string
      */
-    public static function outputMediaPlaylist($media_filenames, $controls = null)
+    public static function outputMediaPlaylist($media_filenames, $setup = null)
     {
         $plyr = rex_addon::get('plyr');
         $svg_url = $plyr->getAssetsUrl("vendor/plyr/dist/plyr.svg");
@@ -253,7 +253,7 @@ class rex_plyr
         $plyr_id = rand();
         $out = '<div class="plyr-container">';
         $out .= '<div id="player-' . $plyr_id . '">';
-        $plyr_media = rex_plyr::outputMedia($media_filenames[0], $controls);
+        $plyr_media = rex_plyr::outputMedia($media_filenames[0], $setup);
         $out .= str_replace(
             'class="rex-plyr"',
             'class="rex-plyr" id="plyr-' . $plyr_id . '"',
