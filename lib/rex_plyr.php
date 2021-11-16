@@ -180,7 +180,7 @@ class rex_plyr
             $control_attr = explode(",", $setup);
             if ($control_attr && in_array('nopreload', $control_attr))
             {
-                 $nopreload = ' prelaod="none"';
+                 $nopreload = ' preload="none"';
             } 
             $player_conf = json_encode($control_attr);
             $setup = ' data-plyr-config=\'{"controls":' . $player_conf . '}\'';
