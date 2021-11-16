@@ -170,7 +170,7 @@ class rex_plyr
         $player = new rex_plyr();
         $link = $player->checkUrl($url);
         $consent_suffix = $consent_content = '';
-        $out = '';
+        $out = $nopreload = '';
 
         if ($consent) {
             $consent_suffix = '_consent';
@@ -178,7 +178,6 @@ class rex_plyr
         }
         if ($setup) {
             $control_attr = explode(",", $setup);
-            $nopreload = '';
             if ($control_attr && in_array('nopreload', $control_attr))
             {
                  $nopreload = ' prelaod="none"';
