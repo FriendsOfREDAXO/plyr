@@ -211,7 +211,7 @@ class rex_plyr
         
         if ($provider!='')
         {    
-        $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="vimeo" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $setup . '>' . $consent_content . '</div>';
+        $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="'.$provider.'" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $setup . '>' . $consent_content . '</div>';
         }
         
         if ($player->checkMedia($url) !== false ||  $player->checkExternalMp4($url) === true) {
