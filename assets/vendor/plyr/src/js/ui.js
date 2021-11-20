@@ -82,6 +82,9 @@ const ui = {
     // Reset time display
     controls.timeUpdate.call(this);
 
+    // Reset duration display
+    controls.durationUpdate.call(this);
+
     // Update the UI
     ui.checkPlaying.call(this);
 
@@ -181,13 +184,13 @@ const ui = {
         .call(this)
         // Load image
         .then(() => loadImage(poster))
-        .catch((err) => {
+        .catch((error) => {
           // Hide poster on error unless it's been set by another call
           if (poster === this.poster) {
             ui.togglePoster.call(this, false);
           }
           // Rethrow
-          throw err;
+          throw error;
         })
         .then(() => {
           // Prevent race conditions

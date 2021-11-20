@@ -298,7 +298,7 @@ typeof navigator === "object" && (function (global, factory) {
 
     try {
       return !isEmpty(new URL(string).hostname);
-    } catch (e) {
+    } catch (_) {
       return false;
     }
   };
@@ -346,7 +346,7 @@ typeof navigator === "object" && (function (global, factory) {
         element.offsetHeight; // eslint-disable-next-line no-param-reassign
 
         element.hidden = false;
-      } catch (e) {// Do nothing
+      } catch (_) {// Do nothing
       }
     }, delay);
   }
@@ -727,7 +727,7 @@ typeof navigator === "object" && (function (global, factory) {
 
       try {
         return Boolean(type && this.media.canPlayType(type).replace(/no/, ''));
-      } catch (e) {
+      } catch (_) {
         return false;
       }
     },
@@ -768,7 +768,7 @@ typeof navigator === "object" && (function (global, factory) {
       });
       window.addEventListener('test', null, options);
       window.removeEventListener('test', null, options);
-    } catch (e) {// Do nothing
+    } catch (_) {// Do nothing
     }
 
     return supported;
@@ -1289,7 +1289,10 @@ typeof navigator === "object" && (function (global, factory) {
 
         extend(storage, object); // Update storage
 
-        window.localStorage.setItem(this.key, JSON.stringify(storage));
+        try {
+          window.localStorage.setItem(this.key, JSON.stringify(storage));
+        } catch (_) {// Do nothing
+        }
       });
 
       this.enabled = player.config.storage.enabled;
@@ -1309,7 +1312,7 @@ typeof navigator === "object" && (function (global, factory) {
         window.localStorage.setItem(test, test);
         window.localStorage.removeItem(test);
         return true;
-      } catch (e) {
+      } catch (_) {
         return false;
       }
     }
@@ -1333,7 +1336,7 @@ typeof navigator === "object" && (function (global, factory) {
           if (responseType === 'text') {
             try {
               resolve(JSON.parse(request.responseText));
-            } catch (e) {
+            } catch (_) {
               resolve(request.responseText);
             }
           } else {
@@ -1347,8 +1350,8 @@ typeof navigator === "object" && (function (global, factory) {
 
         request.responseType = responseType;
         request.send();
-      } catch (e) {
-        reject(e);
+      } catch (error) {
+        reject(error);
       }
     });
   }
@@ -1407,9 +1410,12 @@ typeof navigator === "object" && (function (global, factory) {
         }
 
         if (useStorage) {
-          window.localStorage.setItem(`${prefix}-${id}`, JSON.stringify({
-            content: result
-          }));
+          try {
+            window.localStorage.setItem(`${prefix}-${id}`, JSON.stringify({
+              content: result
+            }));
+          } catch (_) {// Do nothing
+          }
         }
 
         update(container, result);
@@ -1453,7 +1459,8 @@ typeof navigator === "object" && (function (global, factory) {
     // Get icon URL
     getIconUrl() {
       const url = new URL(this.config.iconUrl, window.location);
-      const cors = url.host !== window.location.host || browser.isIE && !window.svg4everybody;
+      const host = window.location.host ? window.location.host : window.top.location.host;
+      const cors = url.host !== host || browser.isIE && !window.svg4everybody;
       return {
         url: this.config.iconUrl,
         cors
@@ -2941,7 +2948,7 @@ typeof navigator === "object" && (function (global, factory) {
 
     try {
       return new URL(url);
-    } catch (e) {
+    } catch (_) {
       return null;
     }
   } // Convert object to URLSearchParams
@@ -3079,7 +3086,10 @@ typeof navigator === "object" && (function (global, factory) {
       } // Enable or disable captions based on track length
 
 
-      toggleClass(this.elements.container, this.config.classNames.captions.enabled, !is.empty(tracks)); // Update available languages in list
+      if (this.elements) {
+        toggleClass(this.elements.container, this.config.classNames.captions.enabled, !is.empty(tracks));
+      } // Update available languages in list
+
 
       if (is.array(this.config.controls) && this.config.controls.includes('settings') && this.config.settings.includes('captions')) {
         controls.setCaptionsMenu.call(this);
@@ -3362,7 +3372,7 @@ typeof navigator === "object" && (function (global, factory) {
     // Sprite (for icons)
     loadSprite: true,
     iconPrefix: 'plyr',
-    iconUrl: 'https://cdn.plyr.io/3.6.8/plyr.svg',
+    iconUrl: 'https://cdn.plyr.io/3.6.9/plyr.svg',
     // Blank video (used to prevent errors on source change)
     blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
     // Quality default
@@ -3628,7 +3638,8 @@ typeof navigator === "object" && (function (global, factory) {
     attributes: {
       embed: {
         provider: 'data-plyr-provider',
-        id: 'data-plyr-embed-id'
+        id: 'data-plyr-embed-id',
+        hash: 'data-plyr-embed-hash'
       }
     },
     // Advertisements plugin
@@ -3989,7 +4000,7 @@ typeof navigator === "object" && (function (global, factory) {
         return hasClass(this.target, this.player.config.classNames.fullscreen.fallback);
       }
 
-      const element = !this.prefix ? document.fullscreenElement : document[`${this.prefix}${this.property}Element`];
+      const element = !this.prefix ? this.target.getRootNode().fullscreenElement : this.target.getRootNode()[`${this.prefix}${this.property}Element`];
       return element && element.shadowRoot ? element === this.target.getRootNode().host : element === this.target;
     } // Get target element
 
@@ -4081,7 +4092,9 @@ typeof navigator === "object" && (function (global, factory) {
 
       controls.updateVolume.call(this); // Reset time display
 
-      controls.timeUpdate.call(this); // Update the UI
+      controls.timeUpdate.call(this); // Reset duration display
+
+      controls.durationUpdate.call(this); // Update the UI
 
       ui.checkPlaying.call(this); // Check for picture-in-picture support
 
@@ -4160,14 +4173,14 @@ typeof navigator === "object" && (function (global, factory) {
       this.elements.poster.removeAttribute('hidden'); // Wait until ui is ready
 
       return ready.call(this) // Load image
-      .then(() => loadImage(poster)).catch(err => {
+      .then(() => loadImage(poster)).catch(error => {
         // Hide poster on error unless it's been set by another call
         if (poster === this.poster) {
           ui.togglePoster.call(this, false);
         } // Rethrow
 
 
-        throw err;
+        throw error;
       }).then(() => {
         // Prevent race conditions
         if (poster !== this.poster) {
@@ -4796,7 +4809,9 @@ typeof navigator === "object" && (function (global, factory) {
         if (elements.fullscreen) {
           Array.from(elements.fullscreen.children).filter(c => !c.contains(elements.container)).forEach(child => {
             this.bind(child, 'mouseenter mouseleave', event => {
-              elements.controls.hover = !player.touch && event.type === 'mouseenter';
+              if (elements.controls) {
+                elements.controls.hover = !player.touch && event.type === 'mouseenter';
+              }
             });
           });
         } // Update controls.pressed state (used for ui.toggleControls to avoid hiding when interacting)
@@ -5335,6 +5350,20 @@ typeof navigator === "object" && (function (global, factory) {
 
     const regex = /^.*(vimeo.com\/|video\/)(\d+).*/;
     return url.match(regex) ? RegExp.$2 : url;
+  } // Try to extract a hash for private videos from the URL
+
+
+  function parseHash(url) {
+    /* This regex matches a hexadecimal hash if given in any of these forms:
+     *  - [https://player.]vimeo.com/video/{id}/{hash}[?params]
+     *  - [https://player.]vimeo.com/video/{id}?h={hash}[&params]
+     *  - [https://player.]vimeo.com/video/{id}?[params]&h={hash}
+     *  - video/{id}/{hash}
+     * If matched, the hash is available in the named group `hash`
+     */
+    const regex = /^.*(?:vimeo.com\/|video\/)(?:\d+)(?:\?.*&*h=|\/)+(?<hash>[\d,a-f]+)/;
+    const found = url.match(regex);
+    return found ? found.groups.hash : null;
   } // Set playback state and trigger change (only on actual change)
 
 
@@ -5378,7 +5407,22 @@ typeof navigator === "object" && (function (global, factory) {
         premium,
         referrerPolicy,
         ...frameParams
-      } = config; // If the owner has a pro or premium account then we can hide controls etc
+      } = config; // Get the source URL or ID
+
+      let source = player.media.getAttribute('src');
+      let hash = ''; // Get from <div> if needed
+
+      if (is.empty(source)) {
+        source = player.media.getAttribute(player.config.attributes.embed.id); // hash can also be set as attribute on the <div>
+
+        hash = player.media.getAttribute(player.config.attributes.embed.hash);
+      } else {
+        hash = parseHash(source);
+      }
+
+      const hashParam = hash ? {
+        h: hash
+      } : {}; // If the owner has a pro or premium account then we can hide controls etc
 
       if (premium) {
         Object.assign(frameParams, {
@@ -5394,15 +5438,10 @@ typeof navigator === "object" && (function (global, factory) {
         muted: player.muted,
         gesture: 'media',
         playsinline: !this.config.fullscreen.iosNative,
+        // hash has to be added to iframe-URL
+        ...hashParam,
         ...frameParams
-      }); // Get the source URL or ID
-
-      let source = player.media.getAttribute('src'); // Get from <div> if needed
-
-      if (is.empty(source)) {
-        source = player.media.getAttribute(player.config.attributes.embed.id);
-      }
-
+      });
       const id = parseId$1(source); // Build an iframe
 
       const iframe = createElement('iframe');
@@ -6261,8 +6300,8 @@ typeof navigator === "object" && (function (global, factory) {
 
           request.setAdWillPlayMuted(!this.player.muted);
           this.loader.requestAds(request);
-        } catch (e) {
-          this.onAdError(e);
+        } catch (error) {
+          this.onAdError(error);
         }
       });
 
@@ -7689,7 +7728,7 @@ typeof navigator === "object" && (function (global, factory) {
       this.config = extend({}, defaults, Plyr.defaults, options || {}, (() => {
         try {
           return JSON.parse(this.media.getAttribute('data-plyr-config'));
-        } catch (e) {
+        } catch (_) {
           return {};
         }
       })()); // Elements cache
@@ -8196,7 +8235,9 @@ typeof navigator === "object" && (function (global, factory) {
       this.config.speed.selected = speed; // Set media speed
 
       setTimeout(() => {
-        this.media.playbackRate = speed;
+        if (this.media) {
+          this.media.playbackRate = speed;
+        }
       }, 0);
     }
     /**
@@ -8481,6 +8522,7 @@ typeof navigator === "object" && (function (global, factory) {
 
     set currentTrack(input) {
       captions.set.call(this, input, false);
+      captions.setup();
     }
     /**
      * Get the current caption track index (-1 if disabled)
@@ -8559,6 +8601,23 @@ typeof navigator === "object" && (function (global, factory) {
 
 
       return this.media === document.pictureInPictureElement;
+    }
+    /**
+     * Sets the preview thubmnails for the current source
+     */
+
+
+    setPreviewThumbnails(thumbnailSource) {
+      if (this.previewThumbnails && this.previewThumbnails.loaded) {
+        this.previewThumbnails.destroy();
+        this.previewThumbnails = null;
+      }
+
+      Object.assign(this.config.previewThumbnails, thumbnailSource); // Create new instance if it is still enabled
+
+      if (this.config.previewThumbnails.enabled) {
+        this.previewThumbnails = new PreviewThumbnails(this);
+      }
     }
     /**
      * Trigger the airplay dialog

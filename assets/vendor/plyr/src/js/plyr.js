@@ -1,6 +1,6 @@
 // ==========================================================================
 // Plyr
-// plyr.js v3.6.8
+// plyr.js v3.6.9
 // https://github.com/sampotts/plyr
 // License: The MIT License (MIT)
 // ==========================================================================
@@ -72,7 +72,7 @@ class Plyr {
       (() => {
         try {
           return JSON.parse(this.media.getAttribute('data-plyr-config'));
-        } catch (e) {
+        } catch (_) {
           return {};
         }
       })(),
@@ -675,7 +675,9 @@ class Plyr {
 
     // Set media speed
     setTimeout(() => {
-      this.media.playbackRate = speed;
+      if (this.media) {
+        this.media.playbackRate = speed;
+      }
     }, 0);
   }
 
@@ -956,6 +958,7 @@ class Plyr {
    */
   set currentTrack(input) {
     captions.set.call(this, input, false);
+    captions.setup();
   }
 
   /**
@@ -1027,6 +1030,23 @@ class Plyr {
 
     // Chrome
     return this.media === document.pictureInPictureElement;
+  }
+
+  /**
+   * Sets the preview thubmnails for the current source
+   */
+  setPreviewThumbnails(thumbnailSource) {
+    if (this.previewThumbnails && this.previewThumbnails.loaded) {
+      this.previewThumbnails.destroy();
+      this.previewThumbnails = null;
+    }
+
+    Object.assign(this.config.previewThumbnails, thumbnailSource);
+
+    // Create new instance if it is still enabled
+    if (this.config.previewThumbnails.enabled) {
+      this.previewThumbnails = new PreviewThumbnails(this);
+    }
   }
 
   /**
