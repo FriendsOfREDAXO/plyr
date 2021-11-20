@@ -201,17 +201,21 @@ class rex_plyr
             $control_nojs = '';
         }
         $provider = '';
-        
+        $embed_id = '';
+
         if ($player->checkYoutube($link) == true) {
             $provider = 'youtube';
+            $embed_id = $player->getYoutubeId($link);
         }
+
         if ($player->checkVimeo($link) == true) {
             $provider = 'vimeo';
+            $embed_id = $player->getVimeoId($link);
         }
         
         if ($provider!='')
         {    
-        $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="'.$provider.'" data-plyr-embed-id="' . $player->getVimeoId($link) . '"' . $setup . '>' . $consent_content . '</div>';
+        $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="'.$provider.'" data-plyr-embed-id="' . $embed_id . '"' . $setup . '>' . $consent_content . '</div>';
         }
         
         if ($player->checkMedia($url) !== false ||  $player->checkExternalMp4($url) === true) {
