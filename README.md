@@ -28,6 +28,10 @@ Die Ausgabe erfolgt über die Methode outputMedia().
 
 Einzelmedium:
 
+```php
+echo rex_plyr::outputMedia($fileOrUrl,$config,$poster);
+```
+
 oder über die REX_VALUE für Einzelmedien: 
 
 `REX_PLYR[id=1 controls="play,progress"]`
