@@ -178,10 +178,9 @@ class rex_plyr
         }
         if ($setup) {
             $control_attr = explode(",", $setup);
-            if ($control_attr && in_array('nopreload', $control_attr))
-            {
-                 $nopreload = ' preload="none"';
-            } 
+            if ($control_attr && in_array('nopreload', $control_attr)) {
+                $nopreload = ' preload="none"';
+            }
             $player_conf = json_encode($control_attr);
             $setup = ' data-plyr-config=\'{"controls":' . $player_conf . '}\'';
             $autoplay = ($control_attr && in_array('autoplay', $control_attr)) ? ' autoplay muted' : '';
@@ -212,12 +211,11 @@ class rex_plyr
             $provider = 'vimeo';
             $embed_id = $player->getVimeoId($link);
         }
-        
-        if ($provider!='')
-        {    
-        $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="'.$provider.'" data-plyr-embed-id="' . $embed_id . '"' . $setup . '>' . $consent_content . '</div>';
+
+        if ($provider != '') {
+            $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="' . $provider . '" data-plyr-embed-id="' . $embed_id . '"' . $setup . '>' . $consent_content . '</div>';
         }
-        
+
         if ($player->checkMedia($url) !== false ||  $player->checkExternalMp4($url) === true) {
             if ($poster) {
                 $poster = ' data-poster="' . $poster . '"';
