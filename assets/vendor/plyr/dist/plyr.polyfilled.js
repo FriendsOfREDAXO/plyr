@@ -4368,7 +4368,7 @@ typeof navigator === "object" && (function (global, factory) {
         set(input) {
           if (player.quality === input) {
             return;
-          } // If we're using an an external handler...
+          } // If we're using an external handler...
 
 
           if (player.config.quality.forced && is.function(player.config.quality.onChange)) {
@@ -6655,7 +6655,7 @@ typeof navigator === "object" && (function (global, factory) {
     // Sprite (for icons)
     loadSprite: true,
     iconPrefix: 'plyr',
-    iconUrl: 'https://cdn.plyr.io/3.6.9/plyr.svg',
+    iconUrl: 'https://cdn.plyr.io/3.6.10/plyr.svg',
     // Blank video (used to prevent errors on source change)
     blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
     // Quality default
