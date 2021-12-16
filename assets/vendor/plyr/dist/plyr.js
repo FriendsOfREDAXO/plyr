@@ -2,7 +2,7 @@ typeof navigator === "object" && (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define('Plyr', factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Plyr = factory());
-}(this, (function () { 'use strict';
+})(this, (function () { 'use strict';
 
   function _defineProperty$1(obj, key, value) {
     if (key in obj) {
@@ -3372,7 +3372,7 @@ typeof navigator === "object" && (function (global, factory) {
     // Sprite (for icons)
     loadSprite: true,
     iconPrefix: 'plyr',
-    iconUrl: 'https://cdn.plyr.io/3.6.10/plyr.svg',
+    iconUrl: 'https://cdn.plyr.io/3.6.11/plyr.svg',
     // Blank video (used to prevent errors on source change)
     blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
     // Quality default
@@ -6812,13 +6812,13 @@ typeof navigator === "object" && (function (global, factory) {
             });
           } // VTT urls
           else {
-              // If string, convert into single-element list
-              const urls = is.string(src) ? [src] : src; // Loop through each src URL. Download and process the VTT file, storing the resulting data in this.thumbnails
+            // If string, convert into single-element list
+            const urls = is.string(src) ? [src] : src; // Loop through each src URL. Download and process the VTT file, storing the resulting data in this.thumbnails
 
-              const promises = urls.map(u => this.getThumbnail(u)); // Resolve
+            const promises = urls.map(u => this.getThumbnail(u)); // Resolve
 
-              Promise.all(promises).then(sortAndResolve);
-            }
+            Promise.all(promises).then(sortAndResolve);
+          }
         });
       });
 
@@ -8675,4 +8675,4 @@ typeof navigator === "object" && (function (global, factory) {
 
   return Plyr;
 
-})));
+}));
