@@ -1,10 +1,10 @@
 package: plyr 
-version: '3.15.2'
-vendor: '3.6.11'
+version: '3.15.3'
+vendor: '3.6.12'
 author: Friends Of REDAXO
 supportpage: https://github.com/FriendsOfREDAXO/plyr
 
 requires:
     redaxo: '^5.10' 
     php:
-        version: '>=7.1'
+        version: '>=7.3'
