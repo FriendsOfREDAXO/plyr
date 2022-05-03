@@ -1,6 +1,6 @@
 package: plyr 
-version: '3.15.3'
-vendor: '3.6.12'
+version: '3.16.0'
+vendor: '3.7.2'
 author: Friends Of REDAXO
 supportpage: https://github.com/FriendsOfREDAXO/plyr
 
