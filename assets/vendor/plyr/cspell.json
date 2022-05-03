@@ -1,22 +1,39 @@
 {
   "version": "0.2",
   "ignorePaths": [
-    "package.json"
+    "package.json",
+    "dist/*",
+    "demo/node_modules/*"
   ],
   "dictionaryDefinitions": [],
   "dictionaries": [],
   "words": [
-    "Autoplay",
+    "autopause",
+    "autoplay",
+    "bote",
+    "cfda",
     "classname",
+    "digbmx",
+    "fastly",
     "fullscreen",
-    "Gordita",
+    "gordita",
+    "loadjs",
+    "magazin",
     "menuitemradio",
+    "noupe",
+    "otransitionend",
     "playsinline",
     "plyr",
+    "rutheneum",
     "seektime",
+    "selz",
+    "sparkk",
     "srclang",
+    "strol",
     "stylelint",
-    "unmute"
+    "unmute",
+    "videospiele",
+    "xywh"
   ],
   "ignoreWords": [],
   "import": []

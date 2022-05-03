@@ -1,3 +1,6 @@
+| 🎉  | [Plyr is merging into Vidstack](https://github.com/sampotts/plyr/issues/2408) | 🎉  |
+| :-: | :---------------------------------------------------------------------------: | :-- |
+
 Plyr is a simple, lightweight, accessible and customizable HTML5, YouTube and Vimeo media player that supports [_modern_](#browser-support) browsers.
 
 [Checkout the demo](https://plyr.io) - [Donate](#donate) - [Slack](https://bit.ly/plyr--chat)
@@ -27,7 +30,7 @@ Plyr is a simple, lightweight, accessible and customizable HTML5, YouTube and Vi
 - 🌎 **i18n support** - support for internationalization of controls
 - 👌 **[Preview thumbnails](#preview-thumbnails)** - support for displaying preview thumbnails
 - 🤟 **No frameworks** - written in "vanilla" ES6 JavaScript, no jQuery required
-- 💁‍♀️ **SASS** - to include in your build processes
+- 💁‍♀️ **Sass** - to include in your build processes
 
 ### Demos
 
@@ -134,13 +137,13 @@ See [initialising](#initialising) for more information on advanced setups.
 You can use our CDN (provided by [Fastly](https://www.fastly.com/)) for the JavaScript. There's 2 versions; one with and one without [polyfills](#polyfills). My recommendation would be to manage polyfills separately as part of your application but to make life easier you can use the polyfilled build.
 
 ```html
-<script src="https://cdn.plyr.io/3.6.11/plyr.js"></script>
+<script src="https://cdn.plyr.io/3.7.2/plyr.js"></script>
 ```
 
 ...or...
 
 ```html
-<script src="https://cdn.plyr.io/3.6.11/plyr.polyfilled.js"></script>
+<script src="https://cdn.plyr.io/3.7.2/plyr.polyfilled.js"></script>
 ```
 
 ## CSS
@@ -154,13 +157,13 @@ Include the `plyr.css` stylesheet into your `<head>`.
 If you want to use our CDN (provided by [Fastly](https://www.fastly.com/)) for the default CSS, you can use the following:
 
 ```html
-<link rel="stylesheet" href="https://cdn.plyr.io/3.6.11/plyr.css" />
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.2/plyr.css" />
 ```
 
 ## SVG Sprite
 
 The SVG sprite is loaded automatically from our CDN (provided by [Fastly](https://www.fastly.com/)). To change this, see the [options](#options) below. For
-reference, the CDN hosted SVG sprite can be found at `https://cdn.plyr.io/3.6.11/plyr.svg`.
+reference, the CDN hosted SVG sprite can be found at `https://cdn.plyr.io/3.7.2/plyr.svg`.
 
 # Ads
 
@@ -270,9 +273,9 @@ You can set them in your CSS for all players:
 <video class="player" style="--plyr-color-main: #1ac266;">...</video>
 ```
 
-### SASS
+### Sass
 
-You can use `plyr.scss` file included in `/src/sass` as part of your build and change variables to suit your design. The SASS requires you to
+You can use `plyr.scss` file included in `/src/sass` as part of your build and change variables to suit your design. The Sass requires you to
 use [autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) (you should be already!) as all declarations use the W3C definitions.
 
 The HTML markup uses the BEM methodology with `plyr` as the block, e.g. `.plyr__controls`. You can change the class hooks in the options to match any custom CSS
@@ -402,7 +405,7 @@ Note the single quotes encapsulating the JSON and double quotes on the object ke
 | `fullscreen`         | Object                     | `{ enabled: true, fallback: true, iosNative: false, container: null }`                                                         | `enabled`: Toggles whether fullscreen should be enabled. `fallback`: Allow fallback to a full-window solution (`true`/`false`/`'force'`). `iosNative`: whether to use native iOS fullscreen when entering fullscreen (no custom controls). `container`: A selector for an ancestor of the player element, allows contextual content to remain visual in fullscreen mode. Non-ancestors are ignored.     |
 | `ratio`              | String                     | `null`                                                                                                                         | Force an aspect ratio for all videos. The format is `'w:h'` - e.g. `'16:9'` or `'4:3'`. If this is not specified then the default for HTML5 and Vimeo is to use the native resolution of the video. As dimensions are not available from YouTube via SDK, 16:9 is forced as a sensible default.                                                                                                         |
 | `storage`            | Object                     | `{ enabled: true, key: 'plyr' }`                                                                                               | `enabled`: Allow use of local storage to store user settings. `key`: The key name to use.                                                                                                                                                                                                                                                                                                               |
-| `speed`              | Object                     | `{ selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2] }`                                                                 | `selected`: The default speed for playback. `options`: The speed options to display in the UI. YouTube and Vimeo will ignore any options outside of the 0.5-2 range, so options outside of this range will be hidden automatically.                                                                                                                                                                     |
+| `speed`              | Object                     | `{ selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 4] }`                                                              | `selected`: The default speed for playback. `options`: The speed options to display in the UI. YouTube and Vimeo will ignore any options outside of the 0.5-2 range, so options outside of this range will be hidden automatically.                                                                                                                                                                     |
 | `quality`            | Object                     | `{ default: 576, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240] }`                                           | `default` is the default quality level (if it exists in your sources). `options` are the options to display. This is used to filter the available sources.                                                                                                                                                                                                                                              |
 | `loop`               | Object                     | `{ active: false }`                                                                                                            | `active`: Whether to loop the current video. If the `loop` attribute is present on a `<video>` or `<audio>` element, this will be automatically set to true This is an object to support future functionality.                                                                                                                                                                                          |
 | `ads`                | Object                     | `{ enabled: false, publisherId: '', tagUrl: '' }`                                                                              | `enabled`: Whether to enable advertisements. `publisherId`: Your unique [vi.ai](https://vi.ai/publisher-video-monetization/?aid=plyrio) publisher ID. `tagUrl` is a URL for a custom VAST tag if you're not using Vi.                                                                                                                                                                                   |
@@ -410,6 +413,8 @@ Note the single quotes encapsulating the JSON and double quotes on the object ke
 | `vimeo`              | Object                     | `{ byline: false, portrait: false, title: false, speed: true, transparent: false }`                                            | See [Vimeo embed options](https://github.com/vimeo/player.js/#embed-options). Some are set automatically based on other config options, namely: `loop`, `autoplay`, `muted`, `gesture`, `playsinline`                                                                                                                                                                                                   |
 | `youtube`            | Object                     | `{ noCookie: false, rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1 }`                                               | See [YouTube embed options](https://developers.google.com/youtube/player_parameters#Parameters). The only custom option is `noCookie` to use an alternative to YouTube that doesn't use cookies (useful for GDPR, etc). Some are set automatically based on other config options, namely: `autoplay`, `hl`, `controls`, `disablekb`, `playsinline`, `cc_load_policy`, `cc_lang_pref`, `widget_referrer` |
 | `previewThumbnails`  | Object                     | `{ enabled: false, src: '' }`                                                                                                  | `enabled`: Whether to enable the preview thumbnails (they must be generated by you). `src` must be either a string or an array of strings representing URLs for the VTT files containing the image URL(s). Learn more about [preview thumbnails](#preview-thumbnails) below.                                                                                                                            |
+| `mediaMetadata`      | Object                     | `{ title: '', artist: '', album: '', artwork: [] }`                                                                            | The [MediaMetadata](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata) interface of the Media Session API allows a web page to provide rich media metadata for display in a platform UI.                                                                                                                                                                                                   |
+| `markers`            | Object                     | `{ enabled: false, points: [] }`                                                                                               | `enabled`: Whether to enable markers. `points` is an array of `{ time: number; label: string; }` objects where `time` represents the marker position in seconds and `label` is the HTML string to be displayed.                                                                                                                                                                                         |
 
 1.  Vimeo only
 2.  Autoplay is generally not recommended as it is seen as a negative user experience. It is also disabled in many browsers. Before raising issues, do your homework. More info can be found here:
@@ -840,6 +845,7 @@ Plyr costs money to run, not only my time. I donate my time for free as I enjoy 
 - [pressakey.com | Blog-Magazin für Videospiele](https://pressakey.com)
 - [STROLLÿN: Work with a View](https://strollyn.com)
 - [CFDA Runway360](https://runway360.cfda.com/)
+- [NKLAV | Filmmaker](https://nklav.com)
 
 If you want to be added to the list, open a pull request. It'd be awesome to see how you're using Plyr 😎
 

@@ -212,7 +212,7 @@ declare class Plyr {
   airplay(): void;
 
   /**
-   * Sets the preview thubmnails for the current source.
+   * Sets the preview thumbnails for the current source.
    */
   setPreviewThumbnails(source: Plyr.PreviewThumbnailsOptions): void;
 
@@ -272,8 +272,8 @@ declare namespace Plyr {
     controlsshown: PlyrEvent;
     ready: PlyrEvent;
   };
-  // For retrocompatibility, we keep StandadEvent
-  type StandadEvent = keyof Plyr.StandardEventMap;
+  // For retrocompatibility, we keep StandardEvent
+  type StandardEvent = keyof Plyr.StandardEventMap;
   type Html5EventMap = {
     loadstart: PlyrEvent;
     loadeddata: PlyrEvent;
@@ -518,6 +518,16 @@ declare namespace Plyr {
      * Preview Thumbnails Options.
      */
     previewThumbnails?: PreviewThumbnailsOptions;
+
+    /**
+     * Media Metadata Options.
+     */
+    mediaMetadata?: MediaMetadataOptions;
+
+    /**
+     * Markers Options
+     */
+    markers?: MarkersOptions;
   }
 
   interface QualityOptions {
@@ -574,6 +584,29 @@ declare namespace Plyr {
   interface PreviewThumbnailsOptions {
     enabled?: boolean;
     src?: string | string[];
+  }
+
+  interface MediaMetadataArtwork {
+    src: string;
+    sizes?: string;
+    type: string;
+  }
+
+  interface MediaMetadataOptions {
+    title?: string;
+    artist?: string;
+    album?: string;
+    artwork?: MediaMetadataArtwork[];
+  }
+
+  interface MarkersPoints {
+    time: number;
+    label: string;
+  }
+
+  interface MarkersOptions {
+    enabled: boolean;
+    points: MarkersPoints[]
   }
 
   export interface Elements {

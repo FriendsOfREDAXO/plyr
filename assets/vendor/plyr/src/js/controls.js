@@ -404,7 +404,7 @@ const controls = {
       'keydown keyup',
       (event) => {
         // We only care about space and ⬆️ ⬇️️ ➡️
-        if (![32, 38, 39, 40].includes(event.which)) {
+        if (!['Space', 'ArrowUp', 'ArrowDown', 'ArrowRight'].includes(event.key)) {
           return;
         }
 
@@ -420,13 +420,13 @@ const controls = {
         const isRadioButton = matches(menuItem, '[role="menuitemradio"]');
 
         // Show the respective menu
-        if (!isRadioButton && [32, 39].includes(event.which)) {
+        if (!isRadioButton && ['Space', 'ArrowRight'].includes(event.key)) {
           controls.showMenuPanel.call(this, type, true);
         } else {
           let target;
 
-          if (event.which !== 32) {
-            if (event.which === 40 || (isRadioButton && event.which === 39)) {
+          if (event.key !== 'Space') {
+            if (event.key === 'ArrowDown' || (isRadioButton && event.key === 'ArrowRight')) {
               target = menuItem.nextElementSibling;
 
               if (!is.element(target)) {
@@ -450,9 +450,7 @@ const controls = {
     // Enter will fire a `click` event but we still need to manage focus
     // So we bind to keyup which fires after and set focus here
     on.call(this, menuItem, 'keyup', (event) => {
-      if (event.which !== 13) {
-        return;
-      }
+      if (event.key !== 'Return') return;
 
       controls.focusFirstMenuItem.call(this, null, true);
     });
@@ -484,7 +482,7 @@ const controls = {
 
     menuItem.appendChild(flex);
 
-    // Replicate radio button behaviour
+    // Replicate radio button behavior
     Object.defineProperty(menuItem, 'checked', {
       enumerable: true,
       get() {
@@ -506,7 +504,7 @@ const controls = {
       menuItem,
       'click keyup',
       (event) => {
-        if (is.keyboardEvent(event) && event.which !== 32) {
+        if (is.keyboardEvent(event) && event.key !== 'Space') {
           return;
         }
 
@@ -698,8 +696,9 @@ const controls = {
       return;
     }
 
+    const tipElement = this.elements.display.seekTooltip;
     const visible = `${this.config.classNames.tooltip}--visible`;
-    const toggle = (show) => toggleClass(this.elements.display.seekTooltip, visible, show);
+    const toggle = (show) => toggleClass(tipElement, visible, show);
 
     // Hide on touch
     if (this.touch) {
@@ -713,8 +712,8 @@ const controls = {
 
     if (is.event(event)) {
       percent = (100 / clientRect.width) * (event.pageX - clientRect.left);
-    } else if (hasClass(this.elements.display.seekTooltip, visible)) {
-      percent = parseFloat(this.elements.display.seekTooltip.style.left, 10);
+    } else if (hasClass(tipElement, visible)) {
+      percent = parseFloat(tipElement.style.left, 10);
     } else {
       return;
     }
@@ -726,11 +725,21 @@ const controls = {
       percent = 100;
     }
 
+    const time = (this.duration / 100) * percent;
+
     // Display the time a click would seek to
-    controls.updateTimeDisplay.call(this, this.elements.display.seekTooltip, (this.duration / 100) * percent);
+    tipElement.innerText = controls.formatTime(time);
+
+    // Get marker point for time
+    const point = this.config.markers?.points?.find(({ time: t }) => t === Math.round(time));
+
+    // Append the point label to the tooltip
+    if (point) {
+      tipElement.insertAdjacentHTML('afterbegin', `${point.label}<br>`);
+    }
 
     // Set position
-    this.elements.display.seekTooltip.style.left = `${percent}%`;
+    tipElement.style.left = `${percent}%`;
 
     // Show/hide the tooltip
     // If the event is a moues in/out and percentage is inside bounds
@@ -794,6 +803,10 @@ const controls = {
     // If there's a duration element, update content
     if (hasDuration) {
       controls.updateTimeDisplay.call(this, this.elements.display.duration, this.duration);
+    }
+
+    if (this.config.markers.enabled) {
+      controls.setMarkers.call(this);
     }
 
     // Update the tooltip (if visible)
@@ -1124,7 +1137,7 @@ const controls = {
 
     if (is.boolean(input)) {
       show = input;
-    } else if (is.keyboardEvent(input) && input.which === 27) {
+    } else if (is.keyboardEvent(input) && input.key === 'Escape') {
       show = false;
     } else if (is.event(input)) {
       // If Plyr is in a shadowDOM, the event target is set to the component, instead of the
@@ -1512,10 +1525,7 @@ const controls = {
             pane,
             'keydown',
             (event) => {
-              // We only care about <-
-              if (event.which !== 37) {
-                return;
-              }
+              if (event.key !== 'ArrowLeft') return;
 
               // Prevent seek
               event.preventDefault();
@@ -1744,6 +1754,94 @@ const controls = {
         toggleClass(label, this.config.classNames.tooltip, true);
       });
     }
+  },
+
+  // Set media metadata
+  setMediaMetadata() {
+    try {
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new window.MediaMetadata({
+          title: this.config.mediaMetadata.title,
+          artist: this.config.mediaMetadata.artist,
+          album: this.config.mediaMetadata.album,
+          artwork: this.config.mediaMetadata.artwork,
+        });
+      }
+    } catch (_) {
+      // Do nothing
+    }
+  },
+
+  // Add markers
+  setMarkers() {
+    if (!this.duration || this.elements.markers) return;
+
+    // Get valid points
+    const points = this.config.markers?.points?.filter(({ time }) => time > 0 && time < this.duration);
+    if (!points?.length) return;
+
+    const containerFragment = document.createDocumentFragment();
+    const pointsFragment = document.createDocumentFragment();
+    let tipElement = null;
+    const tipVisible = `${this.config.classNames.tooltip}--visible`;
+    const toggleTip = (show) => toggleClass(tipElement, tipVisible, show);
+
+    // Inject markers to progress container
+    points.forEach((point) => {
+      const markerElement = createElement(
+        'span',
+        {
+          class: this.config.classNames.marker,
+        },
+        '',
+      );
+
+      const left = `${(point.time / this.duration) * 100}%`;
+
+      if (tipElement) {
+        // Show on hover
+        markerElement.addEventListener('mouseenter', () => {
+          if (point.label) return;
+          tipElement.style.left = left;
+          tipElement.innerHTML = point.label;
+          toggleTip(true);
+        });
+
+        // Hide on leave
+        markerElement.addEventListener('mouseleave', () => {
+          toggleTip(false);
+        });
+      }
+
+      markerElement.addEventListener('click', () => {
+        this.currentTime = point.time;
+      });
+
+      markerElement.style.left = left;
+      pointsFragment.appendChild(markerElement);
+    });
+
+    containerFragment.appendChild(pointsFragment);
+
+    // Inject a tooltip if needed
+    if (!this.config.tooltips.seek) {
+      tipElement = createElement(
+        'span',
+        {
+          class: this.config.classNames.tooltip,
+        },
+        '',
+      );
+
+      containerFragment.appendChild(tipElement);
+    }
+
+    this.elements.markers = {
+      points: pointsFragment,
+      tip: tipElement,
+    };
+
+    this.elements.progress.appendChild(containerFragment);
   },
 };
 

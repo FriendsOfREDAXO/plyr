@@ -11,9 +11,7 @@ export function generateId(prefix) {
 
 // Format string
 export function format(input, ...args) {
-  if (is.empty(input)) {
-    return input;
-  }
+  if (is.empty(input)) return input;
 
   return input.toString().replace(/{(\d+)}/g, (match, i) => args[i].toString());
 }
@@ -27,13 +25,13 @@ export function getPercentage(current, max) {
   return ((current / max) * 100).toFixed(2);
 }
 
-// Replace all occurances of a string in a string
+// Replace all occurrences of a string in a string
 export const replaceAll = (input = '', find = '', replace = '') =>
   input.replace(new RegExp(find.toString().replace(/([.*+?^=!:${}()|[\]/\\])/g, '\\$1'), 'g'), replace.toString());
 
 // Convert to title case
 export const toTitleCase = (input = '') =>
-  input.toString().replace(/\w\S*/g, (text) => text.charAt(0).toUpperCase() + text.substr(1).toLowerCase());
+  input.toString().replace(/\w\S*/g, (text) => text.charAt(0).toUpperCase() + text.slice(1).toLowerCase());
 
 // Convert string to pascalCase
 export function toPascalCase(input = '') {
