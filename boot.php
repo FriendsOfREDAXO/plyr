@@ -15,3 +15,4 @@ if (rex::isBackend() && is_object(rex::getUser())) {
     rex_view::addJsFile($plyr->getAssetsUrl('plyr_be_init.js'));
     rex_extension::register('MEDIA_DETAIL_SIDEBAR', 'plyr_mediapool::show_sidebar');
 }
+
