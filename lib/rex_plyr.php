@@ -173,7 +173,7 @@ class rex_plyr
         $out = $nopreload = '';
 
         if ($consent) {
-            $consent_suffix = '_consent';
+            $consent_suffix = '_consent_';
             $consent_content = $consent;
         }
         if ($setup) {
@@ -213,7 +213,7 @@ class rex_plyr
         }
 
         if ($provider != '') {
-            $out = '<div class="rex-plyr' . $consent_suffix . '" data-plyr-provider="' . $provider . '" data-plyr-embed-id="' . $embed_id . '"' . $setup . '>' . $consent_content . '</div>';
+            $out = '<div class="rex-plyr' . $consent_suffix . $provider . '" data-plyr-provider="' . $provider . '" data-plyr-embed-id="' . $embed_id . '"' . $setup . '>' . $consent_content . '</div>';
         }
 
         if ($player->checkMedia($url) !== false ||  $player->checkExternalMp4($url) === true) {
