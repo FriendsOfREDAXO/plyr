@@ -246,10 +246,10 @@ class rex_plyr
      * @param  string $url
      * @return string
      */
-    public static function cke5_ombed_helper($content,$url):string {
+    public static function cke5_ombed_helper($content='',$url=''):string {
         if ($content!='')
         {
-        $consent. = '';    
+        $consent = '';    
         if (self::checkVimeo($url))   
         {
         $fragment = new rex_fragment();
