@@ -239,34 +239,55 @@ class rex_plyr
 
         return $out;
     }
-  
+
     /**
-     * cke5_concent_helper
+     * consent_helper
      *
      * @param  string $url
+     * @param  string $return_when_empty
      * @return string
      */
+    public static function consent_helper($url = '', $return_when_empty = 'cke5'): string
+    {
 
-    public static function consent_helper($url=''):string {
-
-        $consent = '';    
-        if (self::checkVimeo($url))   
-            {
+        $consent = '';
+        if (rex_plyr::checkVimeo($url)) {
             $fragment = new rex_fragment();
             $fragment->setVar('elements', $formElements, false);
             $consent = $fragment->parse('consent_vimeo.php');
-            return rex_plyr::outputMedia($url,'',$consent);    
-            }
-        if (self::checkYoutube($url))
-            {
+            return rex_plyr::outputMedia($url, '', $consent);
+        }
+        if (rex_plyr::checkYoutube($url)) {
             $fragment = new rex_fragment();
             $fragment->setVar('elements', $formElements, false);
             $consent = $fragment->parse('consent_youtube.php');
-            return rex_plyr::outputMedia($url,'',$consent);     
-            }
-            return $content;
-     }
- 
+            return rex_plyr::outputMedia($url, '', $consent);
+        }
+        if ($return_when_empty == 'cke5') {
+            return '<oembed url="' . $url . '"></oembed>';
+        }
+    }
+
+    /**
+     * cke_oembed_helper
+     *
+     * @return void
+     */
+    public static function cke_oembed_helper(): void
+    {
+        rex_extension::register('OUTPUT_FILTER', function ($ep) {
+
+            $string = $ep->getSubject();
+            $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', function ($video) {
+                return rex_plyr::consent_helper($video[1], 'cke5');
+            }, $string);
+            return $string;
+        }, rex_extension::LATE);
+    }
+
+
+
+
     /**
      * @param array $media_filenames Array with video/mp4 audio/mp3 file names from media pool
      * @param string $setup
