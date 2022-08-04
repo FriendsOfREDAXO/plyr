@@ -239,6 +239,20 @@ class rex_plyr
 
         return $out;
     }
+    // prepeared for CKE5 OEMBED
+    public static function cke5_ombed_helper($content,$url):string {
+        if ($content!='')
+        {
+        if (self::checkVimeo($url))
+        {
+        }
+        if (self::checkYoutube($url))
+        {
+        }
+        }
+    }
+    
+    
 
     /**
      * @param array $media_filenames Array with video/mp4 audio/mp3 file names from media pool
