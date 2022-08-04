@@ -239,37 +239,34 @@ class rex_plyr
 
         return $out;
     }
+  
     /**
-     * cke5_ombed_helper
+     * cke5_concent_helper
      *
-     * @param  string $content
      * @param  string $url
      * @return string
      */
-    public static function cke5_ombed_helper($content='',$url=''):string {
-        if ($content!='')
-        {
+
+    public static function consent_helper($url=''):string {
+
         $consent = '';    
         if (self::checkVimeo($url))   
-        {
-        $fragment = new rex_fragment();
-        $fragment->setVar('elements', $formElements, false);
-        $consent = $fragment->parse('consent_vimeo.php');
-        return '<div class="plyr-container uk-container container">'.rex_plyr::outputMedia($video[1],'',$consent).'</div>';    
-        }
+            {
+            $fragment = new rex_fragment();
+            $fragment->setVar('elements', $formElements, false);
+            $consent = $fragment->parse('consent_vimeo.php');
+            return rex_plyr::outputMedia($url,'',$consent);    
+            }
         if (self::checkYoutube($url))
-        {
-        $fragment = new rex_fragment();
-        $fragment->setVar('elements', $formElements, false);
-        $consent = $fragment->parse('consent_youtube.php');
-        return '<div class="plyr-container uk-container container">'.rex_plyr::outputMedia($video[1],'',$consent).'</div>';     
-        }
-        }
-        return $content;
-    }
-    
-    
-
+            {
+            $fragment = new rex_fragment();
+            $fragment->setVar('elements', $formElements, false);
+            $consent = $fragment->parse('consent_youtube.php');
+            return rex_plyr::outputMedia($url,'',$consent);     
+            }
+            return $content;
+     }
+ 
     /**
      * @param array $media_filenames Array with video/mp4 audio/mp3 file names from media pool
      * @param string $setup
