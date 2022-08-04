@@ -239,17 +239,33 @@ class rex_plyr
 
         return $out;
     }
-    // prepeared for CKE5 OEMBED
+    /**
+     * cke5_ombed_helper
+     *
+     * @param  string $content
+     * @param  string $url
+     * @return string
+     */
     public static function cke5_ombed_helper($content,$url):string {
         if ($content!='')
         {
-        if (self::checkVimeo($url))
+        $consent. = '';    
+        if (self::checkVimeo($url))   
         {
+        $fragment = new rex_fragment();
+        $fragment->setVar('elements', $formElements, false);
+        $consent = $fragment->parse('consent_vimeo.php');
+        return '<div class="plyr-container uk-container container">'.rex_plyr::outputMedia($video[1],'',$consent).'</div>';    
         }
         if (self::checkYoutube($url))
         {
+        $fragment = new rex_fragment();
+        $fragment->setVar('elements', $formElements, false);
+        $consent = $fragment->parse('consent_youtube.php');
+        return '<div class="plyr-container uk-container container">'.rex_plyr::outputMedia($video[1],'',$consent).'</div>';     
         }
         }
+        return $content;
     }
     
     
