@@ -185,7 +185,7 @@ Im Consent-Manager muss beim jeweiligen Cookie das passende Script eingesetzt we
 ```js
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-const playersvimeo = Plyr.setup('.rex-plyr_consent', {
+const playersvimeo = Plyr.setup('.rex-plyr_consent_vimeo', {
         youtube: {
             noCookie: true
         },
