@@ -1,4 +1,4 @@
-<?php if($this->type == youtube ):?>
+<?php if($this->type == 'youtube' ):?>
 <div class="aspect-ratio-16-9 plyr-consent-box">
         <div class="plyr-consent-box-content">
             <h2>Externes Video: Youtube</h2>
@@ -8,7 +8,7 @@
         </div>
 </div>
 <?php endif; ?>
-<?php if($this->type == vimeo ):?>
+<?php if($this->type == 'vimeo' ):?>
 <div class="aspect-ratio-16-9 plyr-consent-box">
         <div class="plyr-consent-box-content">
             <h2>Externes Video: Vimeo</h2>
