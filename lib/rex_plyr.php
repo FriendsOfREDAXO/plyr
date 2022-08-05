@@ -266,6 +266,7 @@ class rex_plyr
         if ($return_when_empty == 'cke5') {
             return '<oembed url="' . $url . '"></oembed>';
         }
+        return '';
     }
 
     /**
