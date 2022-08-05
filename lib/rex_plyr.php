@@ -282,11 +282,26 @@ class rex_plyr
 
             $string = $ep->getSubject();
             $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', function ($video) {
-                return rex_plyr::consent_helper($video[1], $setup, 'cke5');
+                return rex_plyr::consent_helper($video[1], $setup, $poster, 'cke5');
             }, $string);
             return $string;
         }, rex_extension::LATE);
     }
+    
+    
+     /**
+     * cke_oembed_helper
+     *
+     * @return void
+     */
+    public static function oembed_replace($string, $setup = null): void
+    {
+            $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', function ($video) {
+                return rex_plyr::consent_helper($video[1], $setup, $poster, 'cke5');
+            }, $string);
+            return $string;
+    }
+    
 
     /**
      * @param array $media_filenames Array with video/mp4 audio/mp3 file names from media pool
