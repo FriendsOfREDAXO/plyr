@@ -268,7 +268,7 @@ class rex_plyr
         if ($return_when_empty == 'cke5') {
             return '<oembed url="' . $url . '"></oembed>';
         }
-        return rex_plyr::outputMedia($url, $setup, $poster, $consent);
+        return rex_plyr::outputMedia($url, $setup, $poster);
     }
 
     /**
