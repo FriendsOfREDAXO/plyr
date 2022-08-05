@@ -166,6 +166,7 @@ $video = rex_plyr::consent($url = '', $setup = null, $poster = null, $return_whe
 ```
 Prüft die Angegebene Url und gibt einen Consent Hinweis aus, wenn es sich um ein Vimeo- oder Youtube-Video handelt.  
 Die Ausgabe erfolgt über das Fragment `consent.php`. Es können Parameter zur Konfiguration der Player mitgegeben werden. 
+Wird für `$return_when_empty` als Wert `cke5` eingegeben wird bei nicht erfolgter Prüfung das originale oembed zurückgegeben. 
 
 ```
 $content = rex_plyr::oembed_replace(oembed_replace($string, $setup = null)) 
