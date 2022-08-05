@@ -294,7 +294,7 @@ class rex_plyr
      *
      * @return void
      */
-    public static function oembed_replace($string, $setup = null): void
+    public static function oembed_replace($string, $setup = null): string
     {
             $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', function ($video) {
                 return rex_plyr::consent_helper($video[1], $setup, $poster, 'cke5');
