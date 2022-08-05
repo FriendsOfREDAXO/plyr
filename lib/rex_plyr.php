@@ -247,7 +247,7 @@ class rex_plyr
      * @param  string $return_when_empty
      * @return string
      */
-    public static function consent_helper($url = '', $setup = null, $poster = null, $return_when_empty = 'cke5'): string
+    public static function consent_helper($url = '', $setup = null, $poster = null, $return_when_empty = ''): string
     {
 
         $consent = '';
