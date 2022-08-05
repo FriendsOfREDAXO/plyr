@@ -185,7 +185,7 @@ Im Consent-Manager muss beim jeweiligen Cookie das passende Script eingesetzt we
 ```js
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-const players = Plyr.setup('.rex-plyr_consent', {
+const playersvimeo = Plyr.setup('.rex-plyr_consent', {
         youtube: {
             noCookie: true
         },
@@ -196,9 +196,9 @@ const players = Plyr.setup('.rex-plyr_consent', {
         blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
     });
     if (document.querySelector('.rex-plyr_vimeo')) {
-        players.forEach(function (player) {
+        playersvimeo.forEach(function (player) {
             player.on('play', function () {
-                var others = players.filter(other => other != player)
+                var others = playersvimeo.filter(other => other != player)
                 others.forEach(function (other) {
                     other.pause();
                 })
@@ -214,7 +214,7 @@ const players = Plyr.setup('.rex-plyr_consent', {
 ```js
 <script>
 document.addEventListener("DOMContentLoaded", function(){
-const players = Plyr.setup('.rex-plyr_consent_youtube', {
+const playersyoutube = Plyr.setup('.rex-plyr_consent_youtube', {
         youtube: {
             noCookie: true
         },
@@ -222,9 +222,9 @@ const players = Plyr.setup('.rex-plyr_consent_youtube', {
         blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
     });
     if (document.querySelector('.rex-plyr_youtube')) {
-        players.forEach(function (player) {
+        playersyoutube.forEach(function (player) {
             player.on('play', function () {
-                var others = players.filter(other => other != player)
+                var others = playersyoutube.filter(other => other != player)
                 others.forEach(function (other) {
                     other.pause();
                 })
@@ -257,7 +257,7 @@ REX_PLYR[id=1 controls="play,progress"]
 
 
 
-## Alternative init.js
+## init.js Orientierungsänderung Beispiel: 
 
 zur Änderung der Vollbildanzeige bei Orientierungsänderung des Geräts
 
