@@ -157,30 +157,30 @@ $media_filenames = preg_grep('/^\s*$/s', explode(",", REX_MEDIALIST[1]), PREG_GR
 echo rex_plyr::outputMediaPlaylist($media_filenames,'play-large,play,progress,airplay,pip');
 ```
 
-## Plyr und Consent-Abfragen
+## Plyr und Consent-Abfragen für Youtube und Vimeo 
 
-Der Parameter $consent erlaubt es einen Platzhalter-Text / Bild etc. einzubinden, der z.B. nach Aktivierung im Consent-Manager ersetzt wird. 
-
-> Das o.g. Intitialisierungsskript 'plyr_init.js' wird nicht benötigt und muss aus dem Template entfernt werden.  
-
-
-```php
-$consent = '    
-<div class="aspect-ratio-16-9">
-		<div class="container uk-background-secondary uk-light uk-padding">
-			<h2 class="page-title">Externes Video</h2>
-			<p class="page-description">Bitte aktivieren Sie die Optionen zur Darstellung externer Video in den Datenschutzeinstellungen</p>
-            <p><a class="uk-button uk-button-primary consent_manager-show-box">Datenschutz-Einstellungen bearbeiten</a></p>
-		</div>
-	</div>'; 
-echo rex_plyr::outputMedia('REX_VALUE[1]','play-large,play,progress,airplay,pip','/media/cover/REX_MEDIA[1]',$consent);
+Das AddOn bietet Hilfs-Methoden zur Ausgabe von Consent-Meldungen an. 
 
 ```
-Videos, die einen Consent erfordern erhalten die CSS-Class rex-plyr_consent. 
-Aktuell Youtube und Vimeo
-Es bietet sich an den Consent-Text zentral abzulegen, z.B. als Property im Project-Addon. 
+$video = rex_plyr::consent($url = '', $setup = null, $poster = null, $return_when_empty = '')
+```
+Prüft die Angegebene Url und gibt einen Consent Hinweis aus, wenn es sich um ein Vimeo- oder Youtube-Video handelt.  
+Die Ausgabe erfolgt über das Fragment `consent.php`. Es können Parameter zur Konfiguration der Player mitgegeben werden. 
 
-Im Consent-Manager muss beim Cookie folgendes Script eingesetzt werden: 
+```
+$content = rex_plyr::oembed_replace(oembed_replace($string, $setup = null)) 
+```
+Ersetzt sofern zutreffend, Youtube und Vimeo- OEMBED-Tags vom CKE5 durch Plyr-Code und setzt die Consentmeldungen. 
+Es können Parameter zur Konfiguration der Player mitgegeben werden. 
+
+```
+rex_plyr::cke_oembed_helper($setup = null); 
+```
+Ruft einen Outputfilter auf der alle gefundenen CKE5-OEMBEDs in der Ausgabe ersetzt. 
+
+Im Consent-Manager muss beim jeweiligen Cookie das passende Script eingesetzt werden: 
+
+### Vimeo Constent-Script
 
 ```js
 <script>
@@ -195,7 +195,33 @@ const players = Plyr.setup('.rex-plyr_consent', {
         iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
         blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
     });
-    if (document.querySelector('.rex-plyr')) {
+    if (document.querySelector('.rex-plyr_vimeo')) {
+        players.forEach(function (player) {
+            player.on('play', function () {
+                var others = players.filter(other => other != player)
+                others.forEach(function (other) {
+                    other.pause();
+                })
+            });
+        });
+    }
+});
+</script>
+```
+
+### Youtube Constent-Script
+
+```js
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+const players = Plyr.setup('.rex-plyr_consent_youtube', {
+        youtube: {
+            noCookie: true
+        },
+        iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
+        blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
+    });
+    if (document.querySelector('.rex-plyr_youtube')) {
         players.forEach(function (player) {
             player.on('play', function () {
                 var others = players.filter(other => other != player)
