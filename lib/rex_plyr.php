@@ -247,7 +247,7 @@ class rex_plyr
      * @param  string $return_when_empty
      * @return string
      */
-    public static function consent_helper($url = '', $setup = null, $return_when_empty = 'cke5'): string
+    public static function consent_helper($url = '', $setup = null, $poster = null, $return_when_empty = 'cke5'): string
     {
 
         $consent = '';
@@ -256,19 +256,19 @@ class rex_plyr
             $fragment->setVar('url', $url, false);
             $fragment->setVar('type', 'vimeo', false);
             $consent = $fragment->parse('consent.php');
-            return rex_plyr::outputMedia($url, $setup, $consent);
+            return rex_plyr::outputMedia($url, $setup, $poster, $consent);
         }
         if (rex_plyr::checkYoutube($url)) {
             $fragment = new rex_fragment();
             $fragment->setVar('url', $url, false);
             $fragment->setVar('type', 'youtube', false);
             $consent = $fragment->parse('consent.php');
-            return rex_plyr::outputMedia($url, $setup, $consent);
+            return rex_plyr::outputMedia($url, $setup, $poster, $consent);
         }
         if ($return_when_empty == 'cke5') {
             return '<oembed url="' . $url . '"></oembed>';
         }
-        return rex_plyr::outputMedia($url, $setup);
+        return rex_plyr::outputMedia($url, $setup, $poster, $consent);
     }
 
     /**
