@@ -107,7 +107,7 @@ $mform = MForm::factory()
 ->addFieldsetArea('Video', MForm::factory()
 ->addCustomLinkField("1", array('label'=>'Medium', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'))
 ->addMediaField(1, array('label'=>'Image'))
-};
+);
 echo $mform->show();
 ```
 
