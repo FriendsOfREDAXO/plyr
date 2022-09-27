@@ -102,10 +102,12 @@ Das CustomLink-Widget bietet sich an, weil die Redaktion damit lokale und extern
 #### Eingabe
 
 ```php
-$mform = new MForm();
-$mform->addFieldset("Video");
-$mform->addCustomLinkField("1", array('label'=>'Medium', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'));
-$mform->addMediaField(1, array('label'=>'Image'));
+// mform ab 7.0 
+$mform = MForm::factory()
+->addFieldsetArea('Video', MForm::factory()
+->addCustomLinkField("1", array('label'=>'Medium', 'data-tel'=>'disable', 'data-mailto'=>'disable', 'data-formlink'=>'disable', 'data-intern'=>'disable'))
+->addMediaField(1, array('label'=>'Image'))
+};
 echo $mform->show();
 ```
 
@@ -336,10 +338,11 @@ Eingabe
 ```php
 <?php 
 $id = 1;
-$mform = new MForm();
-$mform->addFieldset('Linkliste');
-$mform->addCustomLinkField("$id.0.1", ['label' => 'Link', 'data-media'=>'disable', 'data-mailto'=>'disable', 'data-intern'=>'disable','data-extern'=>'enable']);
-$mform->addTextField("$id.0.title", array('label'=>'titel'));
+$mform = MForm::factory()
+    ->addFieldsetArea('Video-Liste', MForm::factory()
+    ->addCustomLinkField("$id.0.1", ['label' => 'Link', 'data-media'=>'disable', 'data-mailto'=>'disable', 'data-intern'=>'disable','data-extern'=>'enable'])
+    ->addTextField("$id.0.title", array('label'=>'titel'))
+    );
 echo MBlock::show($id, $mform->show(), array('min'=>1,'max'=>40)); 
 ```
 
