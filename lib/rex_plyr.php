@@ -169,7 +169,8 @@ class rex_plyr
     {
         $player = new rex_plyr();
         $link = $player->checkUrl($url);
-        $consent_suffix = $consent_content = '';
+        $consent_content = '';
+        $consent_suffix = ' ';
         $out = $nopreload = '';
 
         if ($consent) {
