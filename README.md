@@ -187,7 +187,6 @@ Im Consent-Manager muss beim jeweiligen Cookie das passende Script eingesetzt we
 
 ```js
 <script>
-document.addEventListener("DOMContentLoaded", function(){
 const playersvimeo = Plyr.setup('.rex-plyr_consent_vimeo', {
         youtube: {
             noCookie: true
@@ -198,7 +197,7 @@ const playersvimeo = Plyr.setup('.rex-plyr_consent_vimeo', {
         iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
         blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
     });
-    if (document.querySelector('.rex-plyr_vimeo')) {
+    if (document.querySelector('.rex-plyr_consent_vimeo')) {
         playersvimeo.forEach(function (player) {
             player.on('play', function () {
                 var others = playersvimeo.filter(other => other != player)
@@ -208,7 +207,6 @@ const playersvimeo = Plyr.setup('.rex-plyr_consent_vimeo', {
             });
         });
     }
-});
 </script>
 ```
 
@@ -216,15 +214,13 @@ const playersvimeo = Plyr.setup('.rex-plyr_consent_vimeo', {
 
 ```js
 <script>
-document.addEventListener("DOMContentLoaded", function(){
 const playersyoutube = Plyr.setup('.rex-plyr_consent_youtube', {
         youtube: {
-            noCookie: true
+            noCookie: true,
         },
-        iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
-        blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
+        iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg'
     });
-    if (document.querySelector('.rex-plyr_youtube')) {
+    if (document.querySelector('.rex-plyr_consent_youtube')) {
         playersyoutube.forEach(function (player) {
             player.on('play', function () {
                 var others = playersyoutube.filter(other => other != player)
@@ -234,7 +230,6 @@ const playersyoutube = Plyr.setup('.rex-plyr_consent_youtube', {
             });
         });
     }
-});
 </script>
 ```
 
