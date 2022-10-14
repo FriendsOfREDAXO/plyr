@@ -233,6 +233,24 @@ const playersyoutube = Plyr.setup('.rex-plyr_consent_youtube', {
 </script>
 ```
 
+### CSS-Helferlein für Consent-Platzhalter 
+
+Ermöglicht einen Platzhalter im 16:9-Format.
+
+```css
+ .aspect-ratio-16-9 {
+  display: flow-root;
+  position: relative;
+}
+
+.aspect-ratio-16-9::before {
+  content: '';
+  float: left;
+  padding-bottom: 56.25%;
+}
+```
+
+
 
 ## `REX_PLYR`
 
