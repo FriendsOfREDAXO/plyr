@@ -283,7 +283,7 @@ class rex_plyr
 
             $string = $ep->getSubject();
             $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', function ($video) {
-                return rex_plyr::consent($video[1], $setup, $poster, 'cke5');
+                return rex_plyr::consent($video[1], $setup = '', $poster = '', 'cke5');
             }, $string);
             return $string;
         }, rex_extension::LATE);
