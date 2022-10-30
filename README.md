@@ -317,7 +317,7 @@ players.on('play', event => {
 });
 ```
 
-## youtube vimeo playlist (BETA)
+## youtube vimeo playlist
 
 Erlaubt das gemischte Abspielen von Youtube und Vimeo-Videos.
 
