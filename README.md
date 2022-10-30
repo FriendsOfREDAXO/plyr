@@ -283,6 +283,7 @@ const players = Plyr.setup('.rex-plyr',{
 youtube: {
 noCookie: true
 },
+iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
 fullscreen: {
 enabled: true,
 fallback: true,
