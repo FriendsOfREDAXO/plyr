@@ -278,40 +278,41 @@ REX_PLYR[id=1 controls="play,progress"]
 zur Änderung der Vollbildanzeige bei Orientierungsänderung des Geräts
 
 ```js
-document.addEventListener("DOMContentLoaded", function(){
-const players = Plyr.setup('.rex-plyr',{
-youtube: {
-noCookie: true
-},
-iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
-fullscreen: {
-enabled: true,
-fallback: true,
-iosNative: false }
-});
+document.addEventListener("DOMContentLoaded", function () {
+    const players = Plyr.setup('.rex-plyr', {
+        youtube: {
+            noCookie: true
+        },
+        iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
+        fullscreen: {
+            enabled: true,
+            fallback: true,
+            iosNative: false
+        }
+    });
 });
 
 const players = new Plyr('.rex-plyr');
 players.on('play', event => {
-const instance = event.detail.plyr;
+    const instance = event.detail.plyr;
 
-screen.orientation.addEventListener("change", function() {
-if(screen.orientation.type = 'landscape-primary') {
-players.fullscreen.enter();
-}
-if(screen.orientation.type = 'portrait-primary') {
-players.fullscreen.exit();
-}
-}, false);
+    screen.orientation.addEventListener("change", function () {
+        if (screen.orientation.type = 'landscape-primary') {
+            players.fullscreen.enter();
+        }
+        if (screen.orientation.type = 'portrait-primary') {
+            players.fullscreen.exit();
+        }
+    }, false);
 
-window.addEventListener('orientationchange', function() {
-if (window.orientation & 2) {
-players.fullscreen.enter();
-} else {
-players.fullscreen.exit();
-}
+    window.addEventListener('orientationchange', function () {
+        if (window.orientation & 2) {
+            players.fullscreen.enter();
+        } else {
+            players.fullscreen.exit();
+        }
 
-});
+    });
 
 });
 ```
