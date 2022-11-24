@@ -1,3 +1,6 @@
 
 .DS_Store
 assets/vendor/plyr/yarn-error.log
+assets/vendor/plyr/.node-version
+assets/vendor/plyr/.travis.yml
+assets/vendor/plyr/.nvmrc

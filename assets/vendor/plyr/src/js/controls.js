@@ -1715,13 +1715,17 @@ const controls = {
     if (!is.empty(this.elements.buttons)) {
       const addProperty = (button) => {
         const className = this.config.classNames.controlPressed;
+        button.setAttribute('aria-pressed', 'false');
+
         Object.defineProperty(button, 'pressed', {
+          configurable: true,
           enumerable: true,
           get() {
             return hasClass(button, className);
           },
           set(pressed = false) {
             toggleClass(button, className, pressed);
+            button.setAttribute('aria-pressed', pressed ? 'true' : 'false');
           },
         });
       };

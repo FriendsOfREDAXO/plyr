@@ -38,6 +38,9 @@ const support = {
   // Picture-in-picture support
   // Safari & Chrome only currently
   pip: (() => {
+    // While iPhone's support picture-in-picture for some apps, seemingly Safari isn't one of them
+    // It will throw the following error when trying to enter picture-in-picture
+    // `NotSupportedError: The Picture-in-Picture mode is not supported.`
     if (browser.isIPhone) {
       return false;
     }
