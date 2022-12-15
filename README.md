@@ -63,39 +63,47 @@ Plyr benötigt 2 JS-Dateien und eine CSS. In der `plyr_video.js` wird der Player
 <script src="<?= rex_url::base('assets/addons/plyr/vendor/plyr/dist/plyr.min.js') ?>"></script>
 <script src="<?= rex_url::base('assets/addons/plyr/plyr_init.js') ?>"></script>
 ```
-Die `plyr_init.js` ist als Beispiel anzusehen und bietet "nur" basic Settings. Sollte die Webpräsenz in einem Unterordner angelegt sein, müssen die Pfade für `iconUrl` und `blankVideo` angepasst werden. 
-
-#### Inhalt der `plyr_init.js`
-
-```js
-document.addEventListener("DOMContentLoaded", function(){
- const players = Plyr.setup('.rex-plyr',{
-	  youtube: {
-            noCookie: true
-        },
-        vimeo: {
-            dnt: false
-        },
-        iconUrl: '/assets/addons/plyr/vendor/plyr/dist/plyr.svg',
-        blankVideo: '/assets/addons/plyr/vendor/plyr/dist/blank.mp4'
-    });
-    if (document.querySelector('.rex-plyr')) {
-        players.forEach(function (player) {
-            player.on('play', function () {
-                var others = players.filter(other => other != player)
-                others.forEach(function (other) {
-                    other.pause();
-                })
-            });
-        });
-});
-
-```
 
 >Alle weiteren Infos zur Konfiguration der Skripte oder der Controls der Ausgaben, finden sich auf der GitHub-Site von [Plyr](https://plyr.io). 
 
 
-### Modul-Beispiel mit MFORM CustomLink
+### Einfaches Modulbeispiel für lokale Videos mit Poster
+
+#### Eingabe
+
+```php
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Video</label>
+            <div class="col-sm-10">
+                 REX_MEDIA[id=1 widget=1 types=mp4]
+            </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Vorschaubild (optional)</label>
+            <div class="col-sm-10">
+                 REX_MEDIA[id=2 widget=1 types=jpg]
+            </div>
+    </div>       
+</div>  
+```
+
+### Ausgabe
+
+```php
+<?php
+$preview = $out = '';
+if ('REX_MEDIA[2]'!='')
+{
+    $preview = rex_media_manager::getUrl('video_cover','REX_MEDIA[2]'); 
+}
+echo rex_plyr::outputMedia('REX_MEDIA[1]','play-large,play,fullscreen,mute,volume,progress,airplay,pip,nopreload',$preview);
+?>
+```
+
+
+
+### Modul-Beispiel mit MFORM CustomLink für externe und lokale Videos
 
 Das CustomLink-Widget bietet sich an, weil die Redaktion damit lokale und externe Medien verlinken kann. 
 
