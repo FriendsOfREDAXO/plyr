@@ -9,8 +9,7 @@ class plyr_mediapool
         $player = new rex_plyr();
 
         if ($player->checkMedia($file) || $player->checkAudio($file)) {
-            $media = rex_plyr::outputMedia($file);
-            return $media;
+            return rex_plyr::outputMedia($file);
         }
     }
 }

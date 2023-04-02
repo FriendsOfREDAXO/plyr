@@ -23,8 +23,7 @@ class rex_plyr
             if (false === filter_var($url, FILTER_VALIDATE_URL)) {
             }
             if (true === file_exists(rex_path::media($url))) {
-                $url = rex_url::media($url);
-                return $url;
+                return rex_url::media($url);
             }
             return $url;
         }
@@ -274,10 +273,9 @@ class rex_plyr
     {
         rex_extension::register('OUTPUT_FILTER', static function ($ep) {
             $string = $ep->getSubject();
-            $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', static function ($video) {
+            return preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', static function ($video) {
                 return self::consent($video[1], $setup = '', $poster = '', 'cke5');
             }, $string);
-            return $string;
         }, rex_extension::LATE);
     }
 
@@ -288,10 +286,9 @@ class rex_plyr
      */
     public static function oembed_replace($string, $setup = null): string
     {
-        $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', static function ($video) {
+        return preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', static function ($video) {
             return self::consent($video[1], $setup, $poster, 'cke5');
         }, $string);
-        return $string;
     }
 
     /**
@@ -347,7 +344,6 @@ class rex_plyr
         $out .= ']';
         $out .= ');';
         $out .= '});';
-        $out .= '</script>';
-        return $out;
+        return $out . '</script>';
     }
 }
