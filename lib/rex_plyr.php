@@ -12,7 +12,6 @@
 
 class rex_plyr
 {
-
     /**
      * @param string $url
      *
@@ -21,9 +20,9 @@ class rex_plyr
     public static function checkUrl($url)
     {
         if ($url) {
-            if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+            if (false === filter_var($url, FILTER_VALIDATE_URL)) {
             }
-            if (file_exists(rex_path::media($url)) === true) {
+            if (true === file_exists(rex_path::media($url))) {
                 $url = rex_url::media($url);
                 return $url;
             }
@@ -34,7 +33,7 @@ class rex_plyr
     /**
      * @param string $url
      *
-     * @return boolean
+     * @return bool
      */
     public static function checkYoutube($url)
     {
@@ -51,7 +50,7 @@ class rex_plyr
      */
     public static function getYoutubeId($url)
     {
-        $youtubeID = "";
+        $youtubeID = '';
         if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
             $youtubeID = $match[1];
         }
@@ -61,20 +60,20 @@ class rex_plyr
     /**
      * @param string $url
      *
-     * @return boolean
+     * @return bool
      */
     public static function checkMedia($url)
     {
         $media = rex_media::get($url);
         $checkPath = pathinfo($url);
         if ($media) {
-            if (strtolower($checkPath['extension']) == "mp4") {
+            if ('mp4' == strtolower($checkPath['extension'])) {
                 return true;
             }
-            if (strtolower($checkPath['extension']) == "mov") {
+            if ('mov' == strtolower($checkPath['extension'])) {
                 return true;
             }
-            if (strtolower($checkPath['extension']) == "m4v") {
+            if ('m4v' == strtolower($checkPath['extension'])) {
                 return true;
             }
         }
@@ -84,11 +83,11 @@ class rex_plyr
     /**
      * @param string $url
      *
-     * @return boolean
+     * @return bool
      */
     public static function checkVideo($url)
     {
-        if (rex_plyr::checkYoutube($url) || rex_plyr::checkVimeo($url) || rex_plyr::checkMedia($url) || rex_plyr::checkExternalMp4($url)) {
+        if (self::checkYoutube($url) || self::checkVimeo($url) || self::checkMedia($url) || self::checkExternalMp4($url)) {
             return true;
         }
         return false;
@@ -97,14 +96,14 @@ class rex_plyr
     /**
      * @param string $url
      *
-     * @return boolean
+     * @return bool
      */
     public static function checkAudio($url)
     {
         $audio = rex_media::get($url);
         $checkPath = pathinfo($url);
         if ($audio) {
-            if (strtolower($checkPath['extension']) == "mp3") {
+            if ('mp3' == strtolower($checkPath['extension'])) {
                 return true;
             }
         }
@@ -114,7 +113,7 @@ class rex_plyr
     /**
      * @param string $url
      *
-     * @return boolean
+     * @return bool
      */
     public static function checkVimeo($url)
     {
@@ -131,7 +130,7 @@ class rex_plyr
      */
     public static function getVimeoId($url)
     {
-        $vimeoID = "";
+        $vimeoID = '';
         if (preg_match('~(?:<iframe [^>]*src=")?(?:https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w]*\/(progressive_redirect\/playback|external|videos?))?\/([0-9]+)[^\s]*)"?(?:[^>]*></iframe>)?(?:<p>.*</p>)?~ix', $url, $match)) {
             $vimeoID = $match[2];
         }
@@ -139,18 +138,16 @@ class rex_plyr
     }
 
     /**
-     * checkExternalMp4
+     * checkExternalMp4.
      *
      * @param  string $url
-     * @return boolean
+     * @return bool
      */
     public static function checkExternalMp4($url)
     {
-
-        if (filter_var($url, FILTER_VALIDATE_URL) == true) {
-
+        if (true == filter_var($url, FILTER_VALIDATE_URL)) {
             if ($checkurl = get_headers($url, 1)) {
-                if ($checkurl['Content-Type'] == 'video/mp4') {
+                if ('video/mp4' == $checkurl['Content-Type']) {
                     return true;
                 }
             }
@@ -167,7 +164,7 @@ class rex_plyr
      */
     public static function outputMedia($url, $setup = null, $poster = null, $consent = null)
     {
-        $player = new rex_plyr();
+        $player = new self();
         $link = $player->checkUrl($url);
         $consent_content = '';
         $consent_suffix = ' ';
@@ -178,7 +175,7 @@ class rex_plyr
             $consent_content = $consent;
         }
         if ($setup) {
-            $control_attr = explode(",", $setup);
+            $control_attr = explode(',', $setup);
             if ($control_attr && in_array('nopreload', $control_attr)) {
                 $nopreload = ' preload="none"';
             }
@@ -203,21 +200,21 @@ class rex_plyr
         $provider = '';
         $embed_id = '';
 
-        if ($player->checkYoutube($link) == true) {
+        if (true == $player->checkYoutube($link)) {
             $provider = 'youtube';
             $embed_id = $player->getYoutubeId($link);
         }
 
-        if ($player->checkVimeo($link) == true) {
+        if (true == $player->checkVimeo($link)) {
             $provider = 'vimeo';
             $embed_id = $player->getVimeoId($link);
         }
 
-        if ($provider != '') {
+        if ('' != $provider) {
             $out = '<div class="rex-plyr' . $consent_suffix . $provider . '" data-plyr-provider="' . $provider . '" data-plyr-embed-id="' . $embed_id . '"' . $setup . '>' . $consent_content . '</div>';
         }
 
-        if ($player->checkMedia($url) !== false ||  $player->checkExternalMp4($url) === true) {
+        if (false !== $player->checkMedia($url) || true === $player->checkExternalMp4($url)) {
             if ($poster) {
                 $poster = ' data-poster="' . $poster . '"';
             } else {
@@ -230,7 +227,7 @@ class rex_plyr
                     ';
         }
 
-        if ($player->checkAudio($url) !== false) {
+        if (false !== $player->checkAudio($url)) {
             $out = '
                         <audio controls class="rex-plyr"' . $setup . $autoplay . $loop . $control_nojs . '>
                             <source src="' . $link . '" type="audio/mp3">
@@ -242,67 +239,60 @@ class rex_plyr
     }
 
     /**
-     * consent_helper
+     * consent_helper.
      *
      * @param  string $url
      * @param  string $return_when_empty
-     * @return string
      */
     public static function consent($url = '', $setup = null, $poster = null, $return_when_empty = ''): string
     {
-
         $consent = '';
-        if (rex_plyr::checkVimeo($url)) {
+        if (self::checkVimeo($url)) {
             $fragment = new rex_fragment();
             $fragment->setVar('url', $url, false);
             $fragment->setVar('type', 'vimeo', false);
             $consent = $fragment->parse('consent.php');
-            return rex_plyr::outputMedia($url, $setup, $poster, $consent);
+            return self::outputMedia($url, $setup, $poster, $consent);
         }
-        if (rex_plyr::checkYoutube($url)) {
+        if (self::checkYoutube($url)) {
             $fragment = new rex_fragment();
             $fragment->setVar('url', $url, false);
             $fragment->setVar('type', 'youtube', false);
             $consent = $fragment->parse('consent.php');
-            return rex_plyr::outputMedia($url, $setup, $poster, $consent);
+            return self::outputMedia($url, $setup, $poster, $consent);
         }
-        if ($return_when_empty == 'cke5') {
+        if ('cke5' == $return_when_empty) {
             return '<oembed url="' . $url . '"></oembed>';
         }
-        return rex_plyr::outputMedia($url, $setup, $poster);
+        return self::outputMedia($url, $setup, $poster);
     }
 
     /**
-     * cke_oembed_helper
-     *
-     * @return void
+     * cke_oembed_helper.
      */
     public static function cke_oembed_helper($setup = null): void
     {
-        rex_extension::register('OUTPUT_FILTER', function ($ep) {
-
+        rex_extension::register('OUTPUT_FILTER', static function ($ep) {
             $string = $ep->getSubject();
-            $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', function ($video) {
-                return rex_plyr::consent($video[1], $setup = '', $poster = '', 'cke5');
+            $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', static function ($video) {
+                return self::consent($video[1], $setup = '', $poster = '', 'cke5');
             }, $string);
             return $string;
         }, rex_extension::LATE);
     }
-    
-    
-     /**
-     * cke_oembed_helper
+
+    /**
+     * cke_oembed_helper.
      *
      * @return void
      */
     public static function oembed_replace($string, $setup = null): string
     {
-            $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', function ($video) {
-                return rex_plyr::consent($video[1], $setup, $poster, 'cke5');
-            }, $string);
-            return $string;
+        $string = preg_replace_callback('/<oembed url="(.+?)"><\/oembed>/is', static function ($video) {
+            return self::consent($video[1], $setup, $poster, 'cke5');
+        }, $string);
+        return $string;
     }
-    
 
     /**
      * @param array $media_filenames Array with video/mp4 audio/mp3 file names from media pool
@@ -313,12 +303,12 @@ class rex_plyr
     public static function outputMediaPlaylist($media_filenames, $setup = null)
     {
         $plyr = rex_addon::get('plyr');
-        $svg_url = $plyr->getAssetsUrl("vendor/plyr/dist/plyr.svg");
-        $blank_mp4 = $plyr->getAssetsUrl("vendor/plyr/dist/blank.mp4");
-        $plyr_id = rand();
+        $svg_url = $plyr->getAssetsUrl('vendor/plyr/dist/plyr.svg');
+        $blank_mp4 = $plyr->getAssetsUrl('vendor/plyr/dist/blank.mp4');
+        $plyr_id = random_int(0, getrandmax());
         $out = '<div class="plyr-container">';
         $out .= '<div id="player-' . $plyr_id . '">';
-        $plyr_media = rex_plyr::outputMedia($media_filenames[0], $setup);
+        $plyr_media = self::outputMedia($media_filenames[0], $setup);
         $out .= str_replace(
             'class="rex-plyr"',
             'class="rex-plyr" id="plyr-' . $plyr_id . '"',

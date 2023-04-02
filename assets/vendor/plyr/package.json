@@ -1,6 +1,6 @@
 {
   "name": "plyr",
-  "version": "3.7.3",
+  "version": "3.7.8",
   "description": "A simple, accessible and customizable HTML5, YouTube and Vimeo media player",
   "homepage": "https://plyr.io",
   "author": "Sam Potts <sam@potts.es>",
@@ -29,16 +29,6 @@
     "url": "https://github.com/sampotts/plyr/issues"
   },
   "browserslist": "> 1%",
-  "scripts": {
-    "build": "gulp build",
-    "lint": "eslint src/js && npm run remark && stylelint **/*.scss",
-    "lint:fix": "eslint --fix src/js && stylelint **/*.scss --fix",
-    "remark": "remark -f --use 'validate-links=repository:\"sampotts/plyr\"' '{,!(node_modules),.?**/}*.md'",
-    "deploy": "yarn lint && gulp version && gulp build && gulp deploy",
-    "format": "prettier --write \"./{src,demo/src}/**/*.{js,scss}\"",
-    "spellcheck": "cspell \"**/*.{js,md,scss,json}\" --no-must-find-files",
-    "start": "gulp"
-  },
   "devDependencies": {
     "@babel/core": "^7.20.2",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
@@ -97,5 +87,15 @@
     "loadjs": "^4.2.0",
     "rangetouch": "^2.0.1",
     "url-polyfill": "^1.1.12"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "lint": "eslint src/js && npm run remark && stylelint **/*.scss",
+    "lint:fix": "eslint --fix src/js && stylelint **/*.scss --fix",
+    "remark": "remark -f --use 'validate-links=repository:\"sampotts/plyr\"' '{,!(node_modules),.?**/}*.md'",
+    "deploy": "npm run lint && gulp version && gulp build && gulp deploy",
+    "format": "prettier --write \"./{src,demo/src}/**/*.{js,scss}\"",
+    "spellcheck": "cspell \"**/*.{js,md,scss,json}\" --no-must-find-files",
+    "start": "gulp"
   }
 }
