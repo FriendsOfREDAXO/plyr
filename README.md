@@ -479,6 +479,10 @@ $plyr = new rex_plyr();
 $id = $plyr->checkMedia($url);
 ```
 
+## Tricks
+
+>Sobald ich ein Poster einblende und "nopreload" nicht(!) ausgewählt ist, wird in Safari kein Poster angezeigt.
+Lässt sich mit dem folgenden Fix beheben: <style>.plyr__video-wrapper{z-index: 0;}</style>
 
 ## Bugtracker
 
