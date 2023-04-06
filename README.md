@@ -189,12 +189,13 @@ rex_plyr::cke_oembed_helper($setup = null);
 ```
 Ruft einen Outputfilter auf der alle gefundenen CKE5-OEMBEDs in der Ausgabe ersetzt. 
 
-Im Consent-Manager muss beim jeweiligen Cookie das passende Script eingesetzt werden: 
+Im Consent-Manager muss beim jeweiligen Cookie das passende Script eingesetzt werden. Die nachfolgenden functions sollten auch nach einem Ajax request ausgeführt werden. 
 
 ### Vimeo Constent-Script
 
 ```js
 <script>
+function setupPlyrVm() {
 const playersvimeo = Plyr.setup('.rex-plyr_consent_vimeo', {
         youtube: {
             noCookie: true
@@ -215,6 +216,8 @@ const playersvimeo = Plyr.setup('.rex-plyr_consent_vimeo', {
             });
         });
     }
+ }
+ setupPlyrVm();
 </script>
 ```
 
@@ -222,7 +225,8 @@ const playersvimeo = Plyr.setup('.rex-plyr_consent_vimeo', {
 
 ```js
 <script>
-const playersyoutube = Plyr.setup('.rex-plyr_consent_youtube', {
+function setupPlyrYt() {
+    const playersyoutube = Plyr.setup('.rex-plyr_consent_youtube', {
         youtube: {
             noCookie: true,
         },
@@ -238,7 +242,13 @@ const playersyoutube = Plyr.setup('.rex-plyr_consent_youtube', {
             });
         });
     }
+
+}
+setupPlyrYt();
+    
 </script>
+
+
 ```
 
 ### CSS-Helferlein für Consent-Platzhalter 
