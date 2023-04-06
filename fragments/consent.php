@@ -1,4 +1,4 @@
-?php if($this->type == 'youtube' ):?>
+<?php if($this->type == 'youtube' ):?>
 <div class="aspect-ratio-16-9 plyr-consent-box">
         <div class="plyr-consent-box-content">
             <h2>Externes Video: Youtube</h2>
