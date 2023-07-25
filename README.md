@@ -191,7 +191,7 @@ Ruft einen Outputfilter auf der alle gefundenen CKE5-OEMBEDs in der Ausgabe erse
 
 Im Consent-Manager muss beim jeweiligen Cookie das passende Script eingesetzt werden. Die nachfolgenden functions sollten auch nach einem Ajax request ausgeführt werden. 
 
-### Vimeo Constent-Script
+### Vimeo Consent-Script
 
 ```js
 <script>
@@ -221,7 +221,7 @@ const playersvimeo = Plyr.setup('.rex-plyr_consent_vimeo', {
 </script>
 ```
 
-### Youtube Constent-Script
+### Youtube Consent-Script
 
 ```js
 <script>
@@ -253,7 +253,7 @@ setupPlyrYt();
 
 ### CSS-Helferlein für Consent-Platzhalter 
 
-Ermöglicht einen Platzhalter im 16:9-Format.
+Ermöglicht den Platzhalter im 16:9-Format darzustellen.
 
 ```css
  .aspect-ratio-16-9 {
