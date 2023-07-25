@@ -99,15 +99,16 @@ class rex_plyr
      */
     public static function checkAudio($url)
     {
-        $audio = rex_media::get($url);
-        $checkPath = pathinfo($url);
+    $audio = rex_media::get($url);
+    $checkPath = pathinfo($url);
         if ($audio) {
-            if ('mp3' == strtolower($checkPath['extension'])) {
-                return true;
-            }
+            $extension = strtolower($checkPath['extension']);
+            $supportedFormats = ['mp3', 'ogg', 'wav', 'webm', 'm4a'];
+            return in_array($extension, $supportedFormats);
         }
-        return false;
-    }
+    return false;
+   }
+
 
     /**
      * @param string $url
