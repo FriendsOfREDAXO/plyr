@@ -502,7 +502,7 @@ Du hast einen Fehler gefunden oder ein nettes Feature parat? [Lege ein Issue an]
 
 siehe [LICENSE.md](https://github.com/FriendsOfREDAXO/video/blob/master/LICENSE.md)
 
-Plyr und Afterglow stehen unter MIT-Lizenz. Die Player bedienen sich jedoch teils unterschiedlicher Quellen, deren Lizenzen sich unterscheiden können. 
+Plyr steht unter MIT-Lizenz. Die Player bedienen sich jedoch teils unterschiedlicher Quellen, deren Lizenzen sich unterscheiden können. 
 
 
 ## Autor
