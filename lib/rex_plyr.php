@@ -93,21 +93,28 @@ class rex_plyr
     }
 
     /**
-     * @param string $url
+     * Check if the provided audio URL corresponds to a supported audio format.
      *
-     * @return bool
+     * @param string $url The URL of the audio file to check.
+     *
+     * @return string|bool If the audio format is supported, returns the audio format's extension (e.g., 'mp3', 'ogg', etc.).
+     *                     If the audio format is not supported or the provided URL is invalid, returns false.
      */
     public static function checkAudio($url)
     {
-    $audio = rex_media::get($url);
-    $checkPath = pathinfo($url);
+        // Get the audio object from the given URL
+        $audio = rex_media::get($url);
+        $checkPath = pathinfo($url);
         if ($audio) {
             $extension = strtolower($checkPath['extension']);
             $supportedFormats = ['mp3', 'ogg', 'wav', 'webm', 'm4a'];
-            return in_array($extension, $supportedFormats);
+            if (in_array($extension, $supportedFormats)) {
+                return $extension;
+            }
         }
-    return false;
-   }
+        return false;
+    }
+
 
 
     /**
@@ -230,12 +237,12 @@ class rex_plyr
         $audioFormat = $player->checkAudio($url);
 
         if ($audioFormat) {
-        $out = '
+            $out = '
         <audio controls class="rex-plyr"' . $setup . $autoplay . $loop . $control_nojs . '>
             <source src="' . $link . '" type="audio/' . $audioFormat . '">
         </audio>
         ';
-       }
+        }
 
         return $out;
     }
