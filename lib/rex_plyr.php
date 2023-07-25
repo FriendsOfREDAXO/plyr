@@ -227,13 +227,15 @@ class rex_plyr
                     ';
         }
 
-        if (false !== $player->checkAudio($url)) {
-            $out = '
-                        <audio controls class="rex-plyr"' . $setup . $autoplay . $loop . $control_nojs . '>
-                            <source src="' . $link . '" type="audio/mp3">
-                        </audio>
-                    ';
-        }
+        $audioFormat = $player->checkAudio($url);
+
+        if ($audioFormat) {
+        $out = '
+        <audio controls class="rex-plyr"' . $setup . $autoplay . $loop . $control_nojs . '>
+            <source src="' . $link . '" type="audio/' . $audioFormat . '">
+        </audio>
+        ';
+       }
 
         return $out;
     }
