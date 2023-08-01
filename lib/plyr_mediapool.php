@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * plyr_mediapool
+ *
+ * @package redaxo5
+ */
 class plyr_mediapool
 {
     public static function show_sidebar(rex_extension_point $ep)

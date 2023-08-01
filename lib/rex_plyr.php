@@ -9,7 +9,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
+/* add return types*/ 
 class rex_plyr
 {
     /**
@@ -17,7 +17,7 @@ class rex_plyr
      *
      * @return string
      */
-    public static function checkUrl($url)
+    public static function checkUrl($url): string
     {
         if ($url) {
             if (false === filter_var($url, FILTER_VALIDATE_URL)) {
@@ -34,7 +34,7 @@ class rex_plyr
      *
      * @return bool
      */
-    public static function checkYoutube($url)
+    public static function checkYoutube($url): bool
     {
         if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url)) {
             return true;
@@ -47,7 +47,7 @@ class rex_plyr
      *
      * @return string
      */
-    public static function getYoutubeId($url)
+    public static function getYoutubeId($url): string
     {
         $youtubeID = '';
         if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
@@ -61,7 +61,7 @@ class rex_plyr
      *
      * @return bool
      */
-    public static function checkMedia($url)
+    public static function checkMedia($url): bool
     {
         $media = rex_media::get($url);
         $checkPath = pathinfo($url);
@@ -84,7 +84,7 @@ class rex_plyr
      *
      * @return bool
      */
-    public static function checkVideo($url)
+    public static function checkVideo($url): bool
     {
         if (self::checkYoutube($url) || self::checkVimeo($url) || self::checkMedia($url) || self::checkExternalMp4($url)) {
             return true;
@@ -100,7 +100,7 @@ class rex_plyr
      * @return string|bool If the audio format is supported, returns the audio format's extension (e.g., 'mp3', 'ogg', etc.).
      *                     If the audio format is not supported or the provided URL is invalid, returns false.
      */
-    public static function checkAudio($url)
+    public static function checkAudio($url): bool
     {
         // Get the audio object from the given URL
         $audio = rex_media::get($url);
@@ -122,7 +122,7 @@ class rex_plyr
      *
      * @return bool
      */
-    public static function checkVimeo($url)
+    public static function checkVimeo($url): bool
     {
         if (preg_match('~(?:<iframe [^>]*src=")?(?:https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w]*\/(progressive_redirect\/playback|external|videos?))?\/([0-9]+)[^\s]*)"?(?:[^>]*></iframe>)?(?:<p>.*</p>)?~ix', $url)) {
             return true;
@@ -135,7 +135,7 @@ class rex_plyr
      *
      * @return string
      */
-    public static function getVimeoId($url)
+    public static function getVimeoId($url): string
     {
         $vimeoID = '';
         if (preg_match('~(?:<iframe [^>]*src=")?(?:https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w]*\/(progressive_redirect\/playback|external|videos?))?\/([0-9]+)[^\s]*)"?(?:[^>]*></iframe>)?(?:<p>.*</p>)?~ix', $url, $match)) {
@@ -150,7 +150,7 @@ class rex_plyr
      * @param  string $url
      * @return bool
      */
-    public static function checkExternalMp4($url)
+    public static function checkExternalMp4($url): bool
     {
         if (true == filter_var($url, FILTER_VALIDATE_URL)) {
             if ($checkurl = get_headers($url, 1)) {
@@ -169,7 +169,7 @@ class rex_plyr
      *
      * @return string
      */
-    public static function outputMedia($url, $setup = null, $poster = null, $consent = null)
+    public static function outputMedia($url, $setup = null, $poster = null, $consent = null): string
     {
         $player = new self();
         $link = $player->checkUrl($url);
