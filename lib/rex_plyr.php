@@ -158,8 +158,8 @@ class rex_plyr
                     return true;
                 }
             }
-            return false;
-        }
+            
+        } return false;
     }
 
     /**
