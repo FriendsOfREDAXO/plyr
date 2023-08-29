@@ -25,8 +25,8 @@ class rex_plyr
             if (true === file_exists(rex_path::media($url))) {
                 return rex_url::media($url);
             }
-            return $url;
-        }
+           
+        }  return $url;
     }
 
     /**
