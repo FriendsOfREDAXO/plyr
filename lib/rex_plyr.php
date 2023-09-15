@@ -100,7 +100,7 @@ class rex_plyr
      * @return string|bool If the audio format is supported, returns the audio format's extension (e.g., 'mp3', 'ogg', etc.).
      *                     If the audio format is not supported or the provided URL is invalid, returns false.
      */
-    public static function checkAudio($url): bool
+    public static function checkAudio($url): string|bool
     {
         // Get the audio object from the given URL
         $audio = rex_media::get($url);
@@ -236,7 +236,7 @@ class rex_plyr
 
         $audioFormat = $player->checkAudio($url);
 
-        if ($audioFormat) {
+        if (false != $audioFormat) {
             $out = '
         <audio controls class="rex-plyr"' . $setup . $autoplay . $loop . $control_nojs . '>
             <source src="' . $link . '" type="audio/' . $audioFormat . '">
