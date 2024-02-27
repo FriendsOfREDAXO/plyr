@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of the plyr package.
  *
@@ -9,7 +8,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-/* add return types*/ 
+/* add return types*/
 class rex_plyr
 {
     /**
@@ -25,8 +24,8 @@ class rex_plyr
             if (true === file_exists(rex_path::media($url))) {
                 return rex_url::media($url);
             }
-           
-        }  return $url;
+
+        }return $url;
     }
 
     /**
@@ -36,7 +35,7 @@ class rex_plyr
      */
     public static function checkYoutube($url): bool
     {
-        if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url)) {
+        if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=|shorts/)|youtu\.be/)([^"&?/ ]{11})%i', $url)) {
             return true;
         }
         return false;
@@ -50,7 +49,7 @@ class rex_plyr
     public static function getYoutubeId($url): string
     {
         $youtubeID = '';
-        if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
+        if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=|shorts/)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
             $youtubeID = $match[1];
         }
         return $youtubeID;
@@ -100,7 +99,7 @@ class rex_plyr
      * @return string|bool If the audio format is supported, returns the audio format's extension (e.g., 'mp3', 'ogg', etc.).
      *                     If the audio format is not supported or the provided URL is invalid, returns false.
      */
-    public static function checkAudio($url): string|bool
+    public static function checkAudio($url): string | bool
     {
         // Get the audio object from the given URL
         $audio = rex_media::get($url);
@@ -114,8 +113,6 @@ class rex_plyr
         }
         return false;
     }
-
-
 
     /**
      * @param string $url
@@ -158,8 +155,8 @@ class rex_plyr
                     return true;
                 }
             }
-            
-        } return false;
+
+        }return false;
     }
 
     /**
