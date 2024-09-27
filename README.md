@@ -1,6 +1,8 @@
 
 # REDAXO-AddOn: Plyr
 
+🚨 Die Entwicklung dieses AddOns wurde eingestellt und wurde daher archiviert.
+
 Das AddOn stellt den Video-/Audio-Player [Plyr](https://plyr.io) zur Verfügung.
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/video/assets/mediapool.jpg)
